@@ -80,7 +80,8 @@ nav.menu a:hover{color:var(--ink)}
 .signin{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;white-space:nowrap}
 nav.menu a{white-space:nowrap}
 @media (max-width:1240px){nav.menu{gap:22px}header.top .logo,header.top .hdr-r{flex:none}nav.menu{margin-inline:auto}}
-@media (max-width:1100px){nav.menu a[href="#app"]{display:none}}
+@media (max-width:1240px){nav.menu a[href="#app"]{display:none}}
+@media (max-width:1060px){nav.menu a[href="#faq"]{display:none}}
 @media (max-width:900px){nav.menu,.signin{display:none}header.top .w{justify-content:space-between}}
 
 .lang{display:inline-flex;gap:2px;margin-right:4px}
@@ -173,7 +174,7 @@ section{margin-top:clamp(96px,11vw,150px)}
 .xp-tabs .bar{position:absolute;left:16px;right:16px;bottom:4px;height:2px;border-radius:2px;background:var(--line);overflow:hidden;opacity:0}
 .xp-tabs [aria-selected="true"] .bar{opacity:1}
 .xp-tabs .bar i{position:absolute;inset:0;width:0;background:var(--ink)}
-.xp-tabs [aria-selected="true"] .bar i{animation:xbar 5s linear forwards}
+.xp-tabs [aria-selected="true"] .bar i{animation:xbar 3s linear forwards}
 .xp.paused .xp-tabs .bar i{animation-play-state:paused}
 @keyframes xbar{to{width:100%}}
 .xp-box{background:#0A0A0A;border-radius:40px;padding:clamp(30px,4vw,56px) 0 0;overflow:hidden}
@@ -444,7 +445,7 @@ footer a:hover{color:var(--ink)}
 
 <header class="top" id="hdr"><div class="w">
   <a class="logo" href="#top" data-i18n-aria="brandFull"><svg aria-hidden="true"><use href="#arch"/></svg><span data-i18n="brand">сезам</span></a>
-  <nav class="menu" data-i18n-aria="nav.aria"><a href="#catalog" data-i18n="nav.tariffs"></a><a href="#how" data-i18n="nav.how"></a><a href="#compat" data-i18n="nav.phone"></a><a href="#faq" data-i18n="nav.faq"></a><a href="#app" data-i18n="nav.app"></a></nav>
+  <nav class="menu" data-i18n-aria="nav.aria"><a href="#catalog" data-i18n="nav.tariffs"></a><a href="#how" data-i18n="nav.how"></a><a href="#compat" data-i18n="nav.phone"></a><a href="#faq" data-i18n="nav.faq"></a><a href="#app" data-i18n="nav.app"></a><a href="partners.html" data-i18n="nav.biz"></a></nav>
   <div class="hdr-r">
     <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true" lang="ru">RU</button><button data-lang="en" aria-pressed="false" lang="en">EN</button></div>
     <a class="signin" href="#" onclick="return false" data-i18n="hdr.my"></a>
@@ -592,7 +593,7 @@ footer a:hover{color:var(--ink)}
 <footer><div class="w">
   <div><a class="logo" href="#top" style="color:var(--ink)"><svg aria-hidden="true"><use href="#arch"/></svg><span data-i18n="brand"></span></a><p style="margin-top:12px">© 2026 <span data-i18n="brandFull"></span>.<br><span data-i18n="ft.legal"></span></p></div>
   <div><b data-i18n="ft.plans"></b><a href="#catalog" data-i18n="tab.country"></a><a href="#catalog" data-i18n="tab.region"></a><a href="#catalog" data-i18n="tab.global"></a></div>
-  <div><b data-i18n="ft.help"></b><a href="#how" data-i18n="ft.how"></a><a href="#compat" data-i18n="ft.check"></a><a href="#faq" data-i18n="nav.faq"></a><a href="#app" data-i18n="ft.app"></a></div>
+  <div><b data-i18n="ft.help"></b><a href="#how" data-i18n="ft.how"></a><a href="#compat" data-i18n="ft.check"></a><a href="#faq" data-i18n="nav.faq"></a><a href="#app" data-i18n="ft.app"></a><a href="partners.html" data-i18n="ft.biz"></a></div>
   <div><b data-i18n="ft.docs"></b><a href="#" onclick="return false" data-i18n="ft.offer"></a><a href="#" onclick="return false" data-i18n="ft.refund"></a><a href="#" onclick="return false" data-i18n="ft.privacy"></a></div>
 </div></footer>
 
@@ -625,7 +626,7 @@ ru:{
  'tm.h':'Условия без звёздочек','tm.p':'Одинаковые для всех стран.','tm.1':'за 1 ГБ','tm.2b':'Без регистрации','tm.2':'достаточно почты','tm.3b':'С первого подключения','tm.3':'отсчитывается срок','tm.4b':'Раздача можно','tm.4':'на ноутбук и планшет','tm.5b':'100% возврат','tm.5':'если eSIM не установлена','tm.6':'поддержка на русском, кыргызском и английском',
  'faq.h':'Частые вопросы','sup.h':'Поддержка, которая отвечает','sup.p':'Поможем установить, даже если вы уже в аэропорту. Пишет человек, а не робот.',
  'fin.h':'Сезам, откройся','fin.p':'200 стран, QR-код через минуту после оплаты и поддержка, которая всегда на связи.','fin.b1':'Выбрать страну','fin.b2':'Как это работает',
- 'nav.app':'Приложение','ft.app':'Приложение',
+ 'nav.app':'Приложение','ft.app':'Приложение','nav.biz':'Бизнесу','ft.biz':'Партнёрам и реселлерам',
  'app.h':'Сезам в&nbsp;вашем телефоне','app.p':'Покупайте eSIM, следите за остатком трафика и пишите в поддержку — в пару касаний, даже без сети.',
  'app.rec':'Быстрее всего','app.web.h':'Быстрая установка','app.web.p':'Веб-приложение прямо с этого сайта — без магазина и регистрации.',
  'app.web.pts':'<li>Ставится за 3 секунды</li><li>Весит меньше 1&nbsp;МБ</li><li>Работает офлайн и обновляется сам</li>',
@@ -671,7 +672,7 @@ en:{
  'tm.h':'Terms with no fine print','tm.p':'The same for every country.','tm.1':'per 1 GB','tm.2b':'No sign-up','tm.2':'just your email','tm.3b':'From first connection','tm.3':'is when your plan starts','tm.4b':'Hotspot allowed','tm.4':'share with a laptop or tablet','tm.5b':'100% refund','tm.5':'if the eSIM isn’t installed','tm.6':'support in English, Russian and Kyrgyz',
  'faq.h':'Frequently asked questions','sup.h':'Support that actually answers','sup.p':'We’ll help you install, even if you’re already at the airport. A real person replies, not a bot.',
  'fin.h':'Open Sesame','fin.p':'200 countries, a QR code a minute after payment, and support that’s always there.','fin.b1':'Choose a country','fin.b2':'How it works',
- 'nav.app':'App','ft.app':'Get the app',
+ 'nav.app':'App','ft.app':'Get the app','nav.biz':'Business','ft.biz':'Partners & resellers',
  'app.h':'Sesame on your phone','app.p':'Buy eSIMs, track your remaining data and message support in a couple of taps — even offline.',
  'app.rec':'Fastest','app.web.h':'Quick install','app.web.p':'A web app right from this site — no app store, no sign-up.',
  'app.web.pts':'<li>Installs in 3 seconds</li><li>Under 1&nbsp;MB</li><li>Works offline and updates itself</li>',
@@ -912,7 +913,7 @@ function layoutXP(){const slots=[...xStage.children];if(!slots.length)return;con
   $$('#xpTabs [role=tab]').forEach((b,i)=>b.setAttribute('aria-selected',i===xi));
   const x=L('xp')[xi];xCap.innerHTML=`<h3>${xi+1}. ${x[0]}</h3><p>${x[1]}</p>`;
   const a=$('#xpTabs [aria-selected="true"]');if(a&&xTabs.scrollWidth>xTabs.clientWidth)xTabs.scrollTo({left:a.offsetLeft-xTabs.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});
-  clearTimeout(xTimer);if(xStarted&&!reduce&&!xp.classList.contains('paused'))xTimer=setTimeout(()=>goXP((xi+1)%XPK.length),5000)}
+  clearTimeout(xTimer);if(xStarted&&!reduce&&!xp.classList.contains('paused'))xTimer=setTimeout(()=>goXP((xi+1)%XPK.length),3000)}
 function goXP(i){xi=i;$$('#xpTabs .bar i').forEach(b=>{b.style.animation='none';void b.offsetWidth;b.style.animation=''});layoutXP()}
 xTabs.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(b)goXP(+b.dataset.x)});
 xStage.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(b)goXP(+b.dataset.x)});

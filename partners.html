@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Сезам для бизнеса — eSIM для реселлеров и партнёров</title>
+<meta name="description" content="Продавайте eSIM для поездок своим клиентам: партнёрская ссылка, оптовые пакеты или API под вашим брендом. 200 стран, поддержка 24/7.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230A0A0A%22/%3E%3Cpath%20d%3D%22M27%2012A20%2020%200%200%200%2027%2052%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M37%2012A20%2020%200%200%201%2037%2052%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%227%22%20fill%3D%22%23F5B82E%22/%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Сезам для бизнеса — eSIM для реселлеров и партнёров">
+<meta property="og:description" content="Продавайте eSIM для поездок своим клиентам: партнёрская ссылка, оптовые пакеты или API под вашим брендом.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff; --ink:#0A0A0A; --soft:#F5F5F4; --soft2:#EDEDEB; --muted:#6E6E73; --line:#E7E7E5;
+  --gold:#F5B82E; --ok:#1A9E5C; --no:#D93A2B;
+  --h:'Inter Tight','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B0B0C; --ink:#F2F2F0; --soft:#161618; --soft2:#202023; --muted:#9A9AA0; --line:#26262A; --ok:#3CC57F; --no:#FF6B57;
+}}
+:root[data-theme="dark"]{
+  --bg:#0B0B0C; --ink:#F2F2F0; --soft:#161618; --soft2:#202023; --muted:#9A9AA0; --line:#26262A; --ok:#3CC57F; --no:#FF6B57;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit} button{font:inherit;color:inherit;cursor:pointer}
+img,svg{max-width:100%}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:8px}
+.w{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3{margin:0;font-family:var(--h);font-weight:600;letter-spacing:-.035em;line-height:1.04}
+h2{font-size:clamp(32px,4.6vw,58px)}
+h3{font-size:22px;letter-spacing:-.02em}
+p{margin:0}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 24px;font-weight:600;font-size:16px;text-decoration:none;transition:opacity .2s,transform .15s;white-space:nowrap}
+.btn:hover{opacity:.86}
+.btn:active{transform:scale(.98)}
+.btn-ink{background:var(--ink);color:var(--bg)}
+.btn-soft{background:var(--soft2)}
+.btn-gold{background:var(--gold);color:#0A0A0A}
+.btn-sm{padding:10px 18px;font-size:15px}
+.btn[disabled]{opacity:.5;cursor:default}
+
+/* header */
+header.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding-top:env(safe-area-inset-top,0px);transition:box-shadow .3s}
+header.top.sh{box-shadow:0 1px 0 var(--line)}
+header.top .w{display:flex;align-items:center;gap:24px;height:68px}
+header.top .logo,header.top .hdr-r{flex:1 1 0}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--h);font-weight:700;font-size:22px;letter-spacing:-.04em;white-space:nowrap}
+.logo svg{width:28px;height:28px;flex:none;color:var(--ink)}
+.logo small{font-family:var(--f);font-size:13px;font-weight:600;letter-spacing:0;background:var(--soft);border-radius:999px;padding:3px 9px;color:var(--muted)}
+nav.menu{display:flex;gap:30px}
+nav.menu a{text-decoration:none;font-weight:500;font-size:15px;color:var(--muted);white-space:nowrap}
+nav.menu a:hover{color:var(--ink)}
+.hdr-r{display:flex;justify-content:flex-end;align-items:center;gap:6px}
+.signin{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;white-space:nowrap}
+.lang{display:inline-flex;gap:2px;margin-right:4px}
+.lang button{border:0;background:none;padding:8px 10px;border-radius:999px;font-weight:600;font-size:13.5px;color:var(--muted)}
+.lang button[aria-pressed="true"]{color:var(--ink);background:var(--soft)}
+@media (max-width:1240px){nav.menu{gap:22px}header.top .logo,header.top .hdr-r{flex:none}nav.menu{margin-inline:auto}}
+@media (max-width:960px){nav.menu,.signin{display:none}header.top .w{justify-content:space-between}}
+header .short{display:none}
+@media (max-width:560px){header .full{display:none}header .short{display:inline}}
+@media (max-width:420px){.logo small{display:none}}
+
+section{margin-top:clamp(96px,11vw,150px)}
+.sec-h{max-width:760px;margin-bottom:40px}
+.sec-h.center{text-align:center;margin-inline:auto}
+.sec-h p{margin-top:14px;font-size:18px;color:var(--muted)}
+[data-r]{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+[data-r].in{opacity:1;transform:none}
+.dark{background:#0A0A0A;color:#F2F2F0}
+
+/* hero */
+.hero{padding-top:clamp(56px,8vw,96px);text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--soft);border-radius:999px;padding:7px 14px 7px 10px;font-size:14px;font-weight:600;margin-bottom:24px}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.hero h1{font-size:clamp(40px,6.6vw,84px);max-width:14ch;margin-inline:auto}
+.hl{color:var(--gold)}
+.hero .lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);margin:22px auto 0;max-width:36em}
+.hero .row{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-top:32px}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(56px,7vw,90px);text-align:center}
+.nums b{display:block;font-family:var(--h);font-weight:600;font-size:clamp(36px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
+.nums span{color:var(--muted);font-size:15px}
+@media (max-width:600px){.nums{grid-template-columns:1fr;gap:28px}}
+
+/* who */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.who>div{background:var(--soft);border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:10px}
+.who .ico{width:46px;height:46px;border-radius:14px;background:var(--bg);display:grid;place-items:center}
+.who .ico .ic{width:22px;height:22px}
+.who b{font-family:var(--h);font-size:20px;font-weight:600;letter-spacing:-.02em;margin-top:8px}
+.who p{color:var(--muted);font-size:15.5px}
+@media (max-width:900px){.who{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.who{grid-template-columns:1fr}}
+
+/* models */
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.models>*{min-width:0}
+.mdl{position:relative;border-radius:32px;background:var(--soft);padding:clamp(26px,3vw,36px);display:flex;flex-direction:column;gap:12px}
+.mdl.dark{background:#0A0A0A;color:#F2F2F0}
+.mdl.dark p,.mdl.dark li{color:rgba(255,255,255,.65)}
+.mdl .num{font-family:var(--h);font-weight:600;font-size:15px;color:var(--muted)}
+.mdl.dark .num{color:rgba(255,255,255,.5)}
+.mdl h3{font-size:28px}
+.mdl p{color:var(--muted)}
+.mdl ul{list-style:none;padding:0;margin:6px 0 10px;display:grid;gap:9px;font-size:15.5px}
+.mdl li{display:flex;gap:10px;align-items:flex-start}
+.mdl li .ic{width:18px;height:18px;margin-top:3px;color:var(--ok);stroke-width:2.4}
+.mdl.dark li .ic{color:var(--gold)}
+.mdl .for{font-size:14px;border-top:1px solid var(--line);padding-top:14px;margin-top:auto;color:var(--muted)}
+.mdl.dark .for{border-color:rgba(255,255,255,.12);color:rgba(255,255,255,.55)}
+.mdl .for b{color:var(--ink);font-weight:600}
+.mdl.dark .for b{color:#fff}
+.tag{position:absolute;top:24px;right:24px;font-size:12.5px;font-weight:600;border-radius:999px;padding:5px 11px;background:var(--gold);color:#0A0A0A}
+.mdl .btn{align-self:flex-start;margin-top:4px}
+@media (max-width:960px){.models{grid-template-columns:1fr}}
+
+/* perks */
+.perks-wrap{border-radius:40px;padding:clamp(28px,5vw,64px)}
+.perks-wrap .sec-h p{color:rgba(255,255,255,.6)}
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:24px;overflow:hidden}
+.perks div{background:#0A0A0A;padding:26px}
+.perks b{display:block;font-family:var(--h);font-weight:600;font-size:22px;letter-spacing:-.02em;margin-bottom:4px}
+.perks span{color:rgba(255,255,255,.55);font-size:15px}
+@media (max-width:860px){.perks{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.perks{grid-template-columns:1fr}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{counter-increment:s;border:1px solid var(--line);border-radius:28px;padding:26px;display:flex;flex-direction:column;gap:8px}
+.steps li::before{content:counter(s);width:40px;height:40px;border-radius:50%;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:600;font-family:var(--h);margin-bottom:10px}
+.steps li:last-child::before{background:var(--gold);color:#0A0A0A}
+.steps b{font-family:var(--h);font-size:20px;font-weight:600;letter-spacing:-.02em}
+.steps p{color:var(--muted);font-size:15.5px}
+@media (max-width:960px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:820px;margin-inline:auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 0;font-weight:600;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{transition:transform .25s;color:var(--muted)}
+.faq details[open] summary .ic{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;color:var(--muted);max-width:62ch}
+
+/* lead form */
+.lead-wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:16px;align-items:start}
+.lead-wrap>*{min-width:0}
+.lead-txt{border-radius:32px;padding:clamp(28px,4vw,48px);position:sticky;top:96px}
+.lead-txt p{margin-top:14px;font-size:18px;color:rgba(255,255,255,.6)}
+.lead-txt ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.lead-txt li{display:flex;gap:12px;align-items:center;color:rgba(255,255,255,.8)}
+.lead-txt li .ic{color:var(--gold);stroke-width:2.4}
+.lead-form{border:1px solid var(--line);border-radius:32px;padding:clamp(24px,3.5vw,40px)}
+.grid2+.grid2{margin-top:16px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:start}
+.fld{margin-top:16px;min-width:0}
+.fld:first-child{margin-top:0}
+.grid2 .fld:nth-child(2){margin-top:0}
+.fld label,.fld .lbl{display:block;font-weight:600;margin-bottom:8px;font-size:15px}
+.fld label i{font-style:normal;color:var(--muted);font-weight:500}
+.fld input,.fld select,.fld textarea{width:100%;font:inherit;font-size:16px;padding:13px 16px;border:1px solid var(--line);background:var(--bg);border-radius:14px;color:var(--ink);outline:none;transition:border-color .2s}
+.fld textarea{min-height:110px;resize:vertical}
+.fld select{appearance:none;-webkit-appearance:none;padding-right:42px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E6E73' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:18px}
+.fld input:focus,.fld select:focus,.fld textarea:focus{border-color:var(--ink)}
+.fld [aria-invalid="true"]{border-color:var(--no)}
+.fld .err{font-size:13.5px;color:var(--no);margin-top:6px;font-weight:500}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips label{margin:0;cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;border-radius:999px;padding:9px 15px;font-weight:600;font-size:14.5px;background:var(--soft);color:var(--muted);transition:background .2s,color .2s}
+.chips input:checked+span{background:var(--ink);color:var(--bg)}
+.chips input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.agree{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:14px;color:var(--muted);cursor:pointer}
+.agree input{accent-color:var(--ink);width:17px;height:17px;margin-top:2px;flex:none}
+.lead-form .btn{width:100%;margin-top:20px;padding:16px}
+.lead-form .fine{font-size:13px;color:var(--muted);text-align:center;margin-top:10px}
+.sent{text-align:center;padding:40px 10px}
+.sent .okb{width:60px;height:60px;border-radius:50%;background:var(--ok);display:grid;place-items:center;margin:0 auto 18px;animation:pop .5s cubic-bezier(.2,1.3,.4,1)}
+.sent .okb .ic{width:30px;height:30px;stroke:#fff;stroke-width:2.6}
+.sent h3{font-size:28px;margin-bottom:8px}
+.sent p{color:var(--muted);max-width:28em;margin-inline:auto}
+.sent .btn{width:auto;margin-top:24px}
+@keyframes pop{from{transform:scale(.5);opacity:0}}
+@media (max-width:900px){.lead-wrap{grid-template-columns:1fr}.lead-txt{position:static}}
+@media (max-width:520px){.grid2{grid-template-columns:1fr}.grid2 .fld:nth-child(2){margin-top:16px}}
+
+footer{margin-top:clamp(96px,11vw,150px);padding:40px 0 34px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+footer .w{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;align-items:center}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer a{text-decoration:none}
+footer a:hover{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-r]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arch" viewBox="0 0 64 64">
+    <path d="M27 9A23 23 0 0 0 27 55" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <path d="M37 9A23 23 0 0 1 37 55" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="7.5" fill="#F5B82E"/>
+  </symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-1.5 7.5 1 4-4.5c1-1 2.6-1.4 3.2-.8.6.6.2 2.2-.8 3.2l-4.5 4 1 7.5L13.5 21l-2.5-7.5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 19V6M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11" r="2"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24"><path d="M4 9h16l-1-5H5L4 9Zm0 0v11h16V9M9 20v-6h6v6"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h4"/></symbol>
+  <symbol id="i-team" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/></symbol>
+</svg>
+
+<header class="top" id="hdr"><div class="w">
+  <a class="logo" href="index.html" data-i18n-aria="brandFull"><svg aria-hidden="true"><use href="#arch"/></svg><span data-i18n="brand"></span><small data-i18n="biz"></small></a>
+  <nav class="menu" data-i18n-aria="nav.aria"><a href="#who" data-i18n="nav.who"></a><a href="#models" data-i18n="nav.models"></a><a href="#steps" data-i18n="nav.steps"></a><a href="#faq" data-i18n="nav.faq"></a></nav>
+  <div class="hdr-r">
+    <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true" lang="ru">RU</button><button data-lang="en" aria-pressed="false" lang="en">EN</button></div>
+    <a class="signin" href="index.html" data-i18n="hdr.travel"></a>
+    <a class="btn btn-ink btn-sm" href="#lead"><span class="full" data-i18n="hdr.cta"></span><span class="short" data-i18n="hdr.ctaS"></span></a>
+  </div>
+</div></header>
+
+<main id="top">
+<section class="w hero" style="margin-top:0">
+  <span class="eyebrow"><i></i><span data-i18n="hero.eb"></span></span>
+  <h1 data-i18n="hero.h1"></h1>
+  <p class="lead" data-i18n="hero.lead"></p>
+  <div class="row"><a class="btn btn-gold" href="#lead" data-i18n="hero.b1"></a><a class="btn btn-soft" href="#models" data-i18n="hero.b2"></a></div>
+  <div class="nums">
+    <div><b>200</b><span data-i18n="num.1"></span></div>
+    <div><b>24/7</b><span data-i18n="num.2"></span></div>
+    <div><b data-i18n="num.3b"></b><span data-i18n="num.3"></span></div>
+  </div>
+</section>
+
+<section class="w" id="who">
+  <div class="sec-h" data-r><h2 data-i18n="who.h"></h2><p data-i18n="who.p"></p></div>
+  <div class="who" id="whoList" data-r></div>
+</section>
+
+<section class="w" id="models">
+  <div class="sec-h" data-r><h2 data-i18n="mdl.h"></h2><p data-i18n="mdl.p"></p></div>
+  <div class="models" id="mdlList" data-r></div>
+</section>
+
+<section class="w">
+  <div class="perks-wrap dark" data-r>
+    <div class="sec-h"><h2 data-i18n="pk.h"></h2><p data-i18n="pk.p"></p></div>
+    <div class="perks" id="pkList"></div>
+  </div>
+</section>
+
+<section class="w" id="steps">
+  <div class="sec-h" data-r><h2 data-i18n="st.h"></h2><p data-i18n="st.p"></p></div>
+  <ol class="steps" id="stList" data-r></ol>
+</section>
+
+<section class="w" id="faq">
+  <div class="sec-h center" data-r><h2 data-i18n="faq.h"></h2></div>
+  <div class="faq" id="faqList" data-r></div>
+</section>
+
+<section class="w" id="lead">
+  <div class="lead-wrap" data-r>
+    <div class="lead-txt dark">
+      <h2 data-i18n="ld.h"></h2>
+      <p data-i18n="ld.p"></p>
+      <ul id="ldPts"></ul>
+    </div>
+    <div class="lead-form" id="leadBox"></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="w">
+  <a class="logo" href="index.html" style="color:var(--ink);font-size:20px"><svg aria-hidden="true" style="width:24px;height:24px"><use href="#arch"/></svg><span data-i18n="brand"></span></a>
+  <nav><a href="index.html" data-i18n="ft.travel"></a><a href="#models" data-i18n="nav.models"></a><a href="#lead" data-i18n="hdr.cta"></a></nav>
+  <span>© 2026 <span data-i18n="brandFull"></span></span>
+</div></footer>
+
+<script>
+(function(){
+/* Куда отправлять заявки. endpoint — URL формы (Formspree, Getform, свой сервер), принимает POST с JSON.
+   email — запасной вариант: если endpoint пуст, откроется почта с готовым письмом.
+   Если оба пусты — форма работает в демо-режиме и просто показывает «Заявка отправлена». */
+const LEADS={endpoint:'',email:''};
+
+const I18N={
+ru:{
+ 'meta.title':'Сезам для бизнеса — eSIM для реселлеров и партнёров',brand:'сезам',brandFull:'Сезам eSIM',biz:'бизнес',
+ 'nav.aria':'Разделы','nav.who':'Кому подходит','nav.models':'Модели','nav.steps':'Как начать','nav.faq':'Вопросы',
+ 'hdr.travel':'Путешественникам','hdr.cta':'Стать партнёром','hdr.ctaS':'Заявка',
+ 'hero.eb':'Сезам для бизнеса','hero.h1':'Продавайте eSIM <span class="hl">своим</span> клиентам',
+ 'hero.lead':'Добавьте мобильный интернет для поездок к своим турам, билетам или товарам. Мы берём на себя связь в 200 странах и поддержку ваших клиентов, вы зарабатываете с каждой продажи.',
+ 'hero.b1':'Оставить заявку','hero.b2':'Модели сотрудничества',
+ 'num.1':'стран и регионов в каталоге','num.2':'поддержка ваших клиентов','num.3b':'1 день','num.3':'от заявки до первых продаж',
+ 'who.h':'Кому подходит','who.p':'Всем, чьи клиенты едут за границу — и кому важно, чтобы они вышли на связь сразу после посадки.',
+ who:[['i-plane','Турагентства и туроператоры','Добавьте eSIM в пакет тура или продавайте отдельно при бронировании.'],
+      ['i-globe','Онлайн-сервисы бронирования','Предлагайте eSIM после покупки билета или отеля — одним виджетом или через API.'],
+      ['i-bed','Отели и хостелы','Гости получают интернет ещё до заселения, а вы — дополнительный доход.'],
+      ['i-store','Магазины электроники и салоны связи','Продавайте eSIM вместе со смартфонами и аксессуарами в поездку.'],
+      ['i-card','Банки и программы лояльности','Дарите eSIM как бонус для держателей карт или за баллы.'],
+      ['i-team','Компании с командировками','Подключайте сотрудников централизованно и платите по счёту.']],
+ 'mdl.h':'Три модели сотрудничества','mdl.p':'Начните с простой и переходите к следующей, когда вырастут продажи.',
+ mdl:[{n:'01',h:'Партнёрская ссылка',p:'Делитесь ссылкой или промокодом — получаете процент с каждой покупки.',pts:['Без вложений и закупки','Старт в день обращения','Статистика переходов и продаж','Выплаты раз в месяц'],f:'Блогерам, турагентствам, сообществам путешественников'},
+      {n:'02',h:'Оптовые пакеты',p:'Покупаете eSIM по оптовой цене и продаёте по своей. Наценку определяете вы.',pts:['Личный кабинет реселлера','Цена снижается с ростом объёма','Выдача QR-кода клиенту в один клик','Договор и закрывающие документы'],f:'Агентствам, магазинам, отелям',tag:'Популярно'},
+      {n:'03',h:'API и White Label',p:'Встройте продажу eSIM в свой сайт или приложение — под вашим брендом.',pts:['REST API и вебхуки о статусах','Ваш логотип в письмах и QR-кодах','Тестовая среда для разработки','Персональный техменеджер'],f:'Онлайн-сервисам, банкам, авиакомпаниям'}],
+ 'mdl.b':'Обсудить',
+ 'pk.h':'Почему с нами просто','pk.p':'Вы продаёте — всё остальное берём на себя.',
+ pk:[['200 стран','Одна eSIM для страны, региона или всего мира'],['QR за минуту','Клиент получает eSIM сразу после оплаты'],['24/7','Отвечаем вашим клиентам в чате, на русском и английском'],['Возврат','Вернём деньги, если eSIM не удалось установить'],['По счёту','Работаем с юрлицами и ИП, есть закрывающие документы'],['Отчёты','Продажи, активации и выплаты — в личном кабинете']],
+ 'st.h':'Как начать','st.p':'От заявки до первой продажи — обычно один рабочий день.',
+ st:[['Заявка','Расскажите о компании и клиентах — это займёт пару минут.'],['Звонок','Менеджер свяжется, ответит на вопросы и подберёт модель и цены.'],['Договор и доступ','Подписываем договор и открываем личный кабинет или ключи API.'],['Первые продажи','Подключаете клиентов, а мы помогаем с материалами и поддержкой.']],
+ 'faq.h':'Вопросы партнёров',
+ faq:[['Есть ли минимальный объём закупки?','Для партнёрской ссылки — нет. Для оптовых пакетов стартовый объём обсуждаем индивидуально: начать можно с небольшого депозита.'],
+      ['Как формируется оптовая цена?','Цена зависит от направлений и месячного объёма. Чем больше продаёте, тем ниже закупка — условия пересматриваем по мере роста.'],
+      ['Работаете ли вы с юрлицами?','Да. Заключаем договор, выставляем счета и предоставляем закрывающие документы.'],
+      ['Кто поддерживает моих клиентов?','Наша служба поддержки — круглосуточно. При White Label можем отвечать от имени вашего бренда.'],
+      ['Сколько занимает интеграция по API?','Обычно 1–2 недели. Даём документацию, тестовую среду и технического менеджера на время запуска.']],
+ 'ld.h':'Станьте партнёром','ld.p':'Оставьте заявку — менеджер свяжется в течение рабочего дня и подберёт условия под ваш бизнес.',
+ ldPts:['Персональные условия и цены','Помощь с запуском и материалами','Без скрытых платежей'],
+ f:{name:'Имя',company:'Компания',email:'Рабочая почта',phone:'Телефон или Telegram',phonePh:'+7… или @username — по желанию',opt:'необязательно',type:'Тип бизнеса',typeO:['Турагентство / туроператор','Онлайн-сервис бронирования','Отель / хостел','Магазин / салон связи','Банк / программа лояльности','Корпоративный клиент','Блогер / медиа','Другое'],
+    choose:'Выберите',vol:'Сколько eSIM в месяц планируете',volO:['До 100','100–1 000','1 000–10 000','Больше 10 000','Пока не знаю'],model:'Интересная модель',modelO:['Ссылка','Опт','API / White Label','Не уверен'],
+    msg:'Комментарий',msgPh:'Расскажите о клиентах и направлениях',agree:'Согласен на обработку персональных данных',send:'Отправить заявку',sending:'Отправляем…',fine:'Ответим в течение рабочего дня',
+    req:'Заполните это поле',emailErr:'Проверьте почту: нужен адрес вида name@company.com',agreeErr:'Нужно согласие, чтобы мы могли связаться',fail:'Не получилось отправить. Попробуйте ещё раз.',
+    okH:'Заявка отправлена',okP:e=>`Спасибо! Менеджер свяжется с вами по адресу ${e} в течение рабочего дня.`,okMail:'Мы открыли почту с готовым письмом — осталось нажать «Отправить».',again:'Отправить ещё одну'},
+ 'ft.travel':'Сезам для путешественников'
+},
+en:{
+ 'meta.title':'Sesame for Business — eSIM for resellers and partners',brand:'sesame',brandFull:'Sesame eSIM',biz:'business',
+ 'nav.aria':'Sections','nav.who':'Who it’s for','nav.models':'Models','nav.steps':'Get started','nav.faq':'FAQ',
+ 'hdr.travel':'For travelers','hdr.cta':'Become a partner','hdr.ctaS':'Apply',
+ 'hero.eb':'Sesame for Business','hero.h1':'Sell eSIMs to <span class="hl">your</span> customers',
+ 'hero.lead':'Add travel data to your tours, tickets or products. We handle connectivity in 200 countries and support for your customers — you earn on every sale.',
+ 'hero.b1':'Apply now','hero.b2':'Partnership models',
+ 'num.1':'countries and regions','num.2':'support for your customers','num.3b':'1 day','num.3':'from application to first sales',
+ 'who.h':'Who it’s for','who.p':'Anyone whose customers travel abroad — and who wants them online the moment they land.',
+ who:[['i-plane','Travel agencies & tour operators','Bundle an eSIM with a tour or sell it separately at booking.'],
+      ['i-globe','Online travel platforms','Offer an eSIM after a flight or hotel purchase — via widget or API.'],
+      ['i-bed','Hotels & hostels','Guests get data before check-in, you get extra revenue.'],
+      ['i-store','Electronics & mobile stores','Sell eSIMs alongside phones and travel accessories.'],
+      ['i-card','Banks & loyalty programs','Give eSIMs as a cardholder perk or for points.'],
+      ['i-team','Companies with business travel','Connect employees centrally and pay by invoice.']],
+ 'mdl.h':'Three ways to partner','mdl.p':'Start simple and move up as your sales grow.',
+ mdl:[{n:'01',h:'Affiliate link',p:'Share a link or promo code — earn a percentage of every purchase.',pts:['No upfront costs','Start the same day','Click and sales analytics','Monthly payouts'],f:'Bloggers, travel agents, traveler communities'},
+      {n:'02',h:'Wholesale',p:'Buy eSIMs at wholesale prices and sell at yours. You set the margin.',pts:['Reseller dashboard','Prices drop as volume grows','Send a QR code to a customer in one click','Contract and invoicing'],f:'Agencies, stores, hotels',tag:'Popular'},
+      {n:'03',h:'API & White Label',p:'Build eSIM sales into your site or app — under your brand.',pts:['REST API and status webhooks','Your logo on emails and QR codes','Sandbox for development','Dedicated technical manager'],f:'Online platforms, banks, airlines'}],
+ 'mdl.b':'Let’s talk',
+ 'pk.h':'Why it’s easy with us','pk.p':'You sell — we take care of the rest.',
+ pk:[['200 countries','One eSIM for a country, a region or the whole world'],['QR in a minute','Customers get the eSIM right after payment'],['24/7','We support your customers in chat, in English and Russian'],['Refunds','Money back if the eSIM can’t be installed'],['Invoicing','We work with companies and provide accounting documents'],['Reports','Sales, activations and payouts in your dashboard']],
+ 'st.h':'How to get started','st.p':'From application to first sale — usually one business day.',
+ st:[['Apply','Tell us about your company and customers — it takes a couple of minutes.'],['Call','A manager gets in touch, answers questions and suggests a model and pricing.'],['Contract & access','We sign the contract and open your dashboard or API keys.'],['First sales','You onboard customers, we help with materials and support.']],
+ 'faq.h':'Partner FAQ',
+ faq:[['Is there a minimum order?','Not for the affiliate link. For wholesale, the starting volume is agreed individually — you can begin with a small deposit.'],
+      ['How is wholesale pricing set?','It depends on destinations and monthly volume. The more you sell, the lower your cost — we review terms as you grow.'],
+      ['Do you work with companies?','Yes. We sign a contract, issue invoices and provide accounting documents.'],
+      ['Who supports my customers?','Our support team, 24/7. With White Label we can answer on behalf of your brand.'],
+      ['How long does API integration take?','Usually 1–2 weeks. You get documentation, a sandbox and a technical manager for the launch.']],
+ 'ld.h':'Become a partner','ld.p':'Leave a request — a manager will get back to you within one business day with terms for your business.',
+ ldPts:['Personal terms and pricing','Help with launch and materials','No hidden fees'],
+ f:{name:'Name',company:'Company',email:'Work email',phone:'Phone or Telegram',phonePh:'+1… or @username — optional',opt:'optional',type:'Business type',typeO:['Travel agency / tour operator','Online travel platform','Hotel / hostel','Store / mobile shop','Bank / loyalty program','Corporate client','Blogger / media','Other'],
+    choose:'Select',vol:'eSIMs per month you plan to sell',volO:['Up to 100','100–1,000','1,000–10,000','More than 10,000','Not sure yet'],model:'Model you’re interested in',modelO:['Link','Wholesale','API / White Label','Not sure'],
+    msg:'Comment',msgPh:'Tell us about your customers and destinations',agree:'I agree to the processing of my personal data',send:'Send request',sending:'Sending…',fine:'We reply within one business day',
+    req:'Please fill in this field',emailErr:'Check your email: it should look like name@company.com',agreeErr:'We need your consent to contact you',fail:'Couldn’t send. Please try again.',
+    okH:'Request sent',okP:e=>`Thank you! A manager will contact you at ${e} within one business day.`,okMail:'We opened your email app with a ready message — just hit Send.',again:'Send another'},
+ 'ft.travel':'Sesame for travelers'
+}};
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let lang=(()=>{try{const u=new URLSearchParams(location.search).get('lang');if(u==='ru'||u==='en')return u}catch(e){}
+  try{const s=localStorage.getItem('sezam-lang');if(s==='ru'||s==='en')return s}catch(e){}
+  return (navigator.language||'ru').toLowerCase().startsWith('ru')?'ru':'en'})();
+const L=k=>I18N[lang][k];
+const icon=id=>`<svg class="ic" aria-hidden="true"><use href="#${id}"/></svg>`;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function renderStatic(){
+  document.documentElement.lang=lang;document.title=L('meta.title');
+  $$('[data-i18n]').forEach(el=>{const v=L(el.dataset.i18n);if(typeof v==='string')el.innerHTML=v});
+  $$('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',L(el.dataset.i18nAria)));
+  $$('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
+  $$('a[href="index.html"]').forEach(a=>a.href=lang==='en'?'index.html?lang=en':'index.html');
+  $('#whoList').innerHTML=L('who').map(([i,h,p])=>`<div><span class="ico">${icon(i)}</span><b>${h}</b><p>${p}</p></div>`).join('');
+  $('#mdlList').innerHTML=L('mdl').map((m,i)=>`<div class="mdl${m.tag?' dark':''}">${m.tag?`<span class="tag">${m.tag}</span>`:''}<span class="num">${m.n}</span><h3>${m.h}</h3><p>${m.p}</p><ul>${m.pts.map(x=>`<li>${icon('i-check')}${x}</li>`).join('')}</ul><p class="for">${m.f}</p><a class="btn ${m.tag?'btn-gold':'btn-ink'} btn-sm" href="#lead" data-model="${i}">${L('mdl.b')}</a></div>`).join('');
+  $('#pkList').innerHTML=L('pk').map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join('');
+  $('#stList').innerHTML=L('st').map(([b,p])=>`<li><b>${b}</b><p>${p}</p></li>`).join('');
+  $('#faqList').innerHTML=L('faq').map(([q,a])=>`<details><summary>${q}${icon('i-plus')}</summary><div class="a">${a}</div></details>`).join('');
+  $('#ldPts').innerHTML=L('ldPts').map(x=>`<li>${icon('i-check')}${x}</li>`).join('');
+}
+
+/* lead form */
+const box=$('#leadBox');let sent=null;
+const val={name:'',company:'',email:'',phone:'',type:'',vol:'',model:'',msg:'',agree:false};
+function renderForm(){const F=L('f');
+  if(sent){box.innerHTML=`<div class="sent"><div class="okb">${icon('i-check')}</div><h3>${F.okH}</h3><p>${sent==='mail'?F.okMail:F.okP(esc(val.email))}</p><button class="btn btn-soft" type="button" id="again">${F.again}</button></div>`;
+    $('#again').onclick=()=>{sent=null;Object.assign(val,{msg:'',agree:false});renderForm()};return}
+  const opt=(arr,v)=>`<option value="">${F.choose}</option>`+arr.map((o,i)=>`<option value="${i}"${String(v)===String(i)?' selected':''}>${o}</option>`).join('');
+  box.innerHTML=`<form id="lf" novalidate>
+    <div class="grid2">
+      <div class="fld"><label for="f-name">${F.name}</label><input id="f-name" name="name" autocomplete="name" required value="${esc(val.name)}"></div>
+      <div class="fld"><label for="f-company">${F.company}</label><input id="f-company" name="company" autocomplete="organization" required value="${esc(val.company)}"></div>
+    </div>
+    <div class="grid2">
+      <div class="fld"><label for="f-email">${F.email}</label><input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required value="${esc(val.email)}"></div>
+      <div class="fld"><label for="f-phone">${F.phone}</label><input id="f-phone" name="phone" autocomplete="tel" placeholder="${F.phonePh}" value="${esc(val.phone)}"></div>
+    </div>
+    <div class="fld"><label for="f-type">${F.type}</label><select id="f-type" name="type" required>${opt(F.typeO,val.type)}</select></div>
+    <div class="fld"><label for="f-vol">${F.vol}</label><select id="f-vol" name="vol">${opt(F.volO,val.vol)}</select></div>
+    <div class="fld" role="radiogroup" aria-labelledby="f-model-l"><span class="lbl" id="f-model-l">${F.model}</span><div class="chips">${F.modelO.map((o,i)=>`<label><input type="radio" name="model" value="${i}"${String(val.model)===String(i)?' checked':''}><span>${o}</span></label>`).join('')}</div></div>
+    <div class="fld"><label for="f-msg">${F.msg} <i>· ${F.opt}</i></label><textarea id="f-msg" name="msg" placeholder="${F.msgPh}">${esc(val.msg)}</textarea></div>
+    <label class="agree"><input type="checkbox" id="f-agree" name="agree"${val.agree?' checked':''}><span>${F.agree}</span></label>
+    <div id="f-agree-err"></div>
+    <button class="btn btn-ink" type="submit" id="lfGo">${F.send}</button>
+    <p class="fine" id="lfNote">${F.fine}</p>
+  </form>`;
+  const f=$('#lf');
+  f.addEventListener('input',e=>{const t=e.target;if(!t.name)return;val[t.name]=t.type==='checkbox'?t.checked:t.value;if(t.getAttribute('aria-invalid')==='true')clearErr(t)});
+  f.addEventListener('submit',submit)}
+function setErr(el,msg,holder){el.setAttribute('aria-invalid','true');const h=holder||el.parentElement;let e=h.querySelector('.err');if(!e){e=document.createElement('p');e.className='err';e.id=el.id+'-e';h.appendChild(e)}e.textContent=msg;el.setAttribute('aria-describedby',e.id)}
+function clearErr(el){el.removeAttribute('aria-invalid');el.removeAttribute('aria-describedby');const h=el.id==='f-agree'?$('#f-agree-err'):el.parentElement;const e=h&&h.querySelector('.err');e&&e.remove()}
+async function submit(e){e.preventDefault();const F=L('f');let first=null;
+  [['f-name'],['f-company'],['f-email'],['f-type']].forEach(([id])=>{const el=$('#'+id);clearErr(el);const v=el.value.trim();
+    if(!v){setErr(el,F.req);first=first||el}
+    else if(id==='f-email'&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){setErr(el,F.emailErr);first=first||el}});
+  const ag=$('#f-agree');clearErr(ag);if(!ag.checked){setErr(ag,F.agreeErr,$('#f-agree-err'));first=first||ag}
+  if(first){first.focus();return}
+  const I=I18N[lang].f,data={name:val.name.trim(),company:val.company.trim(),email:val.email.trim(),phone:val.phone.trim(),
+    type:I.typeO[val.type]||'',volume:I.volO[val.vol]||'',model:I.modelO[val.model]||'',comment:val.msg.trim(),lang,page:location.href};
+  const go=$('#lfGo');go.disabled=true;go.textContent=F.sending;
+  if(LEADS.endpoint){
+    try{const r=await fetch(LEADS.endpoint,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});if(!r.ok)throw 0;sent='api'}
+    catch(err){go.disabled=false;go.textContent=F.send;$('#lfNote').innerHTML=`<span style="color:var(--no);font-weight:500">${F.fail}</span>`;return}
+  }else if(LEADS.email){
+    const body=Object.entries(data).filter(([k,v])=>v&&k!=='page'&&k!=='lang').map(([k,v])=>`${k}: ${v}`).join('\n');
+    location.href=`mailto:${LEADS.email}?subject=${encodeURIComponent('Заявка партнёра: '+data.company)}&body=${encodeURIComponent(body)}`;sent='mail'
+  }else{await new Promise(r=>setTimeout(r,700));sent='demo'}
+  renderForm();box.scrollIntoView({behavior:'smooth',block:'center'})}
+
+/* preselect model from "Обсудить" buttons */
+document.addEventListener('click',e=>{const a=e.target.closest('[data-model]');if(!a||sent)return;val.model=a.dataset.model;renderForm()});
+
+function renderAll(){renderStatic();renderForm()}
+$$('[data-lang]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.lang===lang)return;lang=b.dataset.lang;try{localStorage.setItem('sezam-lang',lang)}catch(e){}renderAll()}));
+const hdr=$('#hdr');addEventListener('scroll',()=>hdr.classList.toggle('sh',scrollY>10),{passive:true});
+const rObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rObs.unobserve(e.target)}}),{threshold:.12});
+$$('[data-r]').forEach(el=>rObs.observe(el));
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+renderAll();
+})();
+</script>
+</body>
+</html>

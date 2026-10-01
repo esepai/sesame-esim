@@ -1,6 +1,6 @@
 /* Сезам eSIM — service worker: офлайн-оболочка для веб-приложения */
-const CACHE = 'sezam-v1';
-const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
+const CACHE = 'sezam-v2';
+const SHELL = ['./', './index.html', './partners.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting()));
@@ -20,8 +20,8 @@ self.addEventListener('fetch', e => {
   // Страница: сначала сеть (свежая версия), без сети — из кэша
   if (req.mode === 'navigate') {
     e.respondWith(fetch(req)
-      .then(res => { const copy = res.clone(); caches.open(CACHE).then(c => c.put('./index.html', copy)); return res; })
-      .catch(() => caches.match('./index.html')));
+      .then(res => { if (res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy)); } return res; })
+      .catch(() => caches.match(req, { ignoreSearch: true }).then(hit => hit || caches.match('./index.html'))));
     return;
   }
 
