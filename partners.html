@@ -210,18 +210,18 @@ footer a:hover{color:var(--ink)}
 
 /* ── liquid glass ─────────────────────────────────────────── */
 :root{
-  --glass:color-mix(in srgb,var(--bg) 38%,transparent);
+  --glass:color-mix(in srgb,var(--bg) 20%,transparent);
   --glass-hi:rgba(255,255,255,.75);
   --glass-edge:rgba(255,255,255,.55);
   --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.06) 55%,rgba(255,255,255,.14));
   --glass-shadow:0 10px 30px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.06);
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --glass:color-mix(in srgb,var(--bg) 34%,transparent);--glass-hi:rgba(255,255,255,.26);--glass-edge:rgba(255,255,255,.12);
+  --glass:color-mix(in srgb,var(--bg) 18%,transparent);--glass-hi:rgba(255,255,255,.26);--glass-edge:rgba(255,255,255,.12);
   --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 55%,rgba(255,255,255,.05));--glass-shadow:0 10px 30px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3);
 }}
 :root[data-theme="dark"]{
-  --glass:color-mix(in srgb,var(--bg) 34%,transparent);--glass-hi:rgba(255,255,255,.26);--glass-edge:rgba(255,255,255,.12);
+  --glass:color-mix(in srgb,var(--bg) 18%,transparent);--glass-hi:rgba(255,255,255,.26);--glass-edge:rgba(255,255,255,.12);
   --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 55%,rgba(255,255,255,.05));--glass-shadow:0 10px 30px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3);
 }
 .glass,header.top.sh .w{
@@ -278,6 +278,33 @@ button,a,summary,label{-webkit-touch-callout:none}
 :root[data-theme="dark"] .theme-t .moon{transform:rotate(90deg) scale(.4);opacity:0}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
 @media (max-width:420px){.theme-t{width:34px;height:34px}.lang button{padding:8px 8px}}
+
+/* ── liquid glass v2: выразительнее — диагональный блик, отражение снизу, внутреннее свечение ── */
+:root{
+  --glass-sheen:linear-gradient(135deg,rgba(255,255,255,.62) 0%,rgba(255,255,255,.16) 28%,rgba(255,255,255,0) 50%,rgba(255,255,255,.06) 72%,rgba(255,255,255,.34) 100%);
+  --glass-ring:inset 0 1.5px 1px rgba(255,255,255,.95),inset 0 -1px 1px rgba(255,255,255,.4),inset 0 0 0 1px rgba(255,255,255,.6),inset 0 0 22px rgba(255,255,255,.18);
+  --glass-drop:0 12px 36px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --glass-sheen:linear-gradient(135deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.05) 28%,rgba(255,255,255,0) 50%,rgba(255,255,255,.03) 72%,rgba(255,255,255,.12) 100%);
+  --glass-ring:inset 0 1px 1px rgba(255,255,255,.34),inset 0 -1px 1px rgba(255,255,255,.1),inset 0 0 0 1px rgba(255,255,255,.13),inset 0 0 22px rgba(255,255,255,.05);
+  --glass-drop:0 14px 40px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.35);
+}}
+:root[data-theme="dark"]{
+  --glass-sheen:linear-gradient(135deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,.05) 28%,rgba(255,255,255,0) 50%,rgba(255,255,255,.03) 72%,rgba(255,255,255,.12) 100%);
+  --glass-ring:inset 0 1px 1px rgba(255,255,255,.34),inset 0 -1px 1px rgba(255,255,255,.1),inset 0 0 0 1px rgba(255,255,255,.13),inset 0 0 22px rgba(255,255,255,.05);
+  --glass-drop:0 14px 40px rgba(0,0,0,.55),0 2px 6px rgba(0,0,0,.35);
+}
+.glass,header.top.sh .w,.theme-t{box-shadow:var(--glass-ring),var(--glass-drop)}
+header.top.sh .w{background:var(--glass-sheen),color-mix(in srgb,var(--bg) 24%,transparent);-webkit-backdrop-filter:blur(30px) saturate(2.2) brightness(1.04);backdrop-filter:blur(30px) saturate(2.2) brightness(1.04)}
+.theme-t{background:var(--glass-sheen),color-mix(in srgb,var(--soft) 30%,transparent)}
+header.top.sh .lang button[aria-pressed="true"]{background:var(--glass-sheen),color-mix(in srgb,var(--bg) 55%,transparent);box-shadow:var(--glass-ring),0 1px 4px rgba(0,0,0,.1)}
+/* стекло на тёмных блоках — ярче кромка и блик */
+.glass-dark,.btn.glass-dark,.g-again.glass-dark:hover{
+  background:linear-gradient(135deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.06) 30%,rgba(255,255,255,.01) 55%,rgba(255,255,255,.1) 100%);
+  -webkit-backdrop-filter:blur(20px) saturate(2);backdrop-filter:blur(20px) saturate(2);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.5),inset 0 -1px 1px rgba(255,255,255,.12),inset 0 0 0 1px rgba(255,255,255,.16),inset 0 0 18px rgba(255,255,255,.06),0 10px 30px rgba(0,0,0,.45);
+}
 </style>
 </head>
 <body>
