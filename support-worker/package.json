@@ -1,0 +1,20 @@
+{
+  "name": "sezam-support-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "knowledge": "node scripts/build-knowledge.mjs",
+    "dev": "npm run knowledge && wrangler dev",
+    "deploy": "npm run knowledge && wrangler deploy",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
+    "openai": "^7.25.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261001.1",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.146.0"
+  }
+}

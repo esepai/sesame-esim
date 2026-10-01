@@ -1,0 +1,5 @@
+# Скопируйте в .dev.vars для локального запуска (npm run dev). Файл .dev.vars не попадает в git.
+ANTHROPIC_API_KEY=
+OPENAI_API_KEY=
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_CHAT_ID=

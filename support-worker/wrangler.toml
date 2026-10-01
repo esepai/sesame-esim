@@ -1,0 +1,25 @@
+name = "sezam-support"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# "anthropic" (Claude) или "openai"
+AI_PROVIDER = "anthropic"
+ANTHROPIC_MODEL = "claude-opus-5-5"
+# Модель OpenAI — укажите ту, что доступна в вашем аккаунте, если выберете AI_PROVIDER = "openai"
+OPENAI_MODEL = ""
+# Сайты, которым можно обращаться к чату (через запятую, без / в конце)
+ALLOWED_ORIGINS = "https://esepai.github.io,http://localhost:8137"
+
+# Ограничение частоты запросов: 20 сообщений в минуту с одного IP
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 20, period = 60 }
+
+# Секреты НЕ пишите сюда — задайте командами:
+#   npx wrangler secret put ANTHROPIC_API_KEY
+#   npx wrangler secret put OPENAI_API_KEY
+#   npx wrangler secret put TELEGRAM_BOT_TOKEN
+#   npx wrangler secret put TELEGRAM_CHAT_ID

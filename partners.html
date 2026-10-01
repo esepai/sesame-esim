@@ -566,7 +566,7 @@ renderAll();
 /* Анимация нажатия: кнопка вдавливается и пружинит обратно, от пальца расходится мягкая волна света */
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const SEL='.theme-t,.btn,.tile,.store-b,.seg button,.lang button,.xp-tabs button,.brands button,.models button,.hrow button,.pop button,.sh-x,.back,.g-again,.pl,.chips label,.abar .x,.faq summary,.sugg li,.mdl .btn';
+  const SEL='.sp-fab,.sp-chip,.sp-send,.sp-ib,.theme-t,.btn,.tile,.store-b,.seg button,.lang button,.xp-tabs button,.brands button,.models button,.hrow button,.pop button,.sh-x,.back,.g-again,.pl,.chips label,.abar .x,.faq summary,.sugg li,.mdl .btn';
   let cur=null;
   const press=el=>el.animate([{scale:1},{scale:.95}],{duration:140,easing:'cubic-bezier(.3,0,.5,1)',fill:'forwards'});
   const release=el=>el.animate([{scale:.95},{scale:1.035,offset:.45},{scale:.993,offset:.75},{scale:1}],{duration:520,easing:'ease-out',fill:'forwards'});
@@ -610,5 +610,10 @@ renderAll();
   label();new MutationObserver(label).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
 </script>
+<script>
+/* Чат поддержки: вставьте адрес вашего сервера (support-worker) — до этого чат работает в демо-режиме */
+window.SEZAM_SUPPORT={endpoint:'',page:'partners'};
+</script>
+<script src="support.js" defer></script>
 </body>
 </html>
