@@ -6,7 +6,12 @@
 <title>Сезам eSIM — интернет в 200 странах без роуминга</title>
 <meta name="description" content="eSIM для поездок: QR-код через минуту после оплаты, 200 стран, поддержка 24/7.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230A0A0A%22/%3E%3Cpath%20d%3D%22M27%2012A20%2020%200%200%200%2027%2052%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M37%2012A20%2020%200%200%201%2037%2052%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%227%22%20fill%3D%22%23F5B82E%22/%3E%3C/svg%3E">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#0B0B0C">
+<script>
+/* тема: по умолчанию тёмная, выбор посетителя запоминается; ставим до отрисовки, чтобы не мигало */
+(function(){var t;try{t=localStorage.getItem('sezam-theme')}catch(e){}if(t!=='light')t='dark';
+document.documentElement.setAttribute('data-theme',t);document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0B0B0C':'#ffffff'})();
+</script>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -489,6 +494,22 @@ button,a,summary,label{-webkit-touch-callout:none}
   animation:rpl .6s cubic-bezier(.2,.7,.3,1) forwards}
 .rpl.lite{background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,.4) 35%,transparent 70%)}
 @keyframes rpl{0%{transform:scale(.15);opacity:.22}60%{opacity:.16}100%{transform:scale(1);opacity:0}}
+
+/* ── переключатель темы ── */
+header .short{display:none}
+@media (max-width:420px){header .full{display:none}header .short{display:inline}}
+:root[data-theme="dark"]{color-scheme:dark}
+:root[data-theme="light"]{color-scheme:light}
+.theme-t{position:relative;width:38px;height:38px;flex:none;border:0;border-radius:50%;display:grid;place-items:center;color:var(--ink);margin-right:2px;
+  background:var(--glass-sheen),color-mix(in srgb,var(--soft) 80%,transparent);box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--glass-edge)}
+.theme-t svg{position:absolute;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;transition:transform .5s cubic-bezier(.3,1.4,.5,1),opacity .3s}
+.theme-t .sun{transform:rotate(-90deg) scale(.4);opacity:0}
+:root[data-theme="dark"] .theme-t .sun{transform:none;opacity:1}
+:root[data-theme="dark"] .theme-t .moon{transform:rotate(90deg) scale(.4);opacity:0}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){animation:themeReveal .6s cubic-bezier(.4,0,.2,1)}
+@keyframes themeReveal{from{clip-path:circle(0 at var(--tx,100%) var(--ty,0))}to{clip-path:circle(var(--tr,150vmax) at var(--tx,100%) var(--ty,0))}}
+@media (max-width:420px){.theme-t{width:34px;height:34px}.lang button{padding:8px 8px}}
 </style>
 </head>
 <body>
@@ -529,9 +550,10 @@ button,a,summary,label{-webkit-touch-callout:none}
   <a class="logo" href="#top" data-i18n-aria="brandFull"><svg aria-hidden="true"><use href="#arch"/></svg><span data-i18n="brand">сезам</span></a>
   <nav class="menu" data-i18n-aria="nav.aria"><a href="#catalog" data-i18n="nav.tariffs"></a><a href="#how" data-i18n="nav.how"></a><a href="#compat" data-i18n="nav.phone"></a><a href="#faq" data-i18n="nav.faq"></a><a href="#app" data-i18n="nav.app"></a><a href="partners.html" data-i18n="nav.biz"></a></nav>
   <div class="hdr-r">
+    <button class="theme-t" id="themeT" type="button"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7Z"/></svg></button>
     <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true" lang="ru">RU</button><button data-lang="en" aria-pressed="false" lang="en">EN</button></div>
     <a class="signin" href="#" onclick="return false" data-i18n="hdr.my"></a>
-    <a class="btn btn-ink btn-sm" href="#catalog" data-i18n="hdr.buy"></a>
+    <a class="btn btn-ink btn-sm" href="#catalog"><span class="full" data-i18n="hdr.buy"></span><span class="short" data-i18n="hdr.buyS"></span></a>
   </div>
 </div></header>
 
@@ -697,7 +719,7 @@ button,a,summary,label{-webkit-touch-callout:none}
 const I18N={
 ru:{
  'meta.title':'Сезам eSIM — интернет в 200 странах без роуминга','meta.desc':'eSIM для поездок: QR-код через минуту после оплаты, 200 стран, поддержка 24/7.',
- brand:'сезам',brandFull:'Сезам eSIM','nav.aria':'Разделы','nav.tariffs':'Тарифы','nav.how':'Как это работает','nav.phone':'Мой телефон','nav.faq':'Вопросы','hdr.my':'Мои eSIM','hdr.buy':'Купить eSIM',
+ brand:'сезам',brandFull:'Сезам eSIM','nav.aria':'Разделы','nav.tariffs':'Тарифы','nav.how':'Как это работает','nav.phone':'Мой телефон','nav.faq':'Вопросы','hdr.my':'Мои eSIM','hdr.buy':'Купить eSIM','hdr.buyS':'Купить',
  'hero.h1':'<span class="hl">Сезам</span>, откройся — и интернет в любой стране','hero.lead':'eSIM для поездок в 200 стран. Купите за минуту, установите дома — интернет заработает, как только сядет самолёт.','hero.qlabel':'Куда едете','hero.qph':'Куда едете? Страна или город','hero.find':'Найти',
  'g.aria':'Глобус: после слов «Сезам, откройся» интернет открывается по всему миру','g.count':'стран онлайн','g.hint':'Потяните, чтобы покрутить','g.again':'Сезам, откройся ещё раз','g.phrase':'Сезам, откройся','g.done':'Сезам открыт: 200 стран онлайн','g.here':'Вы здесь','g.online':'онлайн',
  'n.1':'стран и территорий','n.2v':'1 мин','n.2':'от оплаты до QR-кода','n.3':'поддержка в мессенджерах',
@@ -743,7 +765,7 @@ ru:{
 },
 en:{
  'meta.title':'Sesame eSIM — mobile data in 200 countries, no roaming','meta.desc':'Travel eSIM: QR code a minute after payment, 200 countries, 24/7 support.',
- brand:'sesame',brandFull:'Sesame eSIM','nav.aria':'Sections','nav.tariffs':'Plans','nav.how':'How it works','nav.phone':'My phone','nav.faq':'FAQ','hdr.my':'My eSIMs','hdr.buy':'Get eSIM',
+ brand:'sesame',brandFull:'Sesame eSIM','nav.aria':'Sections','nav.tariffs':'Plans','nav.how':'How it works','nav.phone':'My phone','nav.faq':'FAQ','hdr.my':'My eSIMs','hdr.buy':'Get eSIM','hdr.buyS':'Get',
  'hero.h1':'Open <span class="hl">Sesame</span> — and you’re online anywhere','hero.lead':'Travel eSIM for 200 countries. Buy in a minute, install at home — your data starts the moment you land.','hero.qlabel':'Where are you going','hero.qph':'Where to? Country or city','hero.find':'Search',
  'g.aria':'Globe: after the words “Open Sesame”, the internet opens up across the world','g.count':'countries online','g.hint':'Drag to spin the globe','g.again':'Open Sesame again','g.phrase':'Open Sesame','g.done':'Sesame is open: 200 countries online','g.here':'You are here','g.online':'online',
  'n.1':'countries and territories','n.2v':'1 min','n.2':'from payment to QR code','n.3':'support in messengers',
@@ -1115,7 +1137,7 @@ renderAll();
 /* Анимация нажатия: кнопка вдавливается и пружинит обратно, от пальца расходится мягкая волна света */
 (function(){
   if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const SEL='.btn,.tile,.store-b,.seg button,.lang button,.xp-tabs button,.brands button,.models button,.hrow button,.pop button,.sh-x,.back,.g-again,.pl,.chips label,.abar .x,.faq summary,.sugg li,.mdl .btn';
+  const SEL='.theme-t,.btn,.tile,.store-b,.seg button,.lang button,.xp-tabs button,.brands button,.models button,.hrow button,.pop button,.sh-x,.back,.g-again,.pl,.chips label,.abar .x,.faq summary,.sugg li,.mdl .btn';
   let cur=null;
   const press=el=>el.animate([{scale:1},{scale:.95}],{duration:140,easing:'cubic-bezier(.3,0,.5,1)',fill:'forwards'});
   const release=el=>el.animate([{scale:.95},{scale:1.035,offset:.45},{scale:.993,offset:.75},{scale:1}],{duration:520,easing:'ease-out',fill:'forwards'});
@@ -1137,6 +1159,23 @@ renderAll();
   addEventListener('dragstart',up);
   // клавиатура: Enter/Space тоже даёт отклик
   addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&document.activeElement.matches&&document.activeElement.matches(SEL)&&!e.repeat){const el=document.activeElement;press(el).finished.then(()=>release(el))}});
+})();
+</script>
+<script>
+/* переключатель темы: круговое «раскрытие» от кнопки, где браузер умеет View Transitions */
+(function(){
+  const b=document.getElementById('themeT');if(!b)return;
+  const ru=()=>document.documentElement.lang!=='en';
+  const label=()=>{const d=document.documentElement.dataset.theme==='dark';b.setAttribute('aria-label',d?(ru()?'Включить светлую тему':'Switch to light theme'):(ru()?'Включить тёмную тему':'Switch to dark theme'));b.title=b.getAttribute('aria-label')};
+  const apply=t=>{document.documentElement.dataset.theme=t;document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0B0B0C':'#ffffff';try{localStorage.setItem('sezam-theme',t)}catch(e){}label()};
+  b.addEventListener('click',()=>{
+    const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+    if(!document.startViewTransition||matchMedia('(prefers-reduced-motion: reduce)').matches)return apply(next);
+    const r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,s=document.documentElement.style;
+    s.setProperty('--tx',x+'px');s.setProperty('--ty',y+'px');s.setProperty('--tr',Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+'px');
+    document.startViewTransition(()=>apply(next));
+  });
+  label();new MutationObserver(label).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
 </script>
 </body>
