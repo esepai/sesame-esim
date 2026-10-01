@@ -923,27 +923,19 @@ function project(x,y,z){const p=rot(x,y,z);return[cx+p[0]*R,cy-p[1]*R,p[2]]}
 function label(x,y,text,a){g.save();g.globalAlpha=a;g.font=(W<600?'600 11px':'600 13px')+' Inter,system-ui,sans-serif';const w=g.measureText(text).width+30,h=W<600?22:26;
   let bx=x+10,by=y-h-8;if(bx+w>W-10)bx=x-10-w;if(bx<10)bx=10;if(by<10)by=y+10;g.fillStyle='#fff';g.beginPath();g.roundRect?g.roundRect(bx,by,w,h,13):g.rect(bx,by,w,h);g.fill();
   g.fillStyle='#F5B82E';g.beginPath();g.arc(bx+12,by+h/2,3.5,0,6.283);g.fill();g.fillStyle='#0A0A0A';g.fillText(text,bx+21,by+h/2+4.5);g.restore()}
-/* свечение в точке приземления луча: плавно разгорается от центра к ближайшим точкам и так же плавно сжимается обратно */
-const FL_MAX=0.2,FL_COS=Math.cos(FL_MAX),FL_RISE=900,FL_FALL=1500;
-const smooth=x=>{x=clamp(x);return x*x*(3-2*x)};
+/* вспышка в точке приземления: пиксели цвета линии включаются кольцом от центра, держатся и выключаются обратно к центру */
+const FL_MAX=0.1,FL_COS=Math.cos(FL_MAX),FL_RISE=450,FL_HOLD=550,FL_FALL=650;
 function flame(a,tl,fade,grow){
   if(!a.near){a.near=[];const v=a.c.v;for(let i=0;i<N;i++){const c=PX[i]*v[0]+PY[i]*v[1]+PZ[i]*v[2];if(c>FL_COS)a.near.push(i,Math.acos(Math.min(1,c)))}}
   if(tl<0||!a.near.length)return;
-  const life=AR_LIFE-AR_FLY-700,env=tl<FL_RISE?1-Math.pow(1-tl/FL_RISE,3):smooth((life-tl)/FL_FALL);
-  const k=env*fade*grow;if(k<=0.005)return;
-  const e=project(...a.c.v);if(e[2]<=0)return;
-  const r=FL_MAX*env,soft=Math.max(r*0.5,0.02),sc=Math.max(1,R/300);
-  g.save();g.globalCompositeOperation='lighter';
-  const rp=Math.max(r*R*1.5,2),gl=g.createRadialGradient(e[0],e[1],0,e[0],e[1],rp);
-  gl.addColorStop(0,`rgba(255,200,90,${0.42*k})`);gl.addColorStop(0.45,`rgba(255,150,40,${0.16*k})`);gl.addColorStop(1,'rgba(255,120,20,0)');
-  g.fillStyle=gl;g.beginPath();g.arc(e[0],e[1],rp,0,6.283);g.fill();
-  const near=a.near;
+  const f=tl-FL_RISE-FL_HOLD,env=tl<FL_RISE?1-Math.pow(1-tl/FL_RISE,2):f<0?1:1-Math.pow(clamp(f/FL_FALL),1.6);
+  if(env<=0)return;const r=FL_MAX*env,k=fade*grow;if(k<=0.01)return;
+  const sc=Math.max(1,R/300),near=a.near;
   for(let j=0;j<near.length;j+=2){const i=near[j],d=near[j+1];if(d>=r)continue;
     const p=rot(PX[i],PY[i],PZ[i]);if(p[2]<0)continue;
-    const w=smooth((r-d)/soft),h=1-d/FL_MAX,sx=cx+p[0]*R,sy=cy-p[1]*R,sz=(0.9+p[2])*sc*(1.2+1.4*h*w);
-    g.fillStyle=h>0.66?`rgba(255,244,205,${k*w})`:h>0.33?`rgba(255,200,85,${k*w*0.9})`:`rgba(255,140,35,${k*w*(0.45+h)})`;
-    g.fillRect(sx-sz/2,sy-sz/2,sz,sz)}
-  g.restore()}
+    const sx=cx+p[0]*R,sy=cy-p[1]*R,sz=(0.9+p[2])*sc*1.6;
+    g.fillStyle=`rgba(245,184,46,${k})`;
+    g.fillRect(sx-sz/2,sy-sz/2,sz,sz)}}
 function frame(now){
   if(!running)return;
   if(t0===null)t0=now;const t=now-t0;const dt=lastNow===null?16:Math.min(now-lastNow,48);lastNow=now;
