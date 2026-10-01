@@ -44,7 +44,6 @@ p{margin:0}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 24px;font-weight:600;font-size:16px;text-decoration:none;transition:opacity .2s,transform .15s;white-space:nowrap}
 .btn:hover{opacity:.86}
-.btn:active{transform:scale(.98)}
 .btn-ink{background:var(--ink);color:var(--bg)}
 .btn-soft{background:var(--soft2)}
 .btn-gold{background:var(--gold);color:#0A0A0A}
@@ -251,6 +250,17 @@ header.top.sh .lang button[aria-pressed="true"]{background:color-mix(in srgb,var
 .mdl.dark,.lead-txt.dark{background:radial-gradient(70% 55% at 80% 0%,rgba(245,184,46,.18),transparent 70%),#0A0A0A}
 .tag{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 4px 12px rgba(245,184,46,.3)}
 .chips input:checked+span{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 2px 8px rgba(0,0,0,.12)}
+
+/* ── нажатия: без системной квадратной подсветки, с «жидкой» анимацией ── */
+html{-webkit-tap-highlight-color:transparent}
+:focus:not(:focus-visible){outline:none}
+button,a,summary,label{-webkit-touch-callout:none}
+.rpl-w{position:absolute;inset:0;border-radius:inherit;overflow:hidden;pointer-events:none;z-index:0}
+.rpl{position:absolute;width:var(--d);height:var(--d);left:var(--x);top:var(--y);margin:calc(var(--d) / -2) 0 0 calc(var(--d) / -2);border-radius:50%;
+  background:radial-gradient(circle,currentColor 0%,color-mix(in srgb,currentColor 40%,transparent) 35%,transparent 70%);opacity:0;
+  animation:rpl .6s cubic-bezier(.2,.7,.3,1) forwards}
+.rpl.lite{background:radial-gradient(circle,rgba(255,255,255,.95) 0%,rgba(255,255,255,.4) 35%,transparent 70%)}
+@keyframes rpl{0%{transform:scale(.15);opacity:.22}60%{opacity:.16}100%{transform:scale(1);opacity:0}}
 </style>
 </head>
 <body>
@@ -505,6 +515,34 @@ const rObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.ta
 $$('[data-r]').forEach(el=>rObs.observe(el));
 if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 renderAll();
+})();
+</script>
+<script>
+/* Анимация нажатия: кнопка вдавливается и пружинит обратно, от пальца расходится мягкая волна света */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const SEL='.btn,.tile,.store-b,.seg button,.lang button,.xp-tabs button,.brands button,.models button,.hrow button,.pop button,.sh-x,.back,.g-again,.pl,.chips label,.abar .x,.faq summary,.sugg li,.mdl .btn';
+  let cur=null;
+  const press=el=>el.animate([{scale:1},{scale:.95}],{duration:140,easing:'cubic-bezier(.3,0,.5,1)',fill:'forwards'});
+  const release=el=>el.animate([{scale:.95},{scale:1.035,offset:.45},{scale:.993,offset:.75},{scale:1}],{duration:520,easing:'ease-out',fill:'forwards'});
+  addEventListener('pointerdown',e=>{
+    if(e.button>0)return;
+    const el=e.target.closest(SEL);if(!el||el.disabled)return;
+    cur=el;press(el);
+    const r=el.getBoundingClientRect(),cs=getComputedStyle(el);
+    if(cs.position==='static')el.style.position='relative';
+    let w=el.querySelector(':scope>.rpl-w');
+    if(!w){w=document.createElement('span');w.className='rpl-w';w.setAttribute('aria-hidden','true');el.prepend(w)}
+    const s=document.createElement('span');s.className='rpl'+(el.matches('.btn-gold')?' lite':'');
+    const x=e.clientX-r.left,y=e.clientY-r.top,d=2.2*Math.max(Math.hypot(x,y),Math.hypot(r.width-x,y),Math.hypot(x,r.height-y),Math.hypot(r.width-x,r.height-y));
+    s.style.cssText=`--x:${x}px;--y:${y}px;--d:${d}px`;
+    w.appendChild(s);s.addEventListener('animationend',()=>s.remove());
+  },{passive:true});
+  const up=()=>{if(cur){release(cur);cur=null}};
+  addEventListener('pointerup',up,{passive:true});addEventListener('pointercancel',up,{passive:true});
+  addEventListener('dragstart',up);
+  // клавиатура: Enter/Space тоже даёт отклик
+  addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&document.activeElement.matches&&document.activeElement.matches(SEL)&&!e.repeat){const el=document.activeElement;press(el).finished.then(()=>release(el))}});
 })();
 </script>
 </body>
