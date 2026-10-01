@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Сезам eSIM — интернет в 200 странах без роуминга</title>
+<meta name="description" content="eSIM для поездок: QR-код через минуту после оплаты, 200 стран, поддержка 24/7.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230A0A0A%22/%3E%3Cpath%20d%3D%22M27%2012A20%2020%200%200%200%2027%2052%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M37%2012A20%2020%200%200%201%2037%2052%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%227%22%20fill%3D%22%23F5B82E%22/%3E%3C/svg%3E">
+<meta name="theme-color" content="#ffffff">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Сезам">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Сезам eSIM — интернет в 200 странах без роуминга">
+<meta property="og:description" content="eSIM для поездок: QR-код через минуту после оплаты, 200 стран, поддержка 24/7.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fff; --ink:#0A0A0A; --soft:#F5F5F4; --soft2:#EDEDEB; --card:#fff; --muted:#6E6E73; --line:#E7E7E5;
+  --gold:#F5B82E; --ok:#1A9E5C; --no:#D93A2B; --warn:#C77C00;
+  --h:'Inter Tight','Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0B0B0C; --ink:#F2F2F0; --soft:#161618; --soft2:#202023; --card:#161618; --muted:#9A9AA0; --line:#26262A; --ok:#3CC57F; --no:#FF6B57; --warn:#F2A93B;
+}}
+:root[data-theme="dark"]{
+  --bg:#0B0B0C; --ink:#F2F2F0; --soft:#161618; --soft2:#202023; --card:#161618; --muted:#9A9AA0; --line:#26262A; --ok:#3CC57F; --no:#FF6B57; --warn:#F2A93B;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{overflow-x:clip;scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px)}
+body{margin:0;overflow-x:clip;background:var(--bg);color:var(--ink);font-family:var(--f);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit} button{font:inherit;color:inherit;cursor:pointer}
+img,svg{max-width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:8px}
+.w{width:min(1200px,100% - 40px);margin-inline:auto}
+h1,h2,h3{margin:0;font-family:var(--h);font-weight:600;letter-spacing:-.035em;line-height:1.04}
+h2{font-size:clamp(32px,4.6vw,58px)}
+h3{font-size:22px;letter-spacing:-.02em}
+p{margin:0}
+.muted{color:var(--muted)}
+.ic{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.center{text-align:center;margin-inline:auto}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 24px;font-weight:600;font-size:16px;text-decoration:none;transition:opacity .2s,transform .15s;white-space:nowrap}
+.btn:hover{opacity:.86}
+.btn:active{transform:scale(.98)}
+.btn-ink{background:var(--ink);color:var(--bg)}
+.btn-soft{background:var(--soft2)}
+.btn-gold{background:var(--gold);color:#0A0A0A}
+.btn-sm{padding:10px 18px;font-size:15px}
+
+.fl{display:inline-block;font-size:20px;line-height:1;flex:none}
+.fl.code{font-size:11px;font-weight:700;background:var(--soft2);color:var(--muted);border-radius:5px;padding:4px 5px;letter-spacing:.02em}
+
+/* header */
+header.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding-top:env(safe-area-inset-top,0px);transition:box-shadow .3s}
+header.top.sh{box-shadow:0 1px 0 var(--line)}
+header.top .w{display:flex;align-items:center;gap:24px;height:68px}
+header.top .logo{flex:1 1 0}
+header.top .hdr-r{flex:1 1 0}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--h);font-weight:700;font-size:22px;letter-spacing:-.04em}
+.logo svg{width:28px;height:28px;flex:none;color:var(--ink)}
+nav.menu{display:flex;gap:30px}
+nav.menu a{text-decoration:none;font-weight:500;font-size:15px;color:var(--muted)}
+nav.menu a:hover{color:var(--ink)}
+.hdr-r{display:flex;justify-content:flex-end;align-items:center;gap:6px}
+.cur{display:inline-flex;gap:2px}
+.cur button{border:0;background:none;padding:8px 10px;border-radius:999px;font-weight:600;font-size:14px;color:var(--muted)}
+.cur button[aria-pressed="true"]{color:var(--ink);background:var(--soft)}
+.signin{text-decoration:none;font-weight:500;font-size:15px;padding:8px 12px;white-space:nowrap}
+nav.menu a{white-space:nowrap}
+@media (max-width:1240px){nav.menu{gap:22px}header.top .logo,header.top .hdr-r{flex:none}nav.menu{margin-inline:auto}}
+@media (max-width:1100px){nav.menu a[href="#app"]{display:none}}
+@media (max-width:900px){nav.menu,.signin{display:none}header.top .w{justify-content:space-between}}
+
+.lang{display:inline-flex;gap:2px;margin-right:4px}
+.lang button{border:0;background:none;padding:8px 10px;border-radius:999px;font-weight:600;font-size:13.5px;color:var(--muted)}
+.lang button[aria-pressed="true"]{color:var(--ink);background:var(--soft)}
+/* hero */
+.hero{padding-top:clamp(56px,8vw,96px);text-align:center}
+.hero h1{font-size:clamp(40px,6.6vw,84px);max-width:13ch;margin-inline:auto}
+.hero h1 .hl{color:var(--gold)}
+.hero .lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);margin:22px auto 0;max-width:34em}
+.search{position:relative;max-width:560px;margin:34px auto 0;text-align:left}
+.sbox{display:flex;align-items:center;gap:10px;background:var(--soft);border:1px solid transparent;border-radius:999px;padding:6px 6px 6px 20px;transition:border-color .2s,background .2s}
+.sbox:focus-within{border-color:var(--ink);background:var(--bg)}
+.sbox .ic{color:var(--muted)}
+.sbox input{flex:1;min-width:0;border:0;outline:none;background:none;font:inherit;font-size:17px;color:var(--ink);padding:11px 0}
+.sbox input::placeholder{color:var(--muted)}
+.sugg{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 8px);background:var(--bg);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.1);padding:6px;margin:0;list-style:none;max-height:340px;overflow:auto}
+.sugg[hidden]{display:none}
+.sugg li{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:12px;cursor:pointer;font-weight:500}
+.sugg li[aria-selected="true"],.sugg li:hover{background:var(--soft)}
+.sugg .pr{margin-left:auto;color:var(--muted);font-size:15px}
+.sugg .empty{color:var(--muted);cursor:default}
+.pop{display:flex;flex-wrap:wrap;justify-content:center;gap:6px 18px;margin-top:16px;font-size:15px;color:var(--muted)}
+.pop button{border:0;background:none;padding:2px 0;color:var(--muted);font-size:15px;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.pop button:hover{color:var(--ink);text-decoration-color:currentColor}
+
+/* globe panel */
+.gp{position:relative;margin:clamp(44px,6vw,68px) auto 0;width:min(1240px,100% - 24px);height:clamp(500px,58vw,720px);background:#0A0A0A;color:#fff;border-radius:44px;overflow:hidden;touch-action:pan-y;cursor:grab;isolation:isolate}
+.gp:active{cursor:grabbing}
+.gp canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.g-count{position:absolute;left:clamp(20px,3vw,36px);top:clamp(20px,3vw,32px);display:flex;align-items:baseline;gap:10px;opacity:0;transition:opacity .6s}
+.gp.on .g-count{opacity:1}
+.g-count b{font-family:var(--h);font-weight:600;font-size:clamp(34px,4vw,52px);letter-spacing:-.04em;font-variant-numeric:tabular-nums;line-height:1}
+.g-count span{color:rgba(255,255,255,.55);font-size:15px}
+.g-say{position:absolute;left:50%;bottom:clamp(22px,3vw,34px);transform:translateX(-50%);white-space:nowrap;font-family:var(--h);font-weight:500;font-size:clamp(18px,2vw,24px);letter-spacing:-.02em;color:#fff;min-height:1.3em}
+.g-say .caret{display:inline-block;width:2px;height:1em;background:#F5B82E;margin-left:3px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.g-hint{position:absolute;left:clamp(20px,3vw,36px);bottom:clamp(24px,3vw,36px);font-size:14px;color:rgba(255,255,255,.45)}
+.g-again{position:absolute;right:clamp(16px,3vw,30px);bottom:clamp(16px,3vw,26px);border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;border-radius:999px;padding:10px 16px;font-size:14px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .5s,background .2s}
+.g-again:hover{background:rgba(255,255,255,.14)}
+.gp.done .g-again{opacity:1;pointer-events:auto}
+.gp.done .caret{display:none}
+.g-again{white-space:nowrap}
+@media (max-width:700px){.gp{border-radius:28px}.g-hint{display:none}.g-say{bottom:76px;font-size:16px}.g-again{left:50%;right:auto;transform:translateX(-50%)}}
+
+/* dark blocks */
+.dark{background:#0A0A0A;color:#F2F2F0}
+.dark .muted,.dark p{color:rgba(255,255,255,.6)}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:clamp(56px,7vw,90px);text-align:center}
+.nums b{display:block;font-family:var(--h);font-weight:600;font-size:clamp(36px,4.6vw,60px);letter-spacing:-.04em;line-height:1}
+.nums span{color:var(--muted);font-size:15px}
+@media (max-width:600px){.nums{grid-template-columns:1fr;gap:28px}}
+
+section{margin-top:clamp(96px,11vw,150px)}
+.sec-h{max-width:760px;margin-bottom:40px}
+.sec-h.center{text-align:center}
+.sec-h p{margin-top:14px;font-size:18px;color:var(--muted)}
+
+[data-r]{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+[data-r].in{opacity:1;transform:none}
+
+/* catalog */
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:4px;gap:2px}
+.seg button{border:0;background:none;border-radius:999px;padding:9px 18px;font-weight:600;font-size:15px;color:var(--muted);transition:background .2s,color .2s}
+.seg button[aria-selected="true"]{background:var(--bg);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.cat-top{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-bottom:20px}
+.cat-search{display:flex;align-items:center;gap:8px;background:var(--soft);border-radius:999px;padding:0 16px;min-width:min(300px,100%)}
+.cat-search .ic{color:var(--muted);width:18px;height:18px}
+.cat-search input{border:0;background:none;outline:none;font:inherit;font-size:15px;padding:11px 0;width:100%;color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tile{display:flex;align-items:center;gap:12px;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:16px;padding:14px 16px;transition:border-color .2s,background .2s}
+.tile:hover{border-color:var(--ink)}
+.tile b{display:block;font-weight:600;font-size:15.5px;line-height:1.25}
+.tile span.sub{font-size:13.5px;color:var(--muted)}
+.tile .reg{width:32px;height:32px;border-radius:9px;background:var(--soft);display:grid;place-items:center;flex:none}
+.tile .reg .ic{width:18px;height:18px;color:var(--muted)}
+.letter{grid-column:1/-1;font-family:var(--h);font-weight:600;font-size:20px;margin:16px 0 0}
+.cat-more{display:flex;justify-content:center;margin-top:24px}
+.cat-empty{grid-column:1/-1;background:var(--soft);border-radius:16px;padding:26px;text-align:center}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:440px){.grid{grid-template-columns:1fr}}
+
+/* explorer */
+.xp-tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:4px;margin-bottom:30px}
+.xp-tabs button{position:relative;overflow:hidden;border:0;background:none;border-radius:999px;padding:9px 16px;font-weight:500;font-size:15px;color:var(--muted)}
+.xp-tabs button[aria-selected="true"]{background:var(--soft);color:var(--ink)}
+.xp-tabs .bar{position:absolute;left:16px;right:16px;bottom:4px;height:2px;border-radius:2px;background:var(--line);overflow:hidden;opacity:0}
+.xp-tabs [aria-selected="true"] .bar{opacity:1}
+.xp-tabs .bar i{position:absolute;inset:0;width:0;background:var(--ink)}
+.xp-tabs [aria-selected="true"] .bar i{animation:xbar 5s linear forwards}
+.xp.paused .xp-tabs .bar i{animation-play-state:paused}
+@keyframes xbar{to{width:100%}}
+.xp-box{background:#0A0A0A;border-radius:40px;padding:clamp(30px,4vw,56px) 0 0;overflow:hidden}
+.xp-stage{position:relative;height:clamp(420px,40vw,540px);-webkit-mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);mask:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent)}
+.xp-stage .slot{position:absolute;left:50%;top:0;width:clamp(200px,19vw,250px);transition:transform .8s cubic-bezier(.2,.8,.2,1),opacity .8s;cursor:pointer}
+.xp-stage .ms{font-size:clamp(9px,.9vw,11.5px);box-shadow:none}
+.xp-cap{text-align:center;max-width:520px;margin:26px auto 0;min-height:96px}
+.xp-cap h3{font-size:24px}
+.xp-cap p{margin-top:8px;color:var(--muted)}
+@media (max-width:700px){.xp-tabs{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:-20px;padding:0 20px}.xp-tabs::-webkit-scrollbar{display:none}.xp-tabs button{flex:none}.xp-box{border-radius:28px}}
+
+/* features */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.feat{display:flex;flex-direction:column}
+.feat .pic{background:var(--soft);border-radius:32px;height:400px;overflow:hidden;display:flex;justify-content:center;padding-top:40px}
+.feat .pic .ms{width:230px;font-size:10px;flex:none}
+.feat h3{margin-top:22px}
+.feat p{margin-top:8px;color:var(--muted)}
+@media (max-width:900px){.feats{grid-template-columns:1fr}.feat .pic{height:360px}}
+
+/* compat */
+.compat{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.compat>*{min-width:0}
+.cbox{border:1px solid var(--line);border-radius:28px;padding:26px}
+.brands{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.brands button{border:0;background:var(--soft);border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px;color:var(--muted)}
+.brands button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.models{display:grid;gap:6px}
+.models button{display:flex;justify-content:space-between;align-items:center;text-align:left;border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:13px 16px;font-weight:500}
+.models button:hover,.models button[aria-pressed="true"]{border-color:var(--ink)}
+.models .ic{width:16px;height:16px;color:var(--muted)}
+.verdict{border-radius:28px;padding:32px;background:var(--soft);display:flex;flex-direction:column;justify-content:center;gap:10px;min-height:280px}
+.vic{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--soft2)}
+.vic .ic{width:24px;height:24px;stroke-width:2.2}
+.verdict.yes .vic{background:var(--ok);color:#fff}.verdict.maybe .vic{background:var(--warn);color:#fff}.verdict.no .vic{background:var(--no);color:#fff}
+.verdict h3{font-size:28px;margin-top:6px}
+.verdict p{color:var(--muted)}
+.code{font-weight:600;background:var(--bg);border-radius:6px;padding:1px 7px;color:var(--ink)}
+@media (max-width:860px){.compat{grid-template-columns:1fr}}
+
+/* terms */
+.terms-wrap{border-radius:40px;padding:clamp(28px,5vw,64px)}
+.terms-wrap .sec-h p{color:rgba(255,255,255,.6)}
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:24px;overflow:hidden}
+.terms div{background:#0A0A0A;padding:26px}
+.terms b{display:block;font-family:var(--h);font-weight:600;font-size:22px;letter-spacing:-.02em}
+.terms span{color:rgba(255,255,255,.55);font-size:15px}
+@media (max-width:860px){.terms{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.terms{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:820px;margin-inline:auto}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 0;font-weight:600;font-size:18px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .ic{transition:transform .25s;color:var(--muted)}
+.faq details[open] summary .ic{transform:rotate(45deg)}
+.faq .a{padding:0 0 22px;color:var(--muted);max-width:62ch}
+
+/* support */
+.support{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:stretch}
+.support>*{min-width:0}
+.sup-txt{border-radius:32px;background:var(--soft);padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;justify-content:center}
+.sup-txt p{margin-top:12px;color:var(--muted);font-size:18px;max-width:28em}
+.sup-txt .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.sup-pic{border-radius:32px;background:var(--soft);display:flex;justify-content:center;padding-top:40px;height:420px;overflow:hidden}
+.sup-pic .ms{width:240px;font-size:10.5px;flex:none}
+@media (max-width:860px){.support{grid-template-columns:1fr}}
+
+/* app install */
+.apps{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:16px}
+.apps>*{min-width:0}
+.app-c{position:relative;border-radius:32px;background:var(--soft);padding:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:flex-start;gap:10px;box-shadow:inset 0 0 0 2px transparent;transition:box-shadow .2s}
+.app-c.mine{box-shadow:inset 0 0 0 2px var(--ink)}
+.app-c.dark{background:#0A0A0A;color:#F2F2F0}
+.app-c h3{font-size:26px;margin-top:8px}
+.app-c p{color:var(--muted)}
+.app-c.dark p,.app-c.dark .app-pts{color:rgba(255,255,255,.62)}
+.app-ic{width:64px;height:64px;border-radius:16px;display:grid;place-items:center;background:var(--bg);flex:none}
+.app-ic img{width:64px;height:64px;border-radius:16px;display:block}
+.app-ic svg{width:30px;height:30px;fill:currentColor}
+.app-tag{position:absolute;top:22px;right:22px;font-size:12.5px;font-weight:600;border-radius:999px;padding:5px 11px;background:var(--gold);color:#0A0A0A}
+.app-tag.soft{background:var(--soft2);color:var(--muted)}
+.app-pts{list-style:none;padding:0;margin:4px 0 8px;display:grid;gap:7px;font-size:15px}
+.app-pts li{display:flex;gap:9px;align-items:center}
+.app-pts li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex:none}
+.app-c .btn{margin-top:auto}
+.app-note{font-size:13.5px;min-height:1.3em}
+.store-b{margin-top:auto;display:inline-flex;align-items:center;gap:11px;background:var(--ink);color:var(--bg);text-decoration:none;border-radius:14px;padding:9px 18px 9px 14px;transition:opacity .2s}
+.store-b:hover{opacity:.86}
+.store-b svg{width:24px;height:24px;fill:currentColor;flex:none}
+.store-b span{display:flex;flex-direction:column;line-height:1.1}
+.store-b small{font-size:11px;opacity:.75}
+.store-b b{font-size:17px;font-weight:600;letter-spacing:-.01em}
+@media (max-width:960px){.apps{grid-template-columns:1fr 1fr}.app-web{grid-column:1/-1}}
+@media (max-width:600px){.apps{grid-template-columns:1fr}}
+
+/* install dialog */
+.dlg{border:0;padding:0;border-radius:28px;width:min(420px,calc(100% - 32px));background:var(--bg);color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.dlg::backdrop{background:rgba(0,0,0,.4)}
+.dlg[open]{animation:dlgIn .3s cubic-bezier(.2,.9,.2,1)}
+@keyframes dlgIn{from{opacity:0;transform:translateY(16px) scale(.98)}}
+.dlg-in{padding:24px;display:flex;flex-direction:column;gap:14px}
+.dlg-h{display:flex;align-items:center;gap:12px}
+.dlg-h img{width:44px;height:44px;border-radius:11px}
+.dlg-h b{font-size:19px;font-weight:600;font-family:var(--h);letter-spacing:-.02em;line-height:1.2}
+.dlg-h .sh-x{margin-left:auto}
+.dlg p{color:var(--muted)}
+.dlg ol{list-style:none;padding:0;margin:0;display:grid;gap:8px;counter-reset:s}
+.dlg ol li{display:flex;align-items:center;gap:12px;background:var(--soft);border-radius:16px;padding:12px 14px;counter-increment:s;font-weight:500}
+.dlg ol li::before{content:counter(s);width:26px;height:26px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:13px;font-weight:600;flex:none}
+.dlg ol .ic{margin-left:auto;color:#0A84FF}
+.dlg .btn{width:100%}
+@media (max-width:560px){.dlg{margin:auto auto 0;width:100%;max-width:100%;border-radius:24px 24px 0 0}.dlg-in{padding-bottom:calc(24px + env(safe-area-inset-bottom,0px))}}
+
+/* smart install bar (mobile) */
+.abar{position:fixed;z-index:70;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;gap:12px;background:var(--bg);border-radius:20px;padding:10px 10px 10px 12px;box-shadow:0 12px 40px rgba(0,0,0,.18),0 0 0 1px var(--line);transform:translateY(160%);transition:transform .45s cubic-bezier(.2,.9,.2,1)}
+.abar.on{transform:none}
+.abar img{width:42px;height:42px;border-radius:10px;flex:none}
+.abar div{flex:1;min-width:0;line-height:1.25}
+.abar b{display:block;font-size:15px;font-weight:600}
+.abar span{font-size:13px;color:var(--muted)}
+.abar .btn{padding:10px 16px;font-size:14.5px}
+.abar .x{border:0;background:none;width:28px;height:28px;display:grid;place-items:center;color:var(--muted);flex:none;padding:0}
+.abar .x .ic{width:16px;height:16px}
+@media (min-width:701px){.abar{display:none}}
+
+/* final */
+.final{text-align:center;padding:clamp(56px,8vw,110px) 24px;border-radius:44px}
+.final .btn-ink{background:#fff;color:#0A0A0A}
+.final .btn-soft{background:rgba(255,255,255,.12);color:#fff}
+.final svg.big{width:64px;height:64px;margin-bottom:26px;color:#fff}
+.final h2{font-size:clamp(40px,6.6vw,84px)}
+.final p{margin:18px auto 30px;color:var(--muted);font-size:18px;max-width:30em}
+.final .row{display:flex;justify-content:center;flex-wrap:wrap;gap:8px}
+
+footer{margin-top:60px;padding:40px 0 34px;border-top:1px solid var(--line);font-size:14.5px;color:var(--muted)}
+footer .w{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:26px}
+footer .w>*{min-width:0}
+footer b{display:block;color:var(--ink);font-weight:600;margin-bottom:10px}
+footer a{display:block;text-decoration:none;margin:5px 0}
+footer a:hover{color:var(--ink)}
+@media (max-width:760px){footer .w{grid-template-columns:1fr 1fr}}
+
+/* mini screens */
+.ms{position:relative;width:100%;aspect-ratio:9/19.5;border-radius:2.6em;background:#fff;color:#0A0A0A;overflow:hidden;font-family:var(--f);font-size:10.5px;line-height:1.35;padding:3.2em 1.3em 1.3em;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.05);text-align:left}
+.ms::before{content:"";position:absolute;top:.85em;left:50%;transform:translateX(-50%);width:30%;height:1.5em;background:#0A0A0A;border-radius:1em}
+.ms .tb{position:absolute;top:.9em;left:1.9em;right:1.9em;display:flex;justify-content:space-between;font-weight:600;font-size:.9em}
+.ms h4{margin:.5em 0 .9em;font-family:var(--h);font-size:1.8em;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+.ms .sm{color:#86868B;font-size:.92em}
+.ms .fl{font-size:1.5em}
+.ms .rw{display:flex;align-items:center;gap:.7em;border-radius:1.1em;padding:.85em .9em;margin-top:.45em;font-weight:500;background:#F5F5F4}
+.ms .rw .r{margin-left:auto;color:#86868B}
+.ms .rw.on{background:#fff;box-shadow:inset 0 0 0 1.5px #0A0A0A}
+.ms .b2{display:block;text-align:center;border-radius:2em;padding:1em;font-weight:600;margin-top:1em;background:#0A0A0A;color:#fff}
+.ms .b2.lt{background:#F5F5F4;color:#0A0A0A}
+.ms .cd{border-radius:1.5em;padding:1.2em;background:#0A0A0A;color:#fff}
+.ms .sr2{display:flex;align-items:center;gap:.6em;background:#F5F5F4;border-radius:2em;padding:.9em 1.1em;color:#86868B}
+.ms .sr2 .ic{width:1.3em;height:1.3em}
+.ms .rg2{display:grid;place-items:center;width:8.5em;height:8.5em;margin:1em auto .7em;border-radius:50%;background:conic-gradient(#fff calc(var(--v)*1%),rgba(255,255,255,.14) 0)}
+.ms .rg2>div{width:7.4em;height:7.4em;border-radius:50%;background:#0A0A0A;display:grid;place-items:center;text-align:center;line-height:1.15}
+.ms .rg2 b{font-family:var(--h);font-size:1.9em;font-weight:600}
+.ms .pill{border-radius:1em;padding:.15em .6em;font-size:.85em;font-weight:600;background:#1A9E5C;color:#fff}
+.ms .qq{width:11.5em;height:11.5em;margin:1.2em auto;padding:.8em;border-radius:1.2em;background:#fff;box-shadow:0 0 0 1px #E7E7E5}
+.ms .ok{width:3.2em;height:3.2em;border-radius:50%;display:grid;place-items:center;background:#1A9E5C;margin:.4em 0 .2em}
+.ms .ok .ic{width:55%;height:55%;stroke:#fff;stroke-width:2.6}
+.ms .stp{display:flex;gap:.8em;align-items:center;margin-top:.75em;font-weight:500}
+.ms .stp i{flex:none;width:2em;height:2em;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:600;background:#F5F5F4;font-size:.95em}
+.ms .stp.dn i{background:#0A0A0A;color:#fff}
+.ms .tl{display:grid;grid-template-columns:1fr 1fr;gap:.5em;margin-top:.6em}
+.ms .tl div{border-radius:1.1em;padding:.9em;font-weight:600;min-height:5.2em;display:flex;flex-direction:column;justify-content:flex-end;background:#F5F5F4}
+.ms .tl div span{font-weight:400;color:#86868B;font-size:.88em}
+.ms.lk{background:linear-gradient(180deg,#2B2B2E,#121214);color:#fff}
+.ms.lk .tm{text-align:center;font-family:var(--h);font-weight:500;font-size:4.6em;letter-spacing:-.04em;margin-top:.45em;line-height:1}
+.ms.lk .dt{text-align:center;opacity:.6;margin-bottom:1.3em}
+.ms .nt{display:flex;gap:.7em;align-items:center;background:rgba(255,255,255,.12);border-radius:1.3em;padding:.85em;margin-top:.55em}
+.ms .nt .ni{width:2.6em;height:2.6em;border-radius:.8em;background:#fff;display:grid;place-items:center;flex:none}
+.ms .nt .ni svg{width:1.4em;height:1.6em;color:#0A0A0A;--bg:#fff}
+.ms .nt b{display:block;font-weight:600;font-size:.95em}
+.ms .nt span{font-size:.85em;opacity:.65}
+.ms .bb{max-width:85%;padding:.75em 1em;border-radius:1.3em;margin-top:.6em}
+.ms .bb.me{margin-left:auto;background:#0A0A0A;color:#fff;border-bottom-right-radius:.4em}
+.ms .bb.th{background:#F5F5F4;border-bottom-left-radius:.4em}
+.ms .ln{display:flex;justify-content:space-between;padding:.8em 0;border-bottom:1px solid #EFEFED}
+.ms .ln b{font-weight:600}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .3s;z-index:80}
+.scrim.on{opacity:1;pointer-events:auto}
+.sheet{position:fixed;z-index:90;top:12px;right:12px;bottom:12px;width:min(460px,calc(100% - 24px));background:var(--bg);border-radius:28px;display:flex;flex-direction:column;transform:translateX(calc(100% + 30px));transition:transform .45s cubic-bezier(.2,.9,.2,1);overflow:hidden}
+.sheet.on{transform:none;box-shadow:0 30px 80px rgba(0,0,0,.2)}
+.sh-h{display:flex;align-items:center;gap:12px;padding:18px 20px 12px}
+.sh-h .fl{font-size:30px}
+.sh-h b{display:block;font-size:18px;font-weight:600;line-height:1.2}
+.sh-h span.s{font-size:14px;color:var(--muted)}
+.sh-x,.back{border:0;background:var(--soft);width:38px;height:38px;border-radius:50%;display:grid;place-items:center;flex:none}
+.sh-x{margin-left:auto}
+.sh-b{flex:1;overflow:auto;padding:6px 20px 20px}
+.sh-f{padding:14px 20px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.sh-f .btn{width:100%;padding:16px}
+.sh-f .fine{text-align:center;font-size:13px;color:var(--muted);margin-top:9px}
+.helper{border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:14px}
+.helper b{font-size:14.5px;font-weight:600}
+.hrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.hrow button{border:0;background:var(--soft);border-radius:999px;padding:7px 12px;font-weight:500;font-size:14px}
+.hrow button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.plist{display:grid;gap:8px}
+.pl{position:relative;display:flex;align-items:center;gap:14px;border-radius:18px;padding:15px 16px;border:1px solid var(--line);cursor:pointer}
+.pl:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pl:has(input:focus-visible){outline:2px solid var(--ink);outline-offset:2px}
+.pl input{position:absolute;opacity:0}
+.pl .gb{font-family:var(--h);font-weight:600;font-size:22px;min-width:76px;letter-spacing:-.02em}
+.pl .d{font-weight:500}
+.pl .d span{display:block;font-size:13px;color:var(--muted);font-weight:400}
+.pl .pz{margin-left:auto;font-weight:600}
+.pl .rec{position:absolute;top:-9px;left:14px;font-size:11.5px;font-weight:600;background:var(--ink);color:var(--bg);border-radius:999px;padding:2px 8px}
+.cov{font-size:14px;color:var(--muted);margin:12px 2px 0}
+.fld{margin-top:16px}
+.fld label{display:block;font-weight:600;margin-bottom:8px;font-size:15px}
+.fld input[type=email]{width:100%;font:inherit;font-size:16px;padding:14px 16px;border:1px solid var(--line);background:var(--bg);border-radius:14px;color:var(--ink);outline:none}
+.fld input[type=email]:focus{border-color:var(--ink)}
+.fld .help{font-size:13.5px;color:var(--muted);margin-top:6px}
+.fld .err{font-size:13.5px;color:var(--no);margin-top:6px;font-weight:500}
+.pay{display:grid;gap:6px}
+.pay label{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:14px;padding:13px 14px;font-weight:500;cursor:pointer}
+.pay label:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pay input{accent-color:var(--ink);width:17px;height:17px}
+.pay small{margin-left:auto;color:var(--muted);font-size:13px}
+.summary{display:flex;justify-content:space-between;align-items:center;background:var(--soft);border-radius:16px;padding:14px 16px}
+.summary b{font-size:18px;font-weight:600}
+.spin{width:40px;height:40px;border-radius:50%;border:3px solid var(--soft2);border-top-color:var(--ink);animation:sp .8s linear infinite;margin:80px auto 18px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.done{text-align:center;padding-top:10px}
+.done .okb{width:56px;height:56px;border-radius:50%;background:var(--ok);display:grid;place-items:center;margin:0 auto 14px;animation:pop .5s cubic-bezier(.2,1.3,.4,1)}
+.done .okb .ic{width:28px;height:28px;stroke:#fff;stroke-width:2.6}
+@keyframes pop{from{transform:scale(.5);opacity:0}}
+.done h3{font-size:26px;margin-bottom:6px}
+.qr{width:200px;height:200px;margin:20px auto;padding:12px;background:#fff;border-radius:18px;border:1px solid var(--line)}
+.done ol{text-align:left;color:var(--muted);padding-left:20px;margin:0}
+.done li{margin:5px 0}
+@media (max-width:560px){.sheet{top:auto;left:0;right:0;bottom:0;width:100%;height:92%;border-radius:24px 24px 0 0;transform:translateY(102%)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-r]{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="arch" viewBox="0 0 64 64">
+    <path d="M27 9A23 23 0 0 0 27 55" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <path d="M37 9A23 23 0 0 1 37 55" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="32" cy="32" r="7.5" fill="#F5B82E"/>
+  </symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-q" viewBox="0 0 24 24"><path d="M9.2 9a3 3 0 0 1 5.6 1.2c0 2-2.8 2.5-2.8 4.3"/><circle cx="12" cy="18" r=".6" fill="currentColor"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V3M8 7l4-4 4 4M7 10H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2h-1"/></symbol>
+  <symbol id="i-addhome" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M12 8v8M8 12h8"/></symbol>
+  <symbol id="i-dl" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
+  <symbol id="b-apple" viewBox="0 0 24 24"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></symbol>
+  <symbol id="b-play" viewBox="0 0 24 24"><path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/></symbol>
+</svg>
+
+<header class="top" id="hdr"><div class="w">
+  <a class="logo" href="#top" data-i18n-aria="brandFull"><svg aria-hidden="true"><use href="#arch"/></svg><span data-i18n="brand">сезам</span></a>
+  <nav class="menu" data-i18n-aria="nav.aria"><a href="#catalog" data-i18n="nav.tariffs"></a><a href="#how" data-i18n="nav.how"></a><a href="#compat" data-i18n="nav.phone"></a><a href="#faq" data-i18n="nav.faq"></a><a href="#app" data-i18n="nav.app"></a></nav>
+  <div class="hdr-r">
+    <div class="lang" role="group" aria-label="Language"><button data-lang="ru" aria-pressed="true" lang="ru">RU</button><button data-lang="en" aria-pressed="false" lang="en">EN</button></div>
+    <a class="signin" href="#" onclick="return false" data-i18n="hdr.my"></a>
+    <a class="btn btn-ink btn-sm" href="#catalog" data-i18n="hdr.buy"></a>
+  </div>
+</div></header>
+
+<main id="top">
+<div class="hero">
+  <div class="w">
+    <h1 data-i18n="hero.h1"></h1>
+    <p class="lead" data-i18n="hero.lead"></p>
+    <div class="search">
+      <div class="sbox">
+        <svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>
+        <label for="q" class="sr" data-i18n="hero.qlabel"></label>
+        <input id="q" data-i18n-ph="hero.qph" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="sugg" aria-autocomplete="list">
+        <button class="btn btn-ink btn-sm" id="qGo" data-i18n="hero.find"></button>
+      </div>
+      <ul class="sugg" id="sugg" role="listbox" hidden></ul>
+    </div>
+    <div class="pop" id="pop"></div>
+  </div>
+  <div class="gp" id="gp">
+    <canvas id="globe" role="img" data-i18n-aria="g.aria"></canvas>
+    <div class="g-count" aria-live="polite"><b id="gCount">0</b><span data-i18n="g.count"></span></div>
+    <div class="g-say" id="gSay"><span id="gSayT"></span><i class="caret"></i></div>
+    <div class="g-hint" data-i18n="g.hint"></div>
+    <button class="g-again" id="gAgain" data-i18n="g.again"></button>
+  </div>
+  <div class="w nums" data-r>
+    <div><b>200</b><span data-i18n="n.1"></span></div>
+    <div><b data-i18n="n.2v"></b><span data-i18n="n.2"></span></div>
+    <div><b>24/7</b><span data-i18n="n.3"></span></div>
+  </div>
+</div>
+
+<section class="w" id="catalog">
+  <div class="sec-h" data-r><h2 data-i18n="cat.h"></h2><p data-i18n="cat.p"></p></div>
+  <div class="cat-top">
+    <div class="seg" role="tablist" data-i18n-aria="cat.aria" id="tabs">
+      <button role="tab" data-tab="country" aria-selected="true" data-i18n="tab.country"></button>
+      <button role="tab" data-tab="region" aria-selected="false" data-i18n="tab.region"></button>
+      <button role="tab" data-tab="global" aria-selected="false" data-i18n="tab.global"></button>
+    </div>
+    <label class="cat-search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg><span class="sr" data-i18n="cat.searchsr"></span><input id="cq" data-i18n-ph="cat.ph"></label>
+  </div>
+  <div class="grid" id="grid" role="tabpanel"></div>
+  <div class="cat-more"><button class="btn btn-soft" id="more"></button></div>
+</section>
+
+<section class="w xp" id="how">
+  <div class="sec-h center" data-r><h2 data-i18n="xp.h"></h2><p data-i18n="xp.p"></p></div>
+  <div class="xp-tabs" role="tablist" data-i18n-aria="xp.aria" id="xpTabs"></div>
+  <div class="xp-box" data-r><div class="xp-stage" id="xpStage"></div></div>
+  <div class="xp-cap" aria-live="polite" id="xpCap"></div>
+</section>
+
+<section class="w">
+  <div class="sec-h" data-r><h2 data-i18n="feat.h"></h2></div>
+  <div class="feats">
+    <div class="feat" data-r><div class="pic" id="f1"></div><h3 data-i18n="f1.h"></h3><p data-i18n="f1.p"></p></div>
+    <div class="feat" data-r><div class="pic" id="f2"></div><h3 data-i18n="f2.h"></h3><p data-i18n="f2.p"></p></div>
+    <div class="feat" data-r><div class="pic" id="f3"></div><h3 data-i18n="f3.h"></h3><p data-i18n="f3.p"></p></div>
+  </div>
+</section>
+
+<section class="w" id="compat">
+  <div class="sec-h" data-r><h2 data-i18n="cp.h"></h2><p data-i18n="cp.p"></p></div>
+  <div class="compat" data-r>
+    <div class="cbox"><div class="brands" id="brands"></div><div class="models" id="models"></div></div>
+    <div class="verdict" id="verdict" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="w">
+  <div class="terms-wrap dark" data-r>
+  <div class="sec-h"><h2 data-i18n="tm.h"></h2><p data-i18n="tm.p"></p></div>
+  <div class="terms">
+    <div><b id="tPrice"></b><span data-i18n="tm.1"></span></div>
+    <div><b data-i18n="tm.2b"></b><span data-i18n="tm.2"></span></div>
+    <div><b data-i18n="tm.3b"></b><span data-i18n="tm.3"></span></div>
+    <div><b data-i18n="tm.4b"></b><span data-i18n="tm.4"></span></div>
+    <div><b data-i18n="tm.5b"></b><span data-i18n="tm.5"></span></div>
+    <div><b>24/7</b><span data-i18n="tm.6"></span></div>
+  </div>
+  </div>
+</section>
+
+<section class="w" id="faq">
+  <div class="sec-h center" data-r><h2 data-i18n="faq.h"></h2></div>
+  <div class="faq" id="faqList" data-r></div>
+</section>
+
+<section class="w">
+  <div class="support" data-r>
+    <div class="sup-txt">
+      <h2 data-i18n="sup.h"></h2>
+      <p data-i18n="sup.p"></p>
+      <div class="row"><a class="btn btn-ink" href="#" onclick="return false">Telegram</a><a class="btn btn-soft" href="#" onclick="return false">WhatsApp</a></div>
+    </div>
+    <div class="sup-pic" id="supPic"></div>
+  </div>
+</section>
+
+<section class="w" id="app">
+  <div class="sec-h center" data-r><h2 data-i18n="app.h"></h2><p data-i18n="app.p"></p></div>
+  <div class="apps" data-r>
+    <div class="app-c app-web dark" data-plat="web">
+      <span class="app-tag" data-i18n="app.rec"></span>
+      <div class="app-ic"><img src="icons/icon-192.png" alt="" width="64" height="64"></div>
+      <h3 data-i18n="app.web.h"></h3>
+      <p data-i18n="app.web.p"></p>
+      <ul class="app-pts" data-i18n="app.web.pts"></ul>
+      <button class="btn btn-gold" id="appInstall" type="button"><svg class="ic"><use href="#i-dl"/></svg><span id="appInstallT"></span></button>
+      <p class="app-note" id="appNote" aria-live="polite"></p>
+    </div>
+    <div class="app-c" data-plat="ios">
+      <span class="app-tag soft" data-soon="ios" data-i18n="app.soon" hidden></span>
+      <div class="app-ic"><svg aria-hidden="true"><use href="#b-apple"/></svg></div>
+      <h3>iPhone</h3>
+      <p data-i18n="app.ios.p"></p>
+      <a class="store-b" id="storeIos" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#b-apple"/></svg><span><small data-i18n="app.ios.s"></small><b>App Store</b></span></a>
+    </div>
+    <div class="app-c" data-plat="android">
+      <span class="app-tag soft" data-soon="android" data-i18n="app.soon" hidden></span>
+      <div class="app-ic"><svg aria-hidden="true"><use href="#b-play"/></svg></div>
+      <h3>Android</h3>
+      <p data-i18n="app.and.p"></p>
+      <a class="store-b" id="storeAndroid" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#b-play"/></svg><span><small data-i18n="app.and.s"></small><b>Google Play</b></span></a>
+    </div>
+  </div>
+</section>
+
+<section class="w">
+  <div class="final dark" data-r>
+    <svg class="big" aria-hidden="true"><use href="#arch"/></svg>
+    <h2 data-i18n="fin.h"></h2>
+    <p data-i18n="fin.p"></p>
+    <div class="row"><a class="btn btn-gold" href="#catalog" data-i18n="fin.b1"></a><a class="btn btn-soft" href="#how" data-i18n="fin.b2"></a></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="w">
+  <div><a class="logo" href="#top" style="color:var(--ink)"><svg aria-hidden="true"><use href="#arch"/></svg><span data-i18n="brand"></span></a><p style="margin-top:12px">© 2026 <span data-i18n="brandFull"></span>.<br><span data-i18n="ft.legal"></span></p></div>
+  <div><b data-i18n="ft.plans"></b><a href="#catalog" data-i18n="tab.country"></a><a href="#catalog" data-i18n="tab.region"></a><a href="#catalog" data-i18n="tab.global"></a></div>
+  <div><b data-i18n="ft.help"></b><a href="#how" data-i18n="ft.how"></a><a href="#compat" data-i18n="ft.check"></a><a href="#faq" data-i18n="nav.faq"></a><a href="#app" data-i18n="ft.app"></a></div>
+  <div><b data-i18n="ft.docs"></b><a href="#" onclick="return false" data-i18n="ft.offer"></a><a href="#" onclick="return false" data-i18n="ft.refund"></a><a href="#" onclick="return false" data-i18n="ft.privacy"></a></div>
+</div></footer>
+
+<dialog class="dlg" id="appDlg" aria-labelledby="dlgTitle"><div class="dlg-in" id="dlgIn"></div></dialog>
+<div class="abar" id="abar" role="region" aria-hidden="true">
+  <img src="icons/icon-192.png" alt="" width="42" height="42">
+  <div><b data-i18n="bar.h"></b><span data-i18n="bar.p"></span></div>
+  <button class="btn btn-ink" id="abarGo" type="button" data-i18n="bar.b" tabindex="-1"></button>
+  <button class="x" id="abarX" type="button" data-i18n-aria="bar.x" tabindex="-1"><svg class="ic"><use href="#i-x"/></svg></button>
+</div>
+<div class="scrim" id="scrim"></div>
+<aside class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" aria-hidden="true">
+  <div class="sh-h" id="shHead"></div>
+  <div class="sh-b" id="shBody"></div>
+  <div class="sh-f" id="shFoot"></div>
+</aside>
+<script>
+(function(){
+const I18N={
+ru:{
+ 'meta.title':'Сезам eSIM — интернет в 200 странах без роуминга','meta.desc':'eSIM для поездок: QR-код через минуту после оплаты, 200 стран, поддержка 24/7.',
+ brand:'сезам',brandFull:'Сезам eSIM','nav.aria':'Разделы','nav.tariffs':'Тарифы','nav.how':'Как это работает','nav.phone':'Мой телефон','nav.faq':'Вопросы','hdr.my':'Мои eSIM','hdr.buy':'Купить eSIM',
+ 'hero.h1':'<span class="hl">Сезам</span>, откройся — и интернет в любой стране','hero.lead':'eSIM для поездок в 200 стран. Купите за минуту, установите дома — интернет заработает, как только сядет самолёт.','hero.qlabel':'Куда едете','hero.qph':'Куда едете? Страна или город','hero.find':'Найти',
+ 'g.aria':'Глобус: после слов «Сезам, откройся» интернет открывается по всему миру','g.count':'стран онлайн','g.hint':'Потяните, чтобы покрутить','g.again':'Сезам, откройся ещё раз','g.phrase':'Сезам, откройся','g.done':'Сезам открыт: 200 стран онлайн','g.here':'Вы здесь','g.online':'онлайн',
+ 'n.1':'стран и территорий','n.2v':'1 мин','n.2':'от оплаты до QR-кода','n.3':'поддержка в мессенджерах',
+ 'cat.h':'Найдите тариф за секунды','cat.p':'Отдельные страны, регионы или весь мир одной eSIM.','cat.aria':'Тип тарифа','tab.country':'Страны','tab.region':'Регионы','tab.global':'Весь мир','cat.searchsr':'Поиск страны','cat.ph':'Поиск',
+ 'xp.h':'Весь путь — семь экранов','xp.p':'Ваша SIM-карта остаётся в телефоне. eSIM добавляется второй линией только для интернета.','xp.aria':'Шаги',
+ 'feat.h':'Сделано, чтобы не думать о связи','f1.h':'Включится сам','f1.p':'Срок тарифа начинается при первом подключении в стране. Можно купить заранее — дни не сгорят.','f2.h':'Оплата за минуту','f2.p':'Visa, Mastercard, Apple Pay и Google Pay. Цены в долларах, без скрытых наценок.','f3.h':'Докупка в один тап','f3.p':'Пакет добавится на ту же eSIM. На 70% и 90% расхода пришлём напоминание.',
+ 'cp.h':'Подойдёт ли ваш телефон?','cp.p':'Выберите марку и модель — ответим сразу.','cp.h0':'Выберите телефон','cp.p0':'Или наберите <span class="code">*#06#</span>. Если на экране есть строка EID — eSIM поддерживается.','cp.go':'Выбрать страну',
+ 'tm.h':'Условия без звёздочек','tm.p':'Одинаковые для всех стран.','tm.1':'за 1 ГБ','tm.2b':'Без регистрации','tm.2':'достаточно почты','tm.3b':'С первого подключения','tm.3':'отсчитывается срок','tm.4b':'Раздача можно','tm.4':'на ноутбук и планшет','tm.5b':'100% возврат','tm.5':'если eSIM не установлена','tm.6':'поддержка на русском, кыргызском и английском',
+ 'faq.h':'Частые вопросы','sup.h':'Поддержка, которая отвечает','sup.p':'Поможем установить, даже если вы уже в аэропорту. Пишет человек, а не робот.',
+ 'fin.h':'Сезам, откройся','fin.p':'200 стран, QR-код через минуту после оплаты и поддержка, которая всегда на связи.','fin.b1':'Выбрать страну','fin.b2':'Как это работает',
+ 'nav.app':'Приложение','ft.app':'Приложение',
+ 'app.h':'Сезам в&nbsp;вашем телефоне','app.p':'Покупайте eSIM, следите за остатком трафика и пишите в поддержку — в пару касаний, даже без сети.',
+ 'app.rec':'Быстрее всего','app.web.h':'Быстрая установка','app.web.p':'Веб-приложение прямо с этого сайта — без магазина и регистрации.',
+ 'app.web.pts':'<li>Ставится за 3 секунды</li><li>Весит меньше 1&nbsp;МБ</li><li>Работает офлайн и обновляется сам</li>',
+ 'app.ios.p':'Для iPhone и iPad с iOS 16 и новее.','app.ios.s':'Загрузите в',
+ 'app.and.p':'Для смартфонов на Android 9 и новее.','app.and.s':'Доступно в',
+ 'app.soon':'Скоро',
+ 'bar.h':'Сезам — приложение','bar.p':'Без магазина, за 3 секунды','bar.b':'Установить','bar.x':'Скрыть',
+ appd:{install:'Установить',installed:'Уже установлено',open:'Открыто как приложение',
+   ready:'Установится за 3 секунды — без магазина приложений.',ios:'На iPhone — через меню «Поделиться» в Safari.',other:'Покажем, как добавить на экран вашего устройства.',done:'Сезам уже на этом устройстве — открывайте с экрана «Домой».',
+   close:'Закрыть',ok:'Понятно',
+   iosH:'Установка на iPhone',iosP:'Три касания — и Сезам появится на экране «Домой» рядом с другими приложениями.',
+   iosSteps:['Нажмите «Поделиться» в Safari','Выберите «На экран „Домой“»','Нажмите «Добавить»'],
+   iosNoSafari:'Если вы не в Safari, откройте этот сайт в Safari — так установка работает надёжнее.',
+   otherH:'Установка приложения',otherP:'В вашем браузере это делается через меню:',
+   otherSteps:['Откройте меню браузера ⋮','Выберите «Установить приложение» или «Добавить на главный экран»','Подтвердите установку'],
+   otherTip:'Лучше всего работает в Chrome, Edge и Samsung Internet, а на iPhone — в Safari.',
+   doneH:'Сезам уже установлен',doneP:'Ищите иконку Сезама на экране «Домой» или в списке приложений.',
+   soonH:s=>`Скоро в ${s}`,soonP:'Мы готовим приложение для магазина. А пока установите веб-версию — она умеет всё то же самое и ставится за 3 секунды.',soonB:'Установить веб-версию'},
+ 'ft.legal':'Реквизиты компании будут здесь.','ft.plans':'Тарифы','ft.help':'Помощь','ft.how':'Как подключить','ft.check':'Проверить телефон','ft.docs':'Документы','ft.offer':'Оферта','ft.refund':'Возврат','ft.privacy':'Конфиденциальность',
+ from:'от',perGb:'за 1 ГБ',gb:'ГБ',popular:'Популярное:',notFound:q=>`Не нашли «${q}». Посмотрите тариф «Весь мир» или напишите нам.`,noCountry:'Такой страны нет в списке. Посмотрите тариф «Весь мир».',nothing:'Ничего не нашли',showAll:n=>`Показать все ${n} стран`,collapse:'Свернуть',
+ countries:n=>`${n} ${plRu(n,['страна','страны','стран'])}`,days:n=>`${n} ${plRu(n,['день','дня','дней'])}`,daysShort:n=>`${n} дн.`,
+ regions:[['Европа','Германия, Франция, Италия, Испания, Чехия, Польша и ещё 33'],['Азия','Китай, Таиланд, Вьетнам, Малайзия, Индонезия, Корея и ещё 8'],['Ближний Восток','ОАЭ, Саудовская Аравия, Катар, Оман, Египет, Иордания и ещё 6'],['Центральная Азия','Кыргызстан, Казахстан, Узбекистан, Таджикистан'],['Кавказ','Грузия, Армения, Азербайджан'],['Балканы','Сербия, Черногория, Албания, Босния и Герцеговина и ещё 5'],['Африка','Египет, Марокко, Танзания, Кения, ЮАР и ещё 25'],['Северная Америка','США, Канада, Мексика'],['Латинская Америка','Бразилия, Аргентина, Чили, Перу, Колумбия и ещё 13']],
+ world:['Весь мир','Одна eSIM для 120+ стран — для длинных маршрутов и пересадок'],
+ xp:[['Найдите страну','Начните вводить страну или город — Дубай, Мекка, Бали. Цена видна сразу.'],['Выберите пакет','Подскажем объём под длину поездки, чтобы не переплачивать.'],['Оплатите','Картой, Apple Pay или Google Pay. Регистрация не нужна — только почта.'],['Получите QR-код','Через минуту он придёт на почту и сохранится в личном кабинете.'],['Установите дома','Две минуты по Wi‑Fi: Настройки → Сотовая связь → Добавить eSIM.'],['Прилетели — интернет есть','Включите «Роуминг данных» для eSIM. Ваш оператор за это ничего не спишет.'],['Следите за остатком','Остаток и срок видно в кабинете. Докупить можно в один тап.']],
+ ms:{where:'Куда едете?',countryCity:'Страна или город',popular:'Популярное',cont:'Продолжить',payment:'Оплата',card:'Карта',pay:'Оплатить',open:'Сезам открыт',qrSent:'QR-код отправлен на почту',installEsim:'Установить eSIM',install:'Установка',wifi:'Подключитесь к Wi‑Fi',steps:['Откройте Настройки','Сотовая связь','Добавить eSIM','Отсканируйте QR'],done:'Готово',my:'Мои eSIM',active:'Активна',left:'ГБ осталось',daysLeft:n=>`Ещё ${n} дн.`,topup:'Докупить',leftGb:'Осталось 0,6 ГБ',same:'Добавится на ту же eSIM',date:'суббота, 12 октября',online:c=>`${c}: интернет подключён`,speed:'Скорость 5G',hotspot:'Можно раздавать на ноутбук',support:'Поддержка',inNet:'в сети',c1:'Прилетел, интернета нет',c2:'Включите «Роуминг данных» для eSIM Сезам',c3:'Работает, спасибо!',regions:'Регионы',receipt:'Чек',plan:'Пакет',fee:'Комиссия',total:'Итого',dl:'Скачать чек',dec:','},
+ cities:{Dubai:'Дубай',Istanbul:'Стамбул'},
+ brandsOther:'Другой',
+ models:{'iPhone':['iPhone XS, XR и новее','iPhone X, 8 и старше','iPhone из материкового Китая'],'Samsung':['Galaxy S20 и новее','Galaxy Z Fold и Z Flip','Galaxy A-серия','Galaxy S10 и старше'],'Pixel':['Pixel 4 и новее','Pixel 3 и 3a'],'Xiaomi':['Xiaomi 12T Pro, 13 и новее','Redmi и POCO'],'other':['Не нашёл свою модель']},
+ v:{yes:['Подходит','Можно покупать. Если телефон из США, убедитесь, что он не привязан к оператору.'],maybe:['Нужно проверить','eSIM есть не во всех версиях — зависит от модели и страны покупки. Наберите *#06#: если есть строка EID, всё получится.'],no:['Не поддерживает','В этой модели нет eSIM. Если едете не один, интернет можно раздать с телефона попутчика.']},
+ faq:[['Останется ли мой номер и WhatsApp?','Да. Ваша SIM-карта остаётся в телефоне, а WhatsApp и Telegram работают с тем же аккаунтом — просто через интернет eSIM.'],['Когда начинается срок тарифа?','Когда телефон впервые подключится к сети в стране поездки. Покупайте хоть за месяц — дни не сгорят.'],['Можно звонить по этой eSIM?','Тарифы только для интернета. Звоните через WhatsApp, Telegram или FaceTime.'],['Можно раздавать интернет на ноутбук?','Да, режим модема работает.'],['Еду в несколько стран. Что брать?','Если страны в одном регионе — региональный тариф. Если маршрут длинный — «Весь мир». Одна eSIM на всю поездку.'],['Что если трафик закончится?','Докупите пакет в личном кабинете. Новая eSIM не нужна.'],['Как вернуть деньги?','Если eSIM не установлена — вернём 100%. Если установлена, но интернет не заработал по нашей вине — тоже вернём.']],
+ sh:{dataOnly:'eSIM только с интернетом',multi:n=>`${n} стран в одной eSIM`,close:'Закрыть',back:'Назад',helper:'Подобрать объём',use:[['light','Карты и чаты'],['social','+ соцсети'],['video','+ видео']],rec:'Вам подойдёт',packs:'Пакет',works:l=>`Работает: ${l}.`,speed:'Скорость 4G/5G — зависит от местной сети.',cont:p=>`Продолжить · ${p}`,qrSoon:'QR-код придёт на почту сразу после оплаты',where:'Куда отправить QR-код',noReg:'Регистрация не нужна — всё придёт на почту.',err:'Проверьте почту: нужен адрес вида name@gmail.com',method:'Способ оплаты',card:'Банковская карта',pay:p=>`Оплатить ${p}`,refund:'Вернём деньги, если eSIM не установлена',processing:'Проверяем оплату…',processingAria:'Обрабатываем оплату',done:'Сезам открыт',sent:(d,gb,days,e)=>`${d} · ${gb} ГБ на ${days}. Копия QR-кода ушла на ${e}.`,steps:['Установите eSIM сейчас, пока вы дома и с Wi‑Fi.','По прилёте выберите eSIM для мобильных данных.','Включите для неё «Роуминг данных».'],installBtn:'Установить на этот телефон',other:'Для другого телефона отсканируйте QR его камерой',demo:'Откроются настройки eSIM (демо)',qrAria:'QR-код для установки eSIM (демо)'}
+},
+en:{
+ 'meta.title':'Sesame eSIM — mobile data in 200 countries, no roaming','meta.desc':'Travel eSIM: QR code a minute after payment, 200 countries, 24/7 support.',
+ brand:'sesame',brandFull:'Sesame eSIM','nav.aria':'Sections','nav.tariffs':'Plans','nav.how':'How it works','nav.phone':'My phone','nav.faq':'FAQ','hdr.my':'My eSIMs','hdr.buy':'Get eSIM',
+ 'hero.h1':'Open <span class="hl">Sesame</span> — and you’re online anywhere','hero.lead':'Travel eSIM for 200 countries. Buy in a minute, install at home — your data starts the moment you land.','hero.qlabel':'Where are you going','hero.qph':'Where to? Country or city','hero.find':'Search',
+ 'g.aria':'Globe: after the words “Open Sesame”, the internet opens up across the world','g.count':'countries online','g.hint':'Drag to spin the globe','g.again':'Open Sesame again','g.phrase':'Open Sesame','g.done':'Sesame is open: 200 countries online','g.here':'You are here','g.online':'online',
+ 'n.1':'countries and territories','n.2v':'1 min','n.2':'from payment to QR code','n.3':'support in messengers',
+ 'cat.h':'Find a plan in seconds','cat.p':'Single countries, whole regions, or the entire world on one eSIM.','cat.aria':'Plan type','tab.country':'Countries','tab.region':'Regions','tab.global':'Worldwide','cat.searchsr':'Search countries','cat.ph':'Search',
+ 'xp.h':'The whole journey in seven screens','xp.p':'Your SIM card stays in your phone. The eSIM is added as a second line, just for data.','xp.aria':'Steps',
+ 'feat.h':'Made so you never think about signal','f1.h':'Turns on by itself','f1.p':'Your plan starts when you first connect at your destination. Buy early — no days wasted.','f2.h':'Pay in a minute','f2.p':'Visa, Mastercard, Apple Pay and Google Pay. Prices in US dollars, no hidden markups.','f3.h':'Top up in one tap','f3.p':'Extra data goes onto the same eSIM. We’ll remind you at 70% and 90% usage.',
+ 'cp.h':'Will your phone work?','cp.p':'Pick a brand and model — we’ll tell you right away.','cp.h0':'Choose your phone','cp.p0':'Or dial <span class="code">*#06#</span>. If you see an EID line, your phone supports eSIM.','cp.go':'Choose a country',
+ 'tm.h':'Terms with no fine print','tm.p':'The same for every country.','tm.1':'per 1 GB','tm.2b':'No sign-up','tm.2':'just your email','tm.3b':'From first connection','tm.3':'is when your plan starts','tm.4b':'Hotspot allowed','tm.4':'share with a laptop or tablet','tm.5b':'100% refund','tm.5':'if the eSIM isn’t installed','tm.6':'support in English, Russian and Kyrgyz',
+ 'faq.h':'Frequently asked questions','sup.h':'Support that actually answers','sup.p':'We’ll help you install, even if you’re already at the airport. A real person replies, not a bot.',
+ 'fin.h':'Open Sesame','fin.p':'200 countries, a QR code a minute after payment, and support that’s always there.','fin.b1':'Choose a country','fin.b2':'How it works',
+ 'nav.app':'App','ft.app':'Get the app',
+ 'app.h':'Sesame on your phone','app.p':'Buy eSIMs, track your remaining data and message support in a couple of taps — even offline.',
+ 'app.rec':'Fastest','app.web.h':'Quick install','app.web.p':'A web app right from this site — no app store, no sign-up.',
+ 'app.web.pts':'<li>Installs in 3 seconds</li><li>Under 1&nbsp;MB</li><li>Works offline and updates itself</li>',
+ 'app.ios.p':'For iPhone and iPad on iOS 16 or later.','app.ios.s':'Download on the',
+ 'app.and.p':'For phones on Android 9 or later.','app.and.s':'Get it on',
+ 'app.soon':'Coming soon',
+ 'bar.h':'Sesame app','bar.p':'No app store, 3 seconds','bar.b':'Install','bar.x':'Dismiss',
+ appd:{install:'Install',installed:'Installed',open:'Running as an app',
+   ready:'Installs in 3 seconds — no app store needed.',ios:'On iPhone — via the Share menu in Safari.',other:'We’ll show you how to add it to your device.',done:'Sesame is already on this device — open it from your Home Screen.',
+   close:'Close',ok:'Got it',
+   iosH:'Install on iPhone',iosP:'Three taps and Sesame lands on your Home Screen next to your other apps.',
+   iosSteps:['Tap Share in Safari','Choose “Add to Home Screen”','Tap “Add”'],
+   iosNoSafari:'If you’re not in Safari, open this site in Safari — installing works best there.',
+   otherH:'Install the app',otherP:'In your browser, use the menu:',
+   otherSteps:['Open the browser menu ⋮','Choose “Install app” or “Add to Home screen”','Confirm'],
+   otherTip:'Works best in Chrome, Edge and Samsung Internet — and Safari on iPhone.',
+   doneH:'Sesame is installed',doneP:'Look for the Sesame icon on your Home Screen or in your app list.',
+   soonH:s=>`Coming soon to ${s}`,soonP:'We’re preparing the store app. Meanwhile, install the web version — it does everything the same and takes 3 seconds.',soonB:'Install the web version'},
+ 'ft.legal':'Company details will go here.','ft.plans':'Plans','ft.help':'Help','ft.how':'How to connect','ft.check':'Check your phone','ft.docs':'Legal','ft.offer':'Terms of service','ft.refund':'Refunds','ft.privacy':'Privacy',
+ from:'from',perGb:'per 1 GB',gb:'GB',popular:'Popular:',notFound:q=>`We couldn’t find “${q}”. Try the Worldwide plan or message us.`,noCountry:'This country isn’t on the list. Check the Worldwide plan.',nothing:'Nothing found',showAll:n=>`Show all ${n} countries`,collapse:'Show less',
+ countries:n=>`${n} ${n===1?'country':'countries'}`,days:n=>`${n} ${n===1?'day':'days'}`,daysShort:n=>`${n} days`,
+ regions:[['Europe','Germany, France, Italy, Spain, Czechia, Poland and 33 more'],['Asia','China, Thailand, Vietnam, Malaysia, Indonesia, Korea and 8 more'],['Middle East','UAE, Saudi Arabia, Qatar, Oman, Egypt, Jordan and 6 more'],['Central Asia','Kyrgyzstan, Kazakhstan, Uzbekistan, Tajikistan'],['Caucasus','Georgia, Armenia, Azerbaijan'],['Balkans','Serbia, Montenegro, Albania, Bosnia and Herzegovina and 5 more'],['Africa','Egypt, Morocco, Tanzania, Kenya, South Africa and 25 more'],['North America','USA, Canada, Mexico'],['Latin America','Brazil, Argentina, Chile, Peru, Colombia and 13 more']],
+ world:['Worldwide','One eSIM for 120+ countries — for long routes and layovers'],
+ xp:[['Find your country','Start typing a country or city — Dubai, Mecca, Bali. You’ll see the price right away.'],['Choose a plan','We’ll suggest how much data fits your trip, so you don’t overpay.'],['Pay','By card, Apple Pay or Google Pay. No sign-up — just your email.'],['Get your QR code','It arrives by email within a minute and is saved in your account.'],['Install at home','Two minutes on Wi‑Fi: Settings → Cellular → Add eSIM.'],['Land — and you’re online','Turn on Data Roaming for the eSIM. Your home carrier won’t charge you for it.'],['Track your data','See what’s left and how many days remain. Top up in one tap.']],
+ ms:{where:'Where to?',countryCity:'Country or city',popular:'Popular',cont:'Continue',payment:'Payment',card:'Card',pay:'Pay',open:'Sesame is open',qrSent:'QR code sent to your email',installEsim:'Install eSIM',install:'Installation',wifi:'Connect to Wi‑Fi',steps:['Open Settings','Cellular','Add eSIM','Scan the QR'],done:'Done',my:'My eSIMs',active:'Active',left:'GB left',daysLeft:n=>`${n} days left`,topup:'Top up',leftGb:'0.6 GB left',same:'Added to the same eSIM',date:'Saturday, October 12',online:c=>`${c}: you’re online`,speed:'5G speed',hotspot:'Hotspot to your laptop works',support:'Support',inNet:'online',c1:'Just landed, no internet',c2:'Turn on Data Roaming for the Sesame eSIM',c3:'It works, thanks!',regions:'Regions',receipt:'Receipt',plan:'Plan',fee:'Fee',total:'Total',dl:'Download receipt',dec:'.'},
+ cities:{Dubai:'Dubai',Istanbul:'Istanbul'},
+ brandsOther:'Other',
+ models:{'iPhone':['iPhone XS, XR and newer','iPhone X, 8 and older','iPhone from mainland China'],'Samsung':['Galaxy S20 and newer','Galaxy Z Fold and Z Flip','Galaxy A series','Galaxy S10 and older'],'Pixel':['Pixel 4 and newer','Pixel 3 and 3a'],'Xiaomi':['Xiaomi 12T Pro, 13 and newer','Redmi and POCO'],'other':['My model isn’t listed']},
+ v:{yes:['Works','Good to go. If your phone is from the US, make sure it isn’t carrier-locked.'],maybe:['Needs a check','Not every version has eSIM — it depends on the model and where it was bought. Dial *#06#: if you see an EID line, you’re all set.'],no:['Not supported','This model has no eSIM. If you’re traveling with someone, they can share their hotspot.']},
+ faq:[['Will I keep my number and WhatsApp?','Yes. Your SIM card stays in the phone, and WhatsApp and Telegram keep working on the same account — just over the eSIM’s data.'],['When does my plan start?','The first time your phone connects to a network at your destination. Buy a month ahead if you like — no days are lost.'],['Can I make calls on this eSIM?','Plans are data-only. Call via WhatsApp, Telegram or FaceTime.'],['Can I share data with my laptop?','Yes, hotspot works.'],['I’m visiting several countries. What should I get?','If they’re in one region, get a regional plan. For long routes, get Worldwide. One eSIM for the whole trip.'],['What if I run out of data?','Top up in your account. No new eSIM needed.'],['How do refunds work?','If the eSIM isn’t installed, you get 100% back. If it’s installed but doesn’t work because of us, we refund that too.']],
+ sh:{dataOnly:'Data-only eSIM',multi:n=>`${n} countries on one eSIM`,close:'Close',back:'Back',helper:'Find the right amount',use:[['light','Maps & chats'],['social','+ social'],['video','+ video']],rec:'Best for you',packs:'Plan',works:l=>`Works in: ${l}.`,speed:'4G/5G speed — depends on the local network.',cont:p=>`Continue · ${p}`,qrSoon:'Your QR code arrives by email right after payment',where:'Where should we send the QR code?',noReg:'No sign-up — everything comes by email.',err:'Check your email: it should look like name@gmail.com',method:'Payment method',card:'Bank card',pay:p=>`Pay ${p}`,refund:'Full refund if the eSIM isn’t installed',processing:'Confirming payment…',processingAria:'Processing payment',done:'Sesame is open',sent:(d,gb,days,e)=>`${d} · ${gb} GB for ${days}. A copy of the QR code was sent to ${e}.`,steps:['Install the eSIM now, while you’re at home on Wi‑Fi.','When you land, choose the eSIM for mobile data.','Turn on Data Roaming for it.'],installBtn:'Install on this phone',other:'For another phone, scan the QR with its camera',demo:'eSIM settings will open (demo)',qrAria:'QR code to install the eSIM (demo)'}
+}};
+function plRu(n,f){const a=n%10,b=n%100;return f[(a===1&&b!==11)?0:(a>=2&&a<=4&&(b<10||b>=20))?1:2]}
+
+const RAW="AU:Австралия:Australia|AT:Австрия:Austria|AZ:Азербайджан:Azerbaijan|AX:Аландские острова:Åland Islands|AL:Албания:Albania|DZ:Алжир:Algeria|AO:Ангола:Angola|AD:Андорра:Andorra|AG:Антигуа и Барбуда:Antigua & Barbuda|AR:Аргентина:Argentina|AM:Армения:Armenia|AW:Аруба:Aruba|BS:Багамы:Bahamas|BD:Бангладеш:Bangladesh|BB:Барбадос:Barbados|BH:Бахрейн:Bahrain|BY:Беларусь:Belarus|BZ:Белиз:Belize|BE:Бельгия:Belgium|BJ:Бенин:Benin|BM:Бермуды:Bermuda|BG:Болгария:Bulgaria|BO:Боливия:Bolivia|BA:Босния и Герцеговина:Bosnia & Herzegovina|BW:Ботсвана:Botswana|BR:Бразилия:Brazil|BN:Бруней:Brunei|BF:Буркина-Фасо:Burkina Faso|BI:Бурунди:Burundi|BT:Бутан:Bhutan|VU:Вануату:Vanuatu|VA:Ватикан:Vatican City|GB:Великобритания:United Kingdom|HU:Венгрия:Hungary|VE:Венесуэла:Venezuela|VG:Британские Виргинские острова:British Virgin Islands|VI:Виргинские острова (США):U.S. Virgin Islands|VN:Вьетнам:Vietnam|GA:Габон:Gabon|HT:Гаити:Haiti|GY:Гайана:Guyana|GM:Гамбия:Gambia|GH:Гана:Ghana|GP:Гваделупа:Guadeloupe|GT:Гватемала:Guatemala|GN:Гвинея:Guinea|GW:Гвинея-Бисау:Guinea-Bissau|DE:Германия:Germany|GG:Гернси:Guernsey|GI:Гибралтар:Gibraltar|HN:Гондурас:Honduras|HK:Гонконг:Hong Kong|GD:Гренада:Grenada|GL:Гренландия:Greenland|GR:Греция:Greece|GE:Грузия:Georgia|GU:Гуам:Guam|DK:Дания:Denmark|JE:Джерси:Jersey|DJ:Джибути:Djibouti|DM:Доминика:Dominica|DO:Доминиканская Республика:Dominican Republic|EG:Египет:Egypt|ZM:Замбия:Zambia|ZW:Зимбабве:Zimbabwe|IL:Израиль:Israel|IN:Индия:India|ID:Индонезия:Indonesia|JO:Иордания:Jordan|IQ:Ирак:Iraq|IE:Ирландия:Ireland|IS:Исландия:Iceland|ES:Испания:Spain|IT:Италия:Italy|CV:Кабо-Верде:Cape Verde|KZ:Казахстан:Kazakhstan|KH:Камбоджа:Cambodia|CM:Камерун:Cameroon|CA:Канада:Canada|QA:Катар:Qatar|KE:Кения:Kenya|CY:Кипр:Cyprus|KG:Кыргызстан:Kyrgyzstan|CN:Китай:China|CO:Колумбия:Colombia|CG:Республика Конго:Republic of the Congo|CD:ДР Конго:DR Congo|CR:Коста-Рика:Costa Rica|CI:Кот-д’Ивуар:Côte d’Ivoire|KW:Кувейт:Kuwait|CW:Кюрасао:Curaçao|LA:Лаос:Laos|LV:Латвия:Latvia|LS:Лесото:Lesotho|LR:Либерия:Liberia|LB:Ливан:Lebanon|LY:Ливия:Libya|LT:Литва:Lithuania|LI:Лихтенштейн:Liechtenstein|LU:Люксембург:Luxembourg|MU:Маврикий:Mauritius|MR:Мавритания:Mauritania|MG:Мадагаскар:Madagascar|MO:Макао:Macau|MW:Малави:Malawi|MY:Малайзия:Malaysia|ML:Мали:Mali|MV:Мальдивы:Maldives|MT:Мальта:Malta|MA:Марокко:Morocco|MQ:Мартиника:Martinique|MX:Мексика:Mexico|MZ:Мозамбик:Mozambique|MD:Молдова:Moldova|MC:Монако:Monaco|MN:Монголия:Mongolia|MM:Мьянма:Myanmar|NA:Намибия:Namibia|NP:Непал:Nepal|NE:Нигер:Niger|NG:Нигерия:Nigeria|NL:Нидерланды:Netherlands|NI:Никарагуа:Nicaragua|NZ:Новая Зеландия:New Zealand|NC:Новая Каледония:New Caledonia|NO:Норвегия:Norway|AE:ОАЭ:UAE|OM:Оман:Oman|PK:Пакистан:Pakistan|PS:Палестина:Palestine|PA:Панама:Panama|PG:Папуа — Новая Гвинея:Papua New Guinea|PY:Парагвай:Paraguay|PE:Перу:Peru|PL:Польша:Poland|PT:Португалия:Portugal|PR:Пуэрто-Рико:Puerto Rico|RE:Реюньон:Réunion|RU:Россия:Russia|RW:Руанда:Rwanda|RO:Румыния:Romania|US:США:United States|SV:Сальвадор:El Salvador|WS:Самоа:Samoa|SM:Сан-Марино:San Marino|SA:Саудовская Аравия:Saudi Arabia|MK:Северная Македония:North Macedonia|SC:Сейшелы:Seychelles|SN:Сенегал:Senegal|VC:Сент-Винсент и Гренадины:St. Vincent & Grenadines|KN:Сент-Китс и Невис:St. Kitts & Nevis|LC:Сент-Люсия:St. Lucia|RS:Сербия:Serbia|SG:Сингапур:Singapore|SX:Синт-Мартен:Sint Maarten|SK:Словакия:Slovakia|SI:Словения:Slovenia|SB:Соломоновы Острова:Solomon Islands|SD:Судан:Sudan|SR:Суринам:Suriname|SL:Сьерра-Леоне:Sierra Leone|TJ:Таджикистан:Tajikistan|TH:Таиланд:Thailand|TW:Тайвань:Taiwan|TZ:Танзания:Tanzania|TG:Того:Togo|TO:Тонга:Tonga|TT:Тринидад и Тобаго:Trinidad & Tobago|TN:Тунис:Tunisia|TM:Туркменистан:Turkmenistan|TR:Турция:Türkiye|TC:Тёркс и Кайкос:Turks & Caicos Islands|UG:Уганда:Uganda|UZ:Узбекистан:Uzbekistan|UA:Украина:Ukraine|UY:Уругвай:Uruguay|FO:Фарерские острова:Faroe Islands|FJ:Фиджи:Fiji|PH:Филиппины:Philippines|FI:Финляндия:Finland|FR:Франция:France|GF:Французская Гвиана:French Guiana|PF:Французская Полинезия:French Polynesia|HR:Хорватия:Croatia|ME:Черногория:Montenegro|CZ:Чехия:Czechia|CL:Чили:Chile|CH:Швейцария:Switzerland|SE:Швеция:Sweden|LK:Шри-Ланка:Sri Lanka|EC:Эквадор:Ecuador|SZ:Эсватини:Eswatini|EE:Эстония:Estonia|ET:Эфиопия:Ethiopia|KR:Южная Корея:South Korea|ZA:ЮАР:South Africa|JM:Ямайка:Jamaica|JP:Япония:Japan|IM:Остров Мэн:Isle of Man|KY:Каймановы острова:Cayman Islands";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const emo=c=>String.fromCodePoint(...[...c].map(ch=>127397+ch.charCodeAt(0)));
+const FLAG_OK=(()=>{try{const x=document.createElement('canvas').getContext('2d');x.font='32px sans-serif';return x.measureText(emo('TR')).width<x.measureText(String.fromCodePoint(127481)).width*1.5}catch(e){return true}})();
+const flag=c=>FLAG_OK?`<span class="fl" aria-hidden="true">${emo(c)}</span>`:`<span class="fl code" aria-hidden="true">${c}</span>`;
+const icon=id=>`<svg class="ic" aria-hidden="true"><use href="#${id}"/></svg>`;
+
+/* language */
+let lang=(()=>{try{const u=new URLSearchParams(location.search).get('lang');if(u==='ru'||u==='en')return u}catch(e){}
+  try{const s=localStorage.getItem('sezam-lang');if(s==='ru'||s==='en')return s}catch(e){}
+  const n=(navigator.language||'en').toLowerCase();return(n.startsWith('ru')||n.startsWith('ky')||n.startsWith('kk')||n.startsWith('uz')||n.startsWith('be')||n.startsWith('uk'))?'ru':'en'})();
+const L=k=>I18N[lang][k];
+
+/* data */
+const COUNTRIES=RAW.split('|').map(s=>{const[code,ru,en]=s.split(':');return{id:code,code,names:{ru,en},type:'country',k:1}});
+const ALIAS={TR:'стамбул анталья istanbul antalya turkey turkiye',AE:'дубай эмираты абу-даби dubai abu dhabi emirates',SA:'мекка медина умра хадж mecca medina umrah hajj',TH:'бангкок пхукет паттайя bangkok phuket pattaya',ID:'бали bali jakarta',EG:'шарм хургада каир sharm hurghada cairo',RU:'москва петербург moscow petersburg',CN:'пекин урумчи гуанчжоу beijing urumqi guangzhou shanghai',KR:'сеул seoul',JP:'токио tokyo osaka',GE:'тбилиси батуми tbilisi batumi',US:'америка нью-йорк usa america new york',GB:'англия лондон uk england london',DE:'берлин berlin munich',IT:'рим милан rome milan',FR:'париж paris',ES:'барселона мадрид barcelona madrid',KZ:'алматы астана almaty astana',UZ:'ташкент самарканд tashkent samarkand',VN:'нячанг ханой nha trang hanoi',MV:'мальдивы maldives male',CZ:'прага prague czech',KG:'бишкек иссык-куль ош bishkek issyk-kul osh',MY:'куала-лумпур kuala lumpur',QA:'доха doha'};
+COUNTRIES.forEach(c=>c.a=ALIAS[c.code]||'');
+const NC=COUNTRIES.length;
+const POPULAR=['TR','AE','RU','SA','CN','TH','EG','GE','KZ','UZ','KR','ID'];
+const REG_META=[['r-eu',39,1.25],['r-asia',14,1.25],['r-me',12,1.3],['r-ca',4,1.1],['r-cau',3,1.15],['r-bal',9,1.2],['r-af',30,1.6],['r-na',3,1.3],['r-la',18,1.5]];
+const REGIONS=REG_META.map(([id,cnt,k],i)=>({id,cnt,k,i,type:'region',a:''}));
+const GLOBAL=[{id:'g-world',cnt:120,k:1.7,type:'global',a:''}];
+const ALL=[...COUNTRIES,...REGIONS,...GLOBAL];
+const nm=d=>d.type==='country'?d.names[lang]:d.type==='region'?L('regions')[d.i][0]:L('world')[0];
+const lst=d=>d.type==='region'?L('regions')[d.i][1]:d.type==='global'?L('world')[1]:'';
+const PACKS=[{gb:1,days:7,usd:3.9},{gb:3,days:15,usd:9.9},{gb:5,days:30,usd:14.9},{gb:10,days:30,usd:26.9},{gb:20,days:30,usd:47.9}];
+const st={dest:null,pack:2,email:'',pay:'card',days:7,use:'social'};
+const money=usd=>'$'+(Math.round(usd*100)/100).toFixed(2);
+const from=d=>money(PACKS[0].usd*(d.k||1));
+const dicon=d=>d.type==='country'?flag(d.code):`<span class="reg">${icon('i-globe')}</span>`;
+const norm=s=>s.toLowerCase().replace(/ё/g,'е').trim();
+const byName=()=>[...COUNTRIES].sort((a,b)=>a.names[lang].localeCompare(b.names[lang],lang));
+function find(t){t=norm(t);if(!t)return[];const sc=d=>{const n=norm(nm(d)),o=d.type==='country'?norm(d.names[lang==='ru'?'en':'ru']):'';if(n.startsWith(t))return 0;if(o.startsWith(t))return 1;if(d.a.split(' ').some(w=>w&&w.startsWith(t)))return 1;if(n.includes(t)||o.includes(t))return 2;return 9};
+  return ALL.map(d=>[sc(d),d]).filter(x=>x[0]<9).sort((a,b)=>a[0]-b[0]).slice(0,8).map(x=>x[1])}
+function qr(n=25,seed){let s=seed||(Date.now()%2147483646)+1;const r=()=>(s=s*16807%2147483647)/2147483647;const inF=(x,y)=>(x<8&&y<8)||(x>n-9&&y<8)||(x<8&&y>n-9);let o='';
+  for(let y=0;y<n;y++)for(let x=0;x<n;x++)if(!inF(x,y)&&r()>.52)o+=`<rect x="${x}" y="${y}" width="1" height="1"/>`;
+  const f=(x,y)=>o+=`<rect x="${x}" y="${y}" width="7" height="7"/><rect x="${x+1}" y="${y+1}" width="5" height="5" fill="#fff"/><rect x="${x+2}" y="${y+2}" width="3" height="3"/>`;
+  f(0,0);f(n-7,0);f(0,n-7);return `<svg viewBox="0 0 ${n} ${n}" width="100%" height="100%" shape-rendering="crispEdges" fill="#0A0A0A">${o}</svg>`}
+
+const hdr=$('#hdr');addEventListener('scroll',()=>hdr.classList.toggle('sh',scrollY>10),{passive:true});
+
+/* mini screens */
+const QRS=qr(21,4242),ARC='<svg viewBox="0 0 64 64"><use href="#arch"/></svg>';
+function ms(k,o={}){
+  const M=L('ms'),c=o.c||'TR',d=COUNTRIES.find(x=>x.code===c)||COUNTRIES[0],n=d.names[lang],G=L('gb'),tb='<div class="tb"><span>9:41</span><span>5G</span></div>';
+  switch(k){
+  case 'home':return `<div class="ms">${tb}<h4>${M.where}</h4><div class="sr2">${icon('i-search')}${M.countryCity}</div><div class="sm" style="margin-top:1.2em">${M.popular}</div>${['TR','AE','TH','SA','GE'].map(x=>`<div class="rw">${flag(x)}${COUNTRIES.find(y=>y.code===x).names[lang]}<span class="r">${from({k:1})}</span></div>`).join('')}</div>`;
+  case 'plans':return `<div class="ms">${tb}<div style="display:flex;align-items:center;gap:.6em;margin:.5em 0 .8em">${flag(c)}<b style="font-size:1.45em;font-weight:600">${n}</b></div>${PACKS.map((p,i)=>`<div class="rw${i===(o.sel??2)?' on':''}"><b style="font-weight:600;min-width:3.4em">${p.gb} ${G}</b>${L('daysShort')(p.days)}<span class="r" style="color:#0A0A0A;font-weight:600">${money(p.usd)}</span></div>`).join('')}<span class="b2">${M.cont}</span></div>`;
+  case 'pay':return `<div class="ms">${tb}<h4>${M.payment}</h4><div class="cd"><div style="opacity:.6">${n} · 5 ${G} · ${L('days')(30)}</div><div style="font-family:var(--h);font-size:2.3em;font-weight:600;margin-top:.2em;letter-spacing:-.03em">${money(14.9)}</div></div>${[[M.card,'Visa · Mastercard'],['Apple Pay',''],['Google Pay','']].map((x,i)=>`<div class="rw${i===(o.sel??0)?' on':''}">${x[0]}<span class="r">${x[1]}</span></div>`).join('')}<span class="b2">${M.pay}</span></div>`;
+  case 'qr':return `<div class="ms">${tb}<div class="ok">${icon('i-check')}</div><h4 style="margin-top:.4em">${M.open}</h4><div class="sm">${M.qrSent}</div><div class="qq">${QRS}</div><span class="b2">${M.installEsim}</span></div>`;
+  case 'install':return `<div class="ms">${tb}<h4>${M.install}</h4><div class="sm">${M.wifi}</div>${M.steps.map((x,i)=>`<div class="stp${i<(o.done??2)?' dn':''}"><i>${i+1}</i>${x}</div>`).join('')}<span class="b2" style="margin-top:1.6em">${M.done}</span></div>`;
+  case 'usage':return `<div class="ms">${tb}<h4>${M.my}</h4><div class="cd"><div style="display:flex;justify-content:space-between;align-items:center"><span style="display:flex;gap:.5em;align-items:center">${flag(c)}${n}</span><span class="pill">${M.active}</span></div><div class="rg2" style="--v:${o.v||64}"><div><span><b>3${M.dec}2</b><br><span style="opacity:.55">${M.left}</span></span></div></div><div style="display:flex;justify-content:space-between;opacity:.55"><span>${M.daysLeft(24)}</span><span>5G</span></div></div><span class="b2 lt">${M.topup}</span></div>`;
+  case 'topup':return `<div class="ms">${tb}<h4>${M.topup}</h4><div class="sm" style="margin-bottom:.4em">${M.leftGb}</div>${[[1,3.9],[3,9.9],[5,14.9]].map((x,i)=>`<div class="rw${i===1?' on':''}"><b style="font-weight:600">+${x[0]} ${G}</b><span class="r" style="color:#0A0A0A;font-weight:600">${money(x[1])}</span></div>`).join('')}<div class="sm" style="margin-top:1em">${M.same}</div><span class="b2">${M.topup}</span></div>`;
+  case 'lock':return `<div class="ms lk">${tb}<div class="tm">14:05</div><div class="dt">${M.date}</div><div class="nt"><span class="ni">${ARC}</span><div><b>${M.online(L('cities')[o.city||'Dubai'])}</b><span>${M.open}</span></div></div><div class="nt"><span class="ni">${ARC}</span><div><b>${M.speed}</b><span>${M.hotspot}</span></div></div></div>`;
+  case 'chat':return `<div class="ms">${tb}<div style="display:flex;gap:.6em;align-items:center;padding-bottom:.8em;border-bottom:1px solid #EFEFED"><span style="width:2.6em;height:2.6em;border-radius:50%;background:#F5F5F4;display:grid;place-items:center"><svg viewBox="0 0 64 64" style="width:1.6em;height:1.6em;color:#0A0A0A"><use href="#arch"/></svg></span><div><b style="font-weight:600">${M.support}</b><div style="color:#1A9E5C;font-size:.85em">${M.inNet}</div></div></div><div class="bb me">${M.c1}</div><div class="bb th">${M.c2}</div><div class="bb me">${M.c3}</div></div>`;
+  }
+}
+
+/* static text */
+function applyStatic(){
+  document.documentElement.lang=lang;document.title=L('meta.title');
+  const md=document.querySelector('meta[name=description]');if(md)md.setAttribute('content',L('meta.desc'));
+  $$('[data-i18n]').forEach(el=>{const v=L(el.dataset.i18n);if(typeof v==='string')el.innerHTML=v});
+  $$('[data-i18n-ph]').forEach(el=>el.setAttribute('placeholder',L(el.dataset.i18nPh)));
+  $$('[data-i18n-aria]').forEach(el=>el.setAttribute('aria-label',L(el.dataset.i18nAria)));
+  $$('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
+  $('#tPrice').textContent=`${L('from')} ${money(PACKS[0].usd)}`;
+}
+
+/* ---------- globe ---------- */
+const globe=(function(){
+const LAND="5P1Z/fj9Jv34/Uf9DP4X/Qz+Nv0M/lX9IP4S/SD+MP0g/k79IP5s/TT+Iv00/j79NP5b/TT+lQZI/jj9SP5U/Uj+cP1I/pgGSP60Blz+K/1c/kX9XP5g/Vz+xgVc/rcGcP4m/XD+QP1w/lr9cP50/XD+jv2E/iH9hP46/YT+U/2E/m39hP6G/YT+oP2E/rn9hP6MBYT+pQWE/r4FhP7VBoT+7waY/jX9mP5O/Zj+Zv2Y/n/9mP6Y/Zj+sP2Y/n0FmP6WBZj+rwWY/scFrP43/az+T/2s/mj9rP6A/az+mP2s/rD9rP7I/az+4P2s/s0ArP6UBKz+rASs/lUFrP5tBaz+hQWs/p4FrP62Baz+zgWs/uYFwP5K/cD+Yf3A/nn9wP6Q/cD+qP3A/sD9wP7X/cD+7/3A/sgAwP7gAMD+9wDA/g8BwP6NBMD+pATA/rwEwP7TBMD+6wTA/jEFwP5JBcD+YAXA/ngFwP6QBcD+pwXA/r8FwP7WBcD+7gXU/kz91P5j/dT+ev3U/pH91P6o/dT+v/3U/tb91P7t/dT+BP7U/rkA1P7QANT+5wDU/v4A1P4VAdT+LAHU/oIE1P6ZBNT+sATU/scE1P7eBNT+9QTU/gwF1P4jBdT+OgXU/lIF1P5pBdT+gAXU/pcF1P6uBdT+xQXU/twF1P7zBej+Tf3o/mT96P57/ej+kf3o/qj96P6//ej+1f3o/uz96P4D/uj+Gf7o/qoA6P7AAOj+1wDo/u4A6P4EAej+GwHo/jIB6P53BOj+jgTo/qUE6P67BOj+0gTo/ukE6P7/BOj+FgXo/i0F6P5DBej+WgXo/nAF6P6HBej+ngXo/rQF6P7LBej+4gXo/vgF/P5P/fz+Zf38/nz9/P6S/fz+qP38/r79/P7U/fz+6/38/gH+/P4X/vz+nAD8/rIA/P7IAPz+3gD8/vQA/P4LAfz+IQH8/jcB/P6EBPz+mgT8/rAE/P7GBPz+3AT8/vME/P4JBfz+HwX8/jUF/P5MBfz+YgX8/ngF/P6OBfz+pAX8/rsF/P7RBfz+5wUQ/0L9EP9Y/RD/bf0Q/4P9EP+Z/RD/r/0Q/8X9EP/b/RD/8f0Q/wf+EP8d/hD/mgAQ/7AAEP/GABD/3AAQ//EAEP8HARD/HQEQ/zMBEP9JARD/XwEQ/7cBEP/NARD/dQQQ/4sEEP+hBBD/twQQ/80EEP/jBBD/+QQQ/w8FEP8lBRD/OwUQ/1EFEP9nBRD/fQUQ/5MFEP+pBRD/vwUQ/9UFEP/rBST/Q/0k/1n9JP9v/ST/hP0k/5r9JP+v/ST/xf0k/9r9JP/w/ST/Bf4k/xv+JP8x/iT/Rv4k/1z+JP+iACT/twAk/80AJP/iACT/+AAk/w0BJP8jAST/OQEk/04BJP+6AST/zwEk/4EEJP+XBCT/rAQk/8IEJP/YBCT/7QQk/wMFJP8YBST/LgUk/0MFJP9ZBST/bgUk/4QFJP+aBST/rwUk/8UFOP9M/Tj/Yf04/3b9OP+M/Tj/of04/7b9OP/M/Tj/4f04//b9OP8L/jj/If44/zb+OP9L/jj/Yf44/4oAOP+gADj/tQA4/8oAOP/gADj/9QA4/woBOP8gATj/NQE4/0oBOP/KATj/3wE4/7QEOP/JBDj/3gQ4//MEOP8JBTj/HgU4/zMFOP9JBTj/XgU4/3MFOP+JBTj/ngU4/7MFOP/IBUz/P/1M/1T9TP9p/Uz/fv1M/5P9TP+o/Uz/vf1M/9L9TP/n/Uz//P1M/xH+TP8m/kz/O/5M/1D+TP9l/kz/iQBM/54ATP+zAEz/yABM/90ATP/yAEz/BwFM/xwBTP8xAUz/RgFM/1sBTP9wAUz/xQFM/9oBTP/QBEz/5QRM//oETP8PBUz/JAVM/zkFTP9OBUz/YwVM/3gFTP+NBUz/ogVM//MGYP8d/WD/Mv1g/0f9YP9c/WD/cf1g/4X9YP+a/WD/r/1g/8T9YP/Z/WD/7f1g/wL+YP8X/mD/LP5g/0H+YP9V/mD/av5g/4cAYP+cAGD/sQBg/8YAYP/aAGD/7wBg/wQBYP8ZAWD/LgFg/0MBYP9XAWD/bAFg/4EBYP/UAWD/6QFg/+sEYP8ABWD/FQVg/ykFYP8+BWD/UwVg/5EFYP+mBXT/Ef10/yb9dP86/XT/T/10/2P9dP94/XT/jf10/6H9dP+2/XT/yv10/9/9dP/z/XT/CP50/x3+dP8x/nT/Rv50/1r+dP9v/nT/hgB0/5oAdP+vAHT/wwB0/9gAdP/tAHT/AQF0/xYBdP8qAXT/PwF0/1MBdP9oAXT/fQF0/5EBdP/jAXT/8QR0/xoFdP8vBXT/QwV0/5YFiP8L/Yj/IP2I/zT9iP9J/Yj/Xf2I/3H9iP+G/Yj/mv2I/6/9iP/D/Yj/2P2I/+z9iP8B/oj/Ff6I/yr+iP8+/oj/Uv6I/2f+iP97/oj/jwCI/6QAiP+4AIj/zQCI/+EAiP/1AIj/CgGI/x4BiP8zAYj/RwGI/1wBiP9wAYj/hQGI/zIFnP8F/Zz/Gv2c/y79nP9C/Zz/V/2c/2v9nP9//Zz/lP2c/6j9nP+8/Zz/0f2c/+X9nP/5/Zz/Dv6c/yL+nP82/pz/S/6c/1/+nP9z/pz/iP6c/5kAnP+tAJz/wQCc/9YAnP/qAJz//gCc/xMBnP8nAZz/OwGc/1ABnP9kAZz/eAGc/40BnP/XBbD/6/yw///8sP8U/bD/KP2w/zz9sP9Q/bD/Zf2w/3n9sP+N/bD/of2w/7X9sP/K/bD/3v2w//L9sP8G/rD/G/6w/y/+sP9D/rD/V/6w/2z+sP+A/rD/lP6w/44AsP+iALD/tgCw/8oAsP/eALD/8wCw/wcBsP8bAbD/LwGw/0QBsP9YAbD/bAGw/4ABsP9YBLD/bQSw/3QFsP+IBbD/nAWw/8QFxP/m/MT/+vzE/w79xP8i/cT/Nv3E/0r9xP9e/cT/cv3E/4b9xP+b/cT/r/3E/8P9xP/X/cT/6/3E///9xP8T/sT/J/7E/zv+xP9Q/sT/ZP7E/3j+xP+M/sT/oP7E/4MAxP+XAMT/qwDE/78AxP/TAMT/5wDE//sAxP8QAcT/JAHE/zgBxP9MAcT/YAHE/3QBxP92BcT/igXE/54FxP+yBcT/2gXY/+D82P/0/Nj/CP3Y/xz92P8w/dj/RP3Y/1j92P9s/dj/gP3Y/5T92P+o/dj/vP3Y/9D92P/k/dj/+P3Y/wz+2P8g/tj/NP7Y/0j+2P9c/tj/cP7Y/3gA2P+MANj/oADY/7QA2P/IANj/3ADY//AA2P8EAdj/GAHY/ywB2P9AAdj/VAHY/2gB2P98Adj/EATY/7AE2P/EBNj/UAXY/2QF2P94Bdj/jAXY/6AF7P/g/Oz/9Pzs/wj97P8c/ez/MP3s/0T97P9Y/ez/bP3s/4D97P+U/ez/qP3s/7z97P/Q/ez/5P3s//j97P8M/uz/IP7s/zT+7P9kAOz/eADs/4wA7P+gAOz/tADs/8gA7P/cAOz/8ADs/wQB7P8YAez/LAHs/0AB7P9UAez/aAHs/3wB7P+QAez//APs/xAE7P9gBOz/dATs/4gE7P+wBOz/PAXs/2QFAADg/AAA9PwAAAj9AAAc/QAAMP0AAET9AABY/QAAbP0AAID9AACU/QAAqP0AALz9AADQ/QAA5P0AAPj9AABkAAAAeAAAAIwAAACgAAAAtAAAAMgAAADcAAAA8AAAAAQBAAAYAQAALAEAAEABAABUAQAAaAEAAHwBAACQAQAApAEAAOgDAAD8AwAATAQAAGAEAAB0BAAAiAQAALAEAAAABRQA9PwUAAj9FAAc/RQAMP0UAET9FABY/RQAbP0UAID9FACU/RQAqP0UALz9FADQ/RQA5P0UAPj9FABkABQAeAAUAIwAFACgABQAtAAUAMgAFADcABQA8AAUAAQBFAAYARQALAEUAEABFABUARQAaAEUAHwBFACQARQApAEUALgBFADoAxQAEAQUAGAEFAB0BBQAiAQoAAj9KAAc/SgAMP0oAET9KABY/SgAbP0oAID9KACU/SgAqP0oALz9KADQ/SgA5P0oAPj9KABkACgAeAAoAIwAKACgACgAtAAoAMgAKADcACgA8AAoAAQBKAAYASgALAEoAEABKABUASgAaAEoAHwBKACQASgApAEoALgBKADMASgA1AMoAPwDKAB0BCgAiAQ8AA79PAAi/TwANv08AEr9PABe/TwAcv08AIb9PACb/TwAr/08AMP9PADX/TwApf88ALr/PADO/zwA4v88APb/PAAKADwAMgA8AEYAPABbADwAbwA8AIMAPACXADwAqwA8AL8APADTADwA5wA8APsAPAAQATwAJAE8ADgBPABMATwAYAE8AHQBPACIATwAnAE8ALABPADFATwA2QE8APgDPACZBFAA1/xQAP/8UAAU/VAAKP1QADz9UABQ/VAAZf1QAHn9UACN/VAAof1QAIf/UACb/1AAr/9QAMP/UADY/1AA7P9QAAAAUAAUAFAAKABQAD0AUABRAFAAZQBQAHkAUACOAFAAogBQALYAUADKAFAA3gBQAPMAUAAHAVAAGwFQAC8BUABEAVAAWAFQAGwBUACAAVAAlAFQAKkBUAC9AVAA0QFQAOUBUAApA1AA3wNQANIEUADmBGQAtPxkABr9ZAAu/WQAQv1kAFf9ZABr/WQAf/1kAHz/ZACQ/2QApP9kALn/ZADN/2QA4f9kAPb/ZAAKAGQAHwBkADMAZABHAGQAXABkAHAAZACEAGQAmQBkAK0AZADBAGQA1gBkAOoAZAD+AGQAEwFkACcBZAA7AWQAUAFkAGQBZAB4AWQAjQFkAKEBZAC1AWQAygFkAN4BZADyAWQA+wJkAA8DZADaA2QALARkAKYEZADPBHgApfx4ALn8eAA0/XgAXP94AHH/eACF/3gAmv94AK7/eADD/3gA1/94AOz/eAAAAHgAFAB4ACkAeAA9AHgAUgB4AGYAeAB7AHgAjwB4AKQAeAC4AHgAzQB4AOEAeAD1AHgACgF4AB4BeAAzAXgARwF4AFwBeABwAXgAhQF4AJkBeACuAXgA9QJ4AAkDeAAeA3gAEwR4ACgEeAA8BHgA4ASMAIH8jACW/IwAqvyMAGb/jAB6/4wAj/+MAKP/jAC4/4wAzf+MAOH/jAD2/4wACgCMAB8AjAAzAIwASACMAF0AjABxAIwAhgCMAJoAjACvAIwAwwCMANgAjADtAIwAAQGMABYBjAAqAYwAPwGMAFMBjABoAYwAfQGMAJEBjAC6AYwAzwGMAOMBjADvAowAAwOMABgDjADmA4wA+gOMAA8EjAAjBIwAOASMAMgEoAA4/KAAYvygAHf8oABk/6AAef+gAI7/oACi/6AAt/+gAMz/oADh/6AA9v+gAAoAoAAfAKAANACgAEkAoABeAKAAcgCgAIcAoACcAKAAsQCgAMYAoADaAKAA7wCgAAQBoAAZAaAALgGgAEMBoABXAaAAbAGgAIEBoAC/AaAA1AGgAOkBoAD+AaAA4wKgAPgCoAAMA6AAIQOgALMDoADcA6AA8QOgAAYEoAAbBKAAMASgAMEEtAAD/LQAGPy0AC38tABC/LQAV/y0AGz8tACB/LQAAP20AGn9tABi/7QAd/+0AIz/tACh/7QAtv+0AMv/tADg/7QA9f+0AAsAtAAgALQANQC0AEoAtABfALQAdAC0AIkAtACeALQAswC0AMgAtADdALQA8gC0AAcBtAAcAbQAMQG0AEYBtABbAbQAcAG0ALABtADFAbQA2gG0AO8BtAAEArQAGQK0AC4CtADrArQAAAO0ABUDtAArA7QAQAO0AL4DtADTA7QA6AO0AP0DtAASBLQAJwS0ALsEyADi+8gA9/vIAAz8yAAh/MgAN/zIAIz8yAAM/cgAYP/IAHb/yACL/8gAoP/IALX/yADL/8gA4P/IAPX/yAALAMgAIADIADUAyABLAMgAYADIAHUAyACKAMgAoADIALUAyADKAMgA4ADIAPUAyAAKAcgAIAHIADUByABKAcgAXwHIAJ8ByAC1AcgAygHIAN8ByAD1AcgACgLIAB8CyAA0AsgA3wLIAPQCyAAKA8gAHwPIADQDyABJA8gAtAPIAMkDyADfA8gA9APIAAkEyAAeBNwA6vvcAAD83AAW/NwAK/zcAO383ABe/9wAdP/cAIn/3ACf/9wAtf/cAMr/3ADg/9wA9f/cAAsA3AAgANwANgDcAEsA3ABhANwAdwDcAIwA3ACiANwAtwDcAM0A3ADiANwA+ADcAA0B3AAjAdwAOQHcAE4B3ABkAdwAjwHcAKQB3AC6AdwAzwHcAOUB3AD7AdwAEALcACYC3AA7AtwAUQLcAL0C3ADSAtwA6ALcAP0C3AATA9wAKAPcAD4D3ABTA9wAaQPcAH8D3ACqA9wAvwPcANUD3ADqA9wAAATcABYE3AArBNwAQQTcAFYE8ADi+/AA+PvwAA788AAk/PAAZv/wAHz/8ACS//AAqP/wAL7/8ADU//AA6v/wAAAA8AAWAPAALADwAEIA8ABYAPAAbgDwAIQA8ACaAPAAsADwAMYA8ADcAPAA8QDwAAcB8AAdAfAAMwHwAEkB8ABfAfAAiwHwAKEB8AC3AfAAzQHwAOMB8AD5AfAADwLwACUC8AA7AvAAqALwAL4C8ADUAvAA6gLwAAAD8AAWA/AALAPwAEID8ABYA/AAbgPwAIQD8ACaA/AAsAPwAMYD8ADcA/AA8gPwAAgE8AAeBPAANATwAEoE8ABgBPAAdQTwAIsE8AC3BAQBv/sEAdX7BAHs+wQBAvwEARj8BAEu/AQBe/8EAZH/BAGn/wQBvf8EAdT/BAHq/wQBAAAEARYABAEsAAQBQwAEAVkABAFvAAQBhQAEAZwABAGyAAQByAAEAd4ABAH0AAQBCwEEASEBBAE3AQQBTQEEAXoBBAGQAQQBpgEEAbwBBAHTAQQB6QEEAf8BBAFCAgQBWAIEAW4CBAGEAgQBmwIEAbECBAHHAgQB3QIEAfQCBAEKAwQBIAMEATYDBAFMAwQBYwMEAXkDBAGPAwQBpQMEAbwDBAHSAwQB6AMEAf4DBAEUBAQBKwQEAUEEBAFXBAQBbQQEAYQEBAGaBBgBtvsYAc37GAHj+xgB+vsYARD8GAEn/BgBxvwYAYP/GAGa/xgBsf8YAcf/GAHe/xgB9f8YAQsAGAEiABgBOQAYAU8A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";
+const gp=$('#gp'),cv=$('#globe'),g=cv.getContext('2d'),cntEl=$('#gCount'),sayT=$('#gSayT');
+const bin=atob(LAND),N=bin.length/4,PX=new Float32Array(N),PY=new Float32Array(N),PZ=new Float32Array(N);
+for(let i=0;i<N;i++){const r=k=>{let v=bin.charCodeAt(i*4+k)|(bin.charCodeAt(i*4+k+1)<<8);return v>32767?v-65536:v};
+  const la=r(0)/10*Math.PI/180,lo=r(2)/10*Math.PI/180;PX[i]=Math.cos(la)*Math.sin(lo);PY[i]=Math.sin(la);PZ[i]=Math.cos(la)*Math.cos(lo)}
+const rad=d=>d*Math.PI/180;
+const vec=(la,lo)=>[Math.cos(rad(la))*Math.sin(rad(lo)),Math.sin(rad(la)),Math.cos(rad(la))*Math.cos(rad(lo))];
+const ORIGIN={v:vec(42.87,74.59)};
+const CITIES=[['Стамбул','Istanbul',41.0,28.97],['Дубай','Dubai',25.2,55.27],['Бангкок','Bangkok',13.75,100.5],['Токио','Tokyo',35.68,139.7],['Париж','Paris',48.86,2.35],['Нью-Йорк','New York',40.71,-74.0],['Каир','Cairo',30.04,31.24],['Сеул','Seoul',37.56,126.98],['Мекка','Mecca',21.42,39.82],['Бали','Bali',-8.4,115.2],['Рим','Rome',41.9,12.5],['Москва','Moscow',55.75,37.6],['Лондон','London',51.5,-0.12],['Сингапур','Singapore',1.35,103.8],['Тбилиси','Tbilisi',41.7,44.8],['Барселона','Barcelona',41.39,2.17],['Пекин','Beijing',39.9,116.4],['Сидней','Sydney',-33.87,151.2],['Кейптаун','Cape Town',-33.92,18.42],['Рио-де-Жанейро','Rio de Janeiro',-22.9,-43.2]].map(([ru,en,a,b])=>({n:{ru,en},v:vec(a,b)}));
+const dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2];
+const DIST=new Float32Array(N);for(let i=0;i<N;i++)DIST[i]=Math.acos(Math.max(-1,Math.min(1,PX[i]*ORIGIN.v[0]+PY[i]*ORIGIN.v[1]+PZ[i]*ORIGIN.v[2])));
+let W,H,dpr,cx,cy,R;
+function size(){dpr=Math.min(devicePixelRatio||1,2);W=gp.clientWidth;H=gp.clientHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);cx=W/2;cy=H*0.5;R=W<600?Math.min(W*0.4,H*0.34):Math.min(W*0.36,H*0.4)}
+size();addEventListener('resize',size);
+let yaw=-rad(74.59),pitch=0.5,drag=null,t0=null,visible=false,arcs=[],nextArc=0,ci=0,running=false,doneFlag=false;
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+function rot(x,y,z){const cyw=Math.cos(yaw),syw=Math.sin(yaw);const x1=x*cyw+z*syw,z1=-x*syw+z*cyw;const cp=Math.cos(pitch),sp=Math.sin(pitch);return[x1,y*cp-z1*sp,y*sp+z1*cp]}
+function slerp(a,b,t){const d=Math.acos(clamp(dot(a,b),-1,1)),s=Math.sin(d);if(s<1e-5)return a;const k1=Math.sin((1-t)*d)/s,k2=Math.sin(t*d)/s;return[a[0]*k1+b[0]*k2,a[1]*k1+b[1]*k2,a[2]*k1+b[2]*k2]}
+const T={type:300,crack:1500,split:1900,grow:2000,wave:3000,waveDur:3400,arcs:3500};
+function drawMark(t){
+  const split=clamp((t-T.split)/1000),e=ease(split),crack=clamp((t-T.crack)/400);
+  if(split>=1)return;
+  const r=R*0.42,lw=Math.max(4,R*0.06),off=e*R*1.05,gap=0.36,breathe=1+Math.sin(t/420)*0.012*(1-crack);
+  if(crack>0){g.save();g.globalAlpha=crack*(1-e);const wdt=r*(0.25+e*2.2);
+    const grd=g.createLinearGradient(cx-wdt,0,cx+wdt,0);grd.addColorStop(0,'rgba(245,184,46,0)');grd.addColorStop(.5,'rgba(255,214,120,.9)');grd.addColorStop(1,'rgba(245,184,46,0)');
+    g.fillStyle=grd;const hh=r*2.2*crack;g.fillRect(cx-wdt,cy-hh/2,wdt*2,hh);g.restore()}
+  g.save();g.globalAlpha=1-e;g.strokeStyle='#F2F2F0';g.lineWidth=lw;g.lineCap='round';
+  g.beginPath();g.arc(cx-off,cy,r*breathe,Math.PI/2+gap,Math.PI*1.5-gap);g.stroke();
+  g.beginPath();g.arc(cx+off,cy,r*breathe,-Math.PI/2+gap,Math.PI/2-gap);g.stroke();g.restore();
+  g.save();g.globalAlpha=1-ease(clamp((t-T.split-300)/700));g.fillStyle='#F5B82E';
+  g.beginPath();g.arc(cx,cy,r*0.3*(1+Math.sin(t/300)*0.05*(1-crack)),0,6.283);g.fill();g.restore();
+}
+function project(x,y,z){const p=rot(x,y,z);return[cx+p[0]*R,cy-p[1]*R,p[2]]}
+function label(x,y,text,a){g.save();g.globalAlpha=a;g.font=(W<600?'600 11px':'600 13px')+' Inter,system-ui,sans-serif';const w=g.measureText(text).width+30,h=W<600?22:26;
+  let bx=x+10,by=y-h-8;if(bx+w>W-10)bx=x-10-w;if(bx<10)bx=10;if(by<10)by=y+10;g.fillStyle='#fff';g.beginPath();g.roundRect?g.roundRect(bx,by,w,h,13):g.rect(bx,by,w,h);g.fill();
+  g.fillStyle='#F5B82E';g.beginPath();g.arc(bx+12,by+h/2,3.5,0,6.283);g.fill();g.fillStyle='#0A0A0A';g.fillText(text,bx+21,by+h/2+4.5);g.restore()}
+function frame(now){
+  if(!running)return;
+  if(t0===null)t0=now;const t=now-t0;
+  g.clearRect(0,0,W,H);
+  const grow=ease(clamp((t-T.grow)/1300)),scale=0.18+0.82*grow,R0=R;R=R0*scale;
+  if(!drag&&t>T.wave)yaw+=0.0016;
+  if(grow>0){
+    g.save();g.globalAlpha=grow;const bg=g.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.1,cx,cy,R);bg.addColorStop(0,'#1d1d20');bg.addColorStop(1,'#0e0e10');
+    g.fillStyle=bg;g.beginPath();g.arc(cx,cy,R,0,6.283);g.fill();g.strokeStyle='rgba(255,255,255,.08)';g.lineWidth=1;g.stroke();g.restore();
+    const wv=clamp((t-T.wave)/T.waveDur);
+    if(wv>0){g.save();const hg=g.createRadialGradient(cx,cy,R*0.95,cx,cy,R*1.35);hg.addColorStop(0,`rgba(245,184,46,${0.07*wv})`);hg.addColorStop(1,'rgba(245,184,46,0)');g.fillStyle=hg;g.beginPath();g.arc(cx,cy,R*1.35,0,6.283);g.fill();g.restore()}
+    const front=Math.PI*ease(wv)*1.02,band=0.1;let lit=0;
+    for(let i=0;i<N;i++){const p=rot(PX[i],PY[i],PZ[i]),d=DIST[i],on=d<front;if(on)lit++;if(p[2]<0)continue;
+      const sx=cx+p[0]*R,sy=cy-p[1]*R,depth=0.35+0.65*p[2];let col,a,s=(0.9+1.0*p[2])*Math.max(1,R/300);
+      if(on){const edge=front-d<band&&wv<1;col=edge?'245,184,46':'255,255,255';a=(edge?1:0.55+0.45*p[2]);if(edge)s*=1.6}else{col='255,255,255';a=0.1*depth}
+      g.fillStyle=`rgba(${col},${a*grow})`;g.fillRect(sx-s/2,sy-s/2,s,s)}
+    if(t>T.wave){cntEl.textContent=Math.round(NC*lit/N);if(wv>=1&&!doneFlag){doneFlag=true;cntEl.textContent=NC;gp.classList.add('done');sayT.textContent=L('g.done')}}
+    const o=project(...ORIGIN.v);
+    if(o[2]>0){const pulse=(t%1800)/1800;g.save();g.globalAlpha=grow;g.strokeStyle=`rgba(245,184,46,${1-pulse})`;g.lineWidth=1.5;g.beginPath();g.arc(o[0],o[1],4+pulse*22,0,6.283);g.stroke();
+      g.fillStyle='#F5B82E';g.beginPath();g.arc(o[0],o[1],4.5,0,6.283);g.fill();g.restore();
+      if(t>T.grow+800&&t<T.wave+1500)label(o[0],o[1],L('g.here'),clamp((t-T.grow-800)/300)*clamp((T.wave+1500-t)/300))}
+    if(t>T.arcs&&now>nextArc){arcs.push({c:CITIES[ci++%CITIES.length],t:now});nextArc=now+(ci<8?380:1500)}
+    arcs=arcs.filter(a=>now-a.t<4200);
+    const labelFrom=arcs.length-(W<600?2:4);
+    for(const [ai,a] of arcs.entries()){
+      const age=now-a.t,dr=clamp(age/1200),fade=clamp((4200-age)/600),ang=Math.acos(clamp(dot(ORIGIN.v,a.c.v),-1,1)),lift=0.12+ang*0.18,steps=48,upto=Math.floor(steps*ease(dr));
+      g.save();g.lineWidth=1.6;g.lineCap='round';let prev=null;
+      for(let k=0;k<=upto;k++){const u=k/steps,v=slerp(ORIGIN.v,a.c.v,u),h=1+lift*Math.sin(Math.PI*u),p=rot(v[0]*h,v[1]*h,v[2]*h),sx=cx+p[0]*R,sy=cy-p[1]*R,vis=p[2]>0||(p[0]*p[0]+p[1]*p[1])>1;
+        if(prev&&vis&&prev[2]){g.strokeStyle=`rgba(245,184,46,${(0.25+0.75*(k/Math.max(upto,1)))*fade*grow})`;g.beginPath();g.moveTo(prev[0],prev[1]);g.lineTo(sx,sy);g.stroke()}prev=[sx,sy,vis]}
+      if(dr<1&&prev&&prev[2]){g.fillStyle='#FFE3A3';g.beginPath();g.arc(prev[0],prev[1],3,0,6.283);g.fill()}
+      if(dr>=1){const e2=project(...a.c.v);if(e2[2]>0.05){const pp=clamp((age-1200)/500);g.strokeStyle=`rgba(255,255,255,${(1-pp)*fade})`;g.lineWidth=1.2;g.beginPath();g.arc(e2[0],e2[1],3+pp*14,0,6.283);g.stroke();
+        g.fillStyle=`rgba(255,255,255,${fade})`;g.beginPath();g.arc(e2[0],e2[1],3,0,6.283);g.fill();if(ai>=labelFrom)label(e2[0],e2[1],a.c.n[lang]+' · '+L('g.online'),clamp((age-1200)/300)*fade)}}
+      g.restore()}
+  }
+  R=R0;drawMark(t);
+  if(!doneFlag){const P=L('g.phrase'),n=clamp(Math.floor((t-T.type)/75),0,P.length),txt=P.slice(0,n)+(t>T.type+P.length*75+200?'…':'');if(sayT.textContent!==txt)sayT.textContent=txt}
+  if(t>T.wave-200)gp.classList.add('on');
+  if(visible)requestAnimationFrame(frame);else running=false;
+}
+function start(){gp.classList.remove('on','done');doneFlag=false;arcs=[];ci=0;nextArc=0;t0=null;yaw=-rad(74.59)+0.15;pitch=0.5;cntEl.textContent='0';sayT.textContent='';if(!running){running=true;requestAnimationFrame(frame)}}
+function staticFinal(){t0=performance.now()-20000;doneFlag=true;gp.classList.add('on','done');sayT.textContent=L('g.done');cntEl.textContent=NC;running=true;visible=true;frame(performance.now());running=false}
+$('#gAgain').addEventListener('click',e=>{e.stopPropagation();start()});
+gp.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;drag={x:e.clientX,y:e.clientY,yaw,pitch};gp.setPointerCapture(e.pointerId)});
+gp.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*0.006;pitch=clamp(drag.pitch+(e.clientY-drag.y)*0.004,-0.9,1.1);if(reduce)staticFinal()});
+const end=()=>{drag=null};gp.addEventListener('pointerup',end);gp.addEventListener('pointercancel',end);
+let started=false;
+new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible){if(reduce){staticFinal();return}if(!started){started=true;start()}else if(!running){running=true;requestAnimationFrame(frame)}}},{threshold:.25}).observe(gp);
+return{relabel(){if(doneFlag)sayT.textContent=L('g.done')}};
+})();
+
+/* reveal */
+const rObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');rObs.unobserve(e.target)}}),{threshold:.12});
+$$('[data-r]').forEach(el=>reduce?el.classList.add('in'):rObs.observe(el));
+
+/* hero search */
+const q=$('#q'),sugg=$('#sugg');let items=[],act=-1;
+function showSugg(){items=q.value.trim()?find(q.value):POPULAR.slice(0,6).map(c=>COUNTRIES.find(x=>x.code===c));act=items.length?0:-1;
+  sugg.innerHTML=items.length?items.map((d,i)=>`<li role="option" id="s${i}" data-id="${d.id}" aria-selected="${i===act}">${d.type==='country'?flag(d.code):icon('i-globe')}${esc(nm(d))}<span class="pr">${L('from')} ${from(d)}</span></li>`).join(''):`<li class="empty">${L('notFound')(esc(q.value))}</li>`;
+  sugg.hidden=false;q.setAttribute('aria-expanded','true');q.setAttribute('aria-activedescendant',act>=0?'s'+act:'')}
+function hideSugg(){sugg.hidden=true;q.setAttribute('aria-expanded','false')}
+function mark(){$$('#sugg [role=option]').forEach((li,i)=>li.setAttribute('aria-selected',i===act));q.setAttribute('aria-activedescendant','s'+act);const el=$('#s'+act);el&&el.scrollIntoView({block:'nearest'})}
+q.addEventListener('focus',showSugg);q.addEventListener('input',showSugg);
+q.addEventListener('keydown',e=>{if(e.key==='ArrowDown'&&items.length){act=(act+1)%items.length;mark();e.preventDefault()}else if(e.key==='ArrowUp'&&items.length){act=(act-1+items.length)%items.length;mark();e.preventDefault()}else if(e.key==='Enter'){e.preventDefault();if(act>=0)pick(items[act])}else if(e.key==='Escape')hideSugg()});
+sugg.addEventListener('mousedown',e=>{const li=e.target.closest('[data-id]');if(!li)return;e.preventDefault();pick(ALL.find(d=>d.id===li.dataset.id))});
+document.addEventListener('click',e=>{if(!e.target.closest('.search'))hideSugg()});
+$('#qGo').addEventListener('click',()=>{if(q.value.trim()){const r=find(q.value);if(r[0])return pick(r[0])}q.focus();showSugg()});
+function pick(d){q.value=nm(d);hideSugg();q.blur();openSheet(d)}
+function renderPop(){$('#pop').innerHTML=`<span>${L('popular')}</span>`+['TR','AE','TH','SA','GE'].map(c=>`<button data-id="${c}">${COUNTRIES.find(x=>x.code===c).names[lang]}</button>`).join('')}
+$('#pop').addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b)openSheet(ALL.find(d=>d.id===b.dataset.id))});
+
+/* catalog */
+let tab='country',expanded=false;const grid=$('#grid'),cq=$('#cq'),moreBtn=$('#more');
+const tile=d=>`<button class="tile" data-id="${d.id}">${dicon(d)}<span><b>${esc(nm(d))}</b><span class="sub">${d.type==='country'?'':L('countries')(d.cnt)+(d.type==='global'?'+':'')+' · '}${L('from')} ${from(d)} ${L('perGb')}</span></span></button>`;
+function renderGrid(){const t=norm(cq.value);let h='';
+  if(tab==='country'){
+    if(t){const r=byName().filter(c=>norm(c.names.ru).includes(t)||norm(c.names.en).includes(t)||c.a.includes(t));h=r.length?r.map(tile).join(''):`<div class="cat-empty">${L('noCountry')}</div>`;moreBtn.hidden=true}
+    else if(!expanded){h=POPULAR.map(c=>tile(COUNTRIES.find(x=>x.code===c))).join('');moreBtn.hidden=false;moreBtn.textContent=L('showAll')(NC)}
+    else{let Lt='';byName().forEach(c=>{const l=c.names[lang][0].toUpperCase();if(l!==Lt){Lt=l;h+=`<div class="letter">${l}</div>`}h+=tile(c)});moreBtn.hidden=false;moreBtn.textContent=L('collapse')}
+  }else{const src=tab==='region'?REGIONS:GLOBAL;const r=t?src.filter(d=>norm(nm(d)).includes(t)||norm(lst(d)).includes(t)):src;h=r.length?r.map(tile).join(''):`<div class="cat-empty">${L('nothing')}</div>`;moreBtn.hidden=true}
+  grid.innerHTML=h}
+function setTab(t){tab=t;$$('#tabs [role=tab]').forEach(x=>x.setAttribute('aria-selected',x.dataset.tab===t));renderGrid()}
+$$('#tabs [role=tab]').forEach(b=>b.addEventListener('click',()=>setTab(b.dataset.tab)));
+cq.addEventListener('input',renderGrid);
+moreBtn.addEventListener('click',()=>{expanded=!expanded;renderGrid();if(!expanded)$('#catalog').scrollIntoView({behavior:reduce?'auto':'smooth'})});
+grid.addEventListener('click',e=>{const b=e.target.closest('[data-id]');if(b)openSheet(ALL.find(d=>d.id===b.dataset.id))});
+
+/* explorer */
+const XPK=['home','plans','pay','qr','install','lock','usage'];
+let xi=0,xTimer=null,xStarted=false;const xp=$('.xp'),xStage=$('#xpStage'),xTabs=$('#xpTabs'),xCap=$('#xpCap');
+function renderXP(){xTabs.innerHTML=L('xp').map((x,i)=>`<button role="tab" aria-selected="${i===xi}" data-x="${i}">${x[0]}<span class="bar"><i></i></span></button>`).join('');
+  xStage.innerHTML=XPK.map((k,i)=>`<div class="slot" data-x="${i}">${ms(k)}</div>`).join('');layoutXP()}
+function layoutXP(){const slots=[...xStage.children];if(!slots.length)return;const w=slots[0].offsetWidth,gap=w*1.1;
+  slots.forEach((el,i)=>{const d=i-xi,a=Math.abs(d);el.style.transform=`translateX(calc(-50% + ${d*gap}px)) translateY(${a?24:0}px) scale(${d?0.9:1})`;el.style.opacity=a>2?0:(d?0.45:1);el.style.zIndex=10-a});
+  $$('#xpTabs [role=tab]').forEach((b,i)=>b.setAttribute('aria-selected',i===xi));
+  const x=L('xp')[xi];xCap.innerHTML=`<h3>${xi+1}. ${x[0]}</h3><p>${x[1]}</p>`;
+  const a=$('#xpTabs [aria-selected="true"]');if(a&&xTabs.scrollWidth>xTabs.clientWidth)xTabs.scrollTo({left:a.offsetLeft-xTabs.clientWidth/2+a.offsetWidth/2,behavior:'smooth'});
+  clearTimeout(xTimer);if(xStarted&&!reduce&&!xp.classList.contains('paused'))xTimer=setTimeout(()=>goXP((xi+1)%XPK.length),5000)}
+function goXP(i){xi=i;$$('#xpTabs .bar i').forEach(b=>{b.style.animation='none';void b.offsetWidth;b.style.animation=''});layoutXP()}
+xTabs.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(b)goXP(+b.dataset.x)});
+xStage.addEventListener('click',e=>{const b=e.target.closest('[data-x]');if(b)goXP(+b.dataset.x)});
+xStage.addEventListener('pointerenter',()=>{xp.classList.add('paused');clearTimeout(xTimer)});
+xStage.addEventListener('pointerleave',()=>{xp.classList.remove('paused');goXP(xi)});
+addEventListener('resize',layoutXP);
+new IntersectionObserver(e=>{if(e[0].isIntersecting&&!xStarted){xStarted=true;goXP(0)}},{threshold:.3}).observe(xStage);
+
+function renderPics(){$('#f1').innerHTML=ms('lock');$('#f2').innerHTML=ms('pay');$('#f3').innerHTML=ms('topup');$('#supPic').innerHTML=ms('chat')}
+
+/* compat */
+const BRANDS=['iPhone','Samsung','Pixel','Xiaomi','other'];
+const VER={iPhone:['yes','no','maybe'],Samsung:['yes','yes','maybe','no'],Pixel:['yes','maybe'],Xiaomi:['yes','maybe'],other:['maybe']};
+const VIC={yes:'i-check',maybe:'i-q',no:'i-x'};
+let br='iPhone',sel=null;
+function renderBrands(){$('#brands').innerHTML=BRANDS.map(b=>`<button data-b="${b}" aria-pressed="${b===br}">${b==='other'?L('brandsOther'):b}</button>`).join('');
+  $('#models').innerHTML=L('models')[br].map((m,i)=>`<button data-m="${i}" aria-pressed="${sel===i}"><span>${m}</span>${icon('i-chev')}</button>`).join('')}
+function renderVerdict(){const el=$('#verdict');
+  if(sel===null){el.className='verdict';el.innerHTML=`<div class="vic">${icon('i-phone')}</div><h3>${L('cp.h0')}</h3><p>${L('cp.p0')}</p>`;return}
+  const v=VER[br][sel],[h,p]=L('v')[v];el.className='verdict '+v;
+  el.innerHTML=`<div class="vic">${icon(VIC[v])}</div><h3>${h}</h3><p style="color:var(--ink);font-weight:500">${L('models')[br][sel]}</p><p>${p.replace('*#06#','<span class="code">*#06#</span>')}</p>${v!=='no'?`<a class="btn btn-ink btn-sm" href="#catalog" style="align-self:flex-start;margin-top:8px">${L('cp.go')}</a>`:''}`}
+$('#brands').addEventListener('click',e=>{const b=e.target.closest('[data-b]');if(!b)return;br=b.dataset.b;sel=null;renderBrands();renderVerdict()});
+$('#models').addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(!b)return;sel=+b.dataset.m;renderBrands();renderVerdict()});
+
+function renderFaq(){$('#faqList').innerHTML=L('faq').map(([a,b])=>`<details><summary>${a}${icon('i-plus')}</summary><div class="a">${b}</div></details>`).join('')}
+
+/* sheet */
+const sheet=$('#sheet'),scrim=$('#scrim'),Hh=$('#shHead'),B=$('#shBody'),F=$('#shFoot');let lastFocus=null,step='';
+const RATES={light:.15,social:.5,video:1.5};
+function recommend(){const need=st.days*RATES[st.use];const i=PACKS.findIndex(p=>p.gb>=need&&p.days>=st.days);return i<0?PACKS.length-1:i}
+function head(back){const S=L('sh'),d=st.dest,sub=d.type==='country'?S.dataOnly:S.multi(d.cnt+(d.type==='global'?'+':''));
+  Hh.innerHTML=`${back?`<button class="back" id="back" aria-label="${S.back}">${icon('i-left')}</button>`:''}${d.type==='country'?flag(d.code):`<span class="reg" style="width:38px;height:38px;border-radius:12px;background:var(--soft);display:grid;place-items:center">${icon('i-globe')}</span>`}<div><b id="shTitle">${esc(nm(d))}</b><span class="s">${sub}</span></div><button class="sh-x" id="shX" aria-label="${S.close}">${icon('i-x')}</button>`;
+  $('#shX').onclick=closeSheet;if(back)$('#back').onclick=back}
+function openSheet(d){st.dest=d;lastFocus=document.activeElement;st.pack=recommend();stepPlans();sheet.classList.add('on');scrim.classList.add('on');sheet.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';setTimeout(()=>{const f=sheet.querySelector('input:checked');f&&f.focus()},400)}
+function closeSheet(){sheet.classList.remove('on');scrim.classList.remove('on');sheet.setAttribute('aria-hidden','true');document.body.style.overflow='';lastFocus&&lastFocus.focus()}
+scrim.onclick=closeSheet;document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sheet.classList.contains('on'))closeSheet()});
+function stepPlans(){step='plans';head(null);const S=L('sh'),d=st.dest,rec=recommend();
+  B.innerHTML=`<div class="helper"><b>${S.helper}</b><div class="hrow" id="hDays">${[3,7,14,30].map(n=>`<button data-d="${n}" aria-pressed="${st.days===n}">${L('days')(n)}</button>`).join('')}</div><div class="hrow" id="hUse">${S.use.map(([k,t])=>`<button data-u="${k}" aria-pressed="${st.use===k}">${t}</button>`).join('')}</div></div>
+  <div class="plist" role="radiogroup" aria-label="${S.packs}">${PACKS.map((p,i)=>`<label class="pl">${i===rec?`<span class="rec">${S.rec}</span>`:''}<input type="radio" name="pk" value="${i}" ${i===st.pack?'checked':''}><span class="gb">${p.gb} ${L('gb')}</span><span class="d">${L('days')(p.days)}<span>${money(p.usd*d.k/p.gb)} ${L('perGb')}</span></span><span class="pz">${money(p.usd*d.k)}</span></label>`).join('')}</div>
+  <p class="cov">${lst(d)?S.works(esc(lst(d))):S.speed}</p>`;
+  footPlans();B.querySelectorAll('input[name=pk]').forEach(r=>r.onchange=()=>{st.pack=+r.value;footPlans()});
+  $('#hDays').onclick=e=>{const b=e.target.closest('[data-d]');if(!b)return;st.days=+b.dataset.d;st.pack=recommend();stepPlans()};
+  $('#hUse').onclick=e=>{const b=e.target.closest('[data-u]');if(!b)return;st.use=b.dataset.u;st.pack=recommend();stepPlans()}}
+function footPlans(){const S=L('sh'),p=PACKS[st.pack];F.innerHTML=`<button class="btn btn-ink" id="go">${S.cont(money(p.usd*st.dest.k))}</button><p class="fine">${S.qrSoon}</p>`;$('#go').onclick=stepForm}
+function stepForm(){step='form';head(stepPlans);const S=L('sh'),d=st.dest,p=PACKS[st.pack];
+  B.innerHTML=`<div class="summary"><span>${p.gb} ${L('gb')} · ${L('days')(p.days)}</span><b>${money(p.usd*d.k)}</b></div>
+  <div class="fld"><label for="em">${S.where}</label><input type="email" id="em" placeholder="you@gmail.com" autocomplete="email" inputmode="email" value="${esc(st.email)}"><div class="help">${S.noReg}</div><div class="err" id="emErr" hidden>${S.err}</div></div>
+  <div class="fld"><label>${S.method}</label><div class="pay">${[['card',S.card,'Visa, Mastercard'],['apple','Apple Pay',''],['google','Google Pay','']].map(([v,t,s])=>`<label><input type="radio" name="pay" value="${v}" ${st.pay===v?'checked':''}>${t}${s?`<small>${s}</small>`:''}</label>`).join('')}</div></div>`;
+  F.innerHTML=`<button class="btn btn-ink" id="payBtn">${S.pay(money(p.usd*d.k))}</button><p class="fine">${S.refund}</p>`;
+  $('#em').oninput=e=>{st.email=e.target.value;$('#emErr').hidden=true};B.querySelectorAll('input[name=pay]').forEach(r=>r.onchange=()=>st.pay=r.value);
+  $('#payBtn').onclick=()=>{if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(st.email.trim())){$('#emErr').hidden=false;$('#em').focus();return}
+    step='pay';head(null);B.innerHTML=`<div class="spin" role="status" aria-label="${S.processingAria}"></div><p class="muted" style="text-align:center">${S.processing}</p>`;F.innerHTML='';setTimeout(stepDone,reduce?300:1500)};
+  setTimeout(()=>$('#em').focus(),60)}
+function stepDone(){step='done';head(null);const S=L('sh'),d=st.dest,p=PACKS[st.pack];
+  B.innerHTML=`<div class="done"><div class="okb">${icon('i-check')}</div><h3>${S.done}</h3><p class="muted">${S.sent(esc(nm(d)),p.gb,L('days')(p.days),esc(st.email))}</p><div class="qr" role="img" aria-label="${S.qrAria}">${qr()}</div><ol>${S.steps.map(x=>`<li>${x}</li>`).join('')}</ol></div>`;
+  F.innerHTML=`<button class="btn btn-ink" id="inst">${S.installBtn}</button><p class="fine">${S.other}</p>`;
+  $('#inst').onclick=()=>$('#inst').textContent=S.demo}
+
+/* app install: PWA + store links */
+const STORES={ios:'',android:''}; // вставьте ссылки на App Store / Google Play, когда приложения опубликуют
+const ua=navigator.userAgent;
+const isAndroid=/Android/i.test(ua);
+const isIOS=/iPad|iPhone|iPod/.test(ua)||(!isAndroid&&navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const isSafari=/Safari/.test(ua)&&!/CriOS|FxiOS|EdgiOS|OPiOS|YaBrowser/.test(ua);
+const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+const dlg=$('#appDlg'),dlgIn=$('#dlgIn'),abar=$('#abar');
+let bip=null,installed=standalone(),dlgMode=null;
+const canInstall=()=>!installed&&(bip||isIOS);
+function renderApp(){const A=L('appd');
+  $('#appInstallT').textContent=installed?A.installed:A.install;
+  $('#appNote').textContent=installed?(standalone()?A.open:A.done):bip?A.ready:isIOS?A.ios:A.other;
+  $$('.app-c').forEach(c=>c.classList.toggle('mine',(c.dataset.plat==='ios'&&isIOS)||(c.dataset.plat==='android'&&isAndroid)));
+  [['ios','#storeIos'],['android','#storeAndroid']].forEach(([k,id])=>{$(id).href=STORES[k]||'#';$(`[data-soon="${k}"]`).hidden=!!STORES[k]});
+  if(dlg.open)renderDlg()}
+function renderDlg(){const A=L('appd'),m=dlgMode,store=m==='soon-ios'?'App Store':'Google Play';
+  const steps=(a,ics)=>`<ol>${a.map((t,i)=>`<li>${t}${ics&&ics[i]?icon(ics[i]):''}</li>`).join('')}</ol>`;
+  const h=m==='ios'?A.iosH:m==='done'?A.doneH:m==='other'?A.otherH:A.soonH(store);
+  const body=m==='ios'?`<p>${A.iosP}</p>${steps(A.iosSteps,['i-share','i-addhome'])}${isSafari?'':`<p style="font-size:14px">${A.iosNoSafari}</p>`}`
+    :m==='other'?`<p>${A.otherP}</p>${steps(A.otherSteps)}<p style="font-size:14px">${A.otherTip}</p>`
+    :m==='done'?`<p>${A.doneP}</p>`:`<p>${A.soonP}</p>`;
+  const btn=m&&m.startsWith('soon')&&!installed?`<button class="btn btn-gold" type="button" id="dlgGo">${A.soonB}</button>`:`<button class="btn btn-ink" type="button" id="dlgOk">${A.ok}</button>`;
+  dlgIn.innerHTML=`<div class="dlg-h"><img src="icons/icon-192.png" alt=""><b id="dlgTitle">${h}</b><button class="sh-x" type="button" id="dlgX" aria-label="${A.close}">${icon('i-x')}</button></div>${body}${btn}`;
+  $('#dlgX').onclick=()=>dlg.close();
+  const ok=$('#dlgOk');if(ok)ok.onclick=()=>dlg.close();
+  const go=$('#dlgGo');if(go)go.onclick=()=>{dlg.close();webInstall()}}
+function openDlg(m){dlgMode=m;renderDlg();if(!dlg.open)dlg.showModal()}
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+function webInstall(){
+  if(installed)return openDlg('done');
+  if(bip){const p=bip;bip=null;p.prompt();p.userChoice.then(c=>{if(c.outcome==='accepted'){installed=true;hideBar()}renderApp()});return}
+  openDlg(isIOS?'ios':'other')}
+$('#appInstall').onclick=webInstall;
+[['#storeIos','soon-ios','ios'],['#storeAndroid','soon-android','android']].forEach(([id,m,k])=>$(id).addEventListener('click',e=>{if(!STORES[k]){e.preventDefault();openDlg(m)}}));
+/* smart bar: phones only, after scrolling past the hero, once per dismissal */
+const BAR_KEY='sezam-abar-off';
+const barOff=()=>{try{return localStorage.getItem(BAR_KEY)==='1'}catch(e){return false}};
+function showBar(){abar.classList.add('on');abar.setAttribute('aria-hidden','false');abar.querySelectorAll('button').forEach(b=>b.tabIndex=0)}
+function hideBar(){abar.classList.remove('on');abar.setAttribute('aria-hidden','true');abar.querySelectorAll('button').forEach(b=>b.tabIndex=-1)}
+function maybeBar(){if(canInstall()&&!barOff()&&scrollY>innerHeight*.8&&innerWidth<=700)showBar()}
+addEventListener('scroll',maybeBar,{passive:true});
+$('#abarGo').onclick=()=>{hideBar();webInstall()};
+$('#abarX').onclick=()=>{hideBar();try{localStorage.setItem(BAR_KEY,'1')}catch(e){}};
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();bip=e;renderApp();maybeBar()});
+addEventListener('appinstalled',()=>{installed=true;bip=null;hideBar();renderApp()});
+if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+/* render all + language switch */
+function renderAll(){applyStatic();renderPop();renderGrid();renderXP();renderPics();renderBrands();renderVerdict();renderFaq();globe.relabel();renderApp();
+  if(sheet.classList.contains('on')){if(step==='plans')stepPlans();else if(step==='form')stepForm();else if(step==='done')stepDone()}}
+$$('[data-lang]').forEach(b=>b.addEventListener('click',()=>{if(b.dataset.lang===lang)return;lang=b.dataset.lang;try{localStorage.setItem('sezam-lang',lang)}catch(e){}if(document.activeElement!==q&&q.value)q.value='';renderAll()}));
+renderAll();
+})();
+
+</script>
+</body>
+</html>
