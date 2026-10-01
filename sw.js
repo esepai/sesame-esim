@@ -1,5 +1,5 @@
 /* Сезам eSIM — service worker: офлайн-оболочка для веб-приложения */
-const CACHE = 'sezam-v13';
+const CACHE = 'sezam-v15';
 const SHELL = ['./', './index.html', './partners.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', e => {
