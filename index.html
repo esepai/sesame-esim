@@ -507,8 +507,6 @@ header .short{display:none}
 :root[data-theme="dark"] .theme-t .sun{transform:none;opacity:1}
 :root[data-theme="dark"] .theme-t .moon{transform:rotate(90deg) scale(.4);opacity:0}
 ::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
-::view-transition-new(root){animation:themeReveal .6s cubic-bezier(.4,0,.2,1)}
-@keyframes themeReveal{from{clip-path:circle(0 at var(--tx,100%) var(--ty,0))}to{clip-path:circle(var(--tr,150vmax) at var(--tx,100%) var(--ty,0))}}
 @media (max-width:420px){.theme-t{width:34px;height:34px}.lang button{padding:8px 8px}}
 </style>
 </head>
@@ -1170,10 +1168,13 @@ renderAll();
   const apply=t=>{document.documentElement.dataset.theme=t;document.querySelector('meta[name=theme-color]').content=t==='dark'?'#0B0B0C':'#ffffff';try{localStorage.setItem('sezam-theme',t)}catch(e){}label()};
   b.addEventListener('click',()=>{
     const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
-    if(!document.startViewTransition||matchMedia('(prefers-reduced-motion: reduce)').matches)return apply(next);
-    const r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,s=document.documentElement.style;
-    s.setProperty('--tx',x+'px');s.setProperty('--ty',y+'px');s.setProperty('--tr',Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y))+'px');
-    document.startViewTransition(()=>apply(next));
+    if(!document.startViewTransition||document.hidden||matchMedia('(prefers-reduced-motion: reduce)').matches)return apply(next);
+    const r=b.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,R=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+    const vt=document.startViewTransition(()=>apply(next));
+    // площадь круга должна расти равномерно: радиус ~ √t, поэтому кривая сильно «замедляющаяся» — край круга виден до самого конца
+    const steps=24,kf=[];for(let i=0;i<=steps;i++){const t=i/steps;kf.push({clipPath:`circle(${(R*Math.sqrt(t)).toFixed(1)}px at ${x}px ${y}px)`,offset:t})}
+    vt.ready.then(()=>document.documentElement.animate(kf,{duration:750,easing:'cubic-bezier(.35,0,.65,1)',pseudoElement:'::view-transition-new(root)'})).catch(()=>{});
+    vt.finished.catch(()=>{});vt.updateCallbackDone.catch(()=>{});
   });
   label();new MutationObserver(label).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
