@@ -203,6 +203,54 @@ footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
 footer a{text-decoration:none}
 footer a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-r]{opacity:1;transform:none}}
+
+/* ── liquid glass ─────────────────────────────────────────── */
+:root{
+  --glass:color-mix(in srgb,var(--bg) 60%,transparent);
+  --glass-hi:rgba(255,255,255,.75);
+  --glass-edge:rgba(255,255,255,.55);
+  --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.06) 55%,rgba(255,255,255,.14));
+  --glass-shadow:0 10px 30px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --glass:color-mix(in srgb,var(--bg) 55%,transparent);--glass-hi:rgba(255,255,255,.22);--glass-edge:rgba(255,255,255,.12);
+  --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 55%,rgba(255,255,255,.05));--glass-shadow:0 10px 30px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --glass:color-mix(in srgb,var(--bg) 55%,transparent);--glass-hi:rgba(255,255,255,.22);--glass-edge:rgba(255,255,255,.12);
+  --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 55%,rgba(255,255,255,.05));--glass-shadow:0 10px 30px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3);
+}
+.glass,header.top.sh .w{
+  background:var(--glass-sheen),var(--glass);
+  -webkit-backdrop-filter:blur(24px) saturate(1.8);backdrop-filter:blur(24px) saturate(1.8);
+  box-shadow:inset 0 1px 1px var(--glass-hi),inset 0 0 0 1px var(--glass-edge),inset 0 -1px 1px rgba(0,0,0,.04),var(--glass-shadow);
+}
+/* стекло на тёмных блоках */
+.glass-dark,.btn.glass-dark,.g-again.glass-dark:hover{
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.05) 60%,rgba(255,255,255,.09));
+  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.35);
+  border-color:transparent!important;color:#fff;
+}
+
+/* шапка: при прокрутке — плавающая стеклянная капсула */
+header.top{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+header.top.sh{box-shadow:none}
+header.top .w{border-radius:999px;transition:background .35s,box-shadow .35s,height .35s,margin .35s,padding .35s,width .35s}
+header.top.sh .w{background:var(--glass-sheen),color-mix(in srgb,var(--bg) 76%,transparent);height:58px;margin-top:5px;margin-bottom:5px;padding:0 8px 0 18px;width:min(1224px,100% - 16px)}
+header.top.sh nav.menu a{color:color-mix(in srgb,var(--ink) 72%,transparent)}
+header.top.sh nav.menu a:hover{color:var(--ink)}
+header.top.sh .lang button[aria-pressed="true"]{background:color-mix(in srgb,var(--bg) 70%,transparent);box-shadow:inset 0 1px 0 var(--glass-hi),0 1px 3px rgba(0,0,0,.08)}
+
+/* кнопки: «жидкий» блик сверху и мягкая глубина */
+.btn-gold{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -2px 6px rgba(150,90,0,.18),0 6px 18px rgba(245,184,46,.35)}
+.btn-ink{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.12)}
+.btn-soft{box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--glass-edge)}
+
+/* тёплое свечение на тёмных карточках */
+.mdl.dark,.lead-txt.dark{background:radial-gradient(70% 55% at 80% 0%,rgba(245,184,46,.18),transparent 70%),#0A0A0A}
+.tag{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 4px 12px rgba(245,184,46,.3)}
+.chips input:checked+span{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 2px 8px rgba(0,0,0,.12)}
 </style>
 </head>
 <body>

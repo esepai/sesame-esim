@@ -417,6 +417,68 @@ footer a:hover{color:var(--ink)}
 .done li{margin:5px 0}
 @media (max-width:560px){.sheet{top:auto;left:0;right:0;bottom:0;width:100%;height:92%;border-radius:24px 24px 0 0;transform:translateY(102%)}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}[data-r]{opacity:1;transform:none}}
+
+/* ── liquid glass ─────────────────────────────────────────── */
+:root{
+  --glass:color-mix(in srgb,var(--bg) 60%,transparent);
+  --glass-hi:rgba(255,255,255,.75);
+  --glass-edge:rgba(255,255,255,.55);
+  --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.38),rgba(255,255,255,.06) 55%,rgba(255,255,255,.14));
+  --glass-shadow:0 10px 30px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.06);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --glass:color-mix(in srgb,var(--bg) 55%,transparent);--glass-hi:rgba(255,255,255,.22);--glass-edge:rgba(255,255,255,.12);
+  --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 55%,rgba(255,255,255,.05));--glass-shadow:0 10px 30px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --glass:color-mix(in srgb,var(--bg) 55%,transparent);--glass-hi:rgba(255,255,255,.22);--glass-edge:rgba(255,255,255,.12);
+  --glass-sheen:linear-gradient(180deg,rgba(255,255,255,.10),rgba(255,255,255,.02) 55%,rgba(255,255,255,.05));--glass-shadow:0 10px 30px rgba(0,0,0,.45),0 1px 3px rgba(0,0,0,.3);
+}
+.glass,header.top.sh .w{
+  background:var(--glass-sheen),var(--glass);
+  -webkit-backdrop-filter:blur(24px) saturate(1.8);backdrop-filter:blur(24px) saturate(1.8);
+  box-shadow:inset 0 1px 1px var(--glass-hi),inset 0 0 0 1px var(--glass-edge),inset 0 -1px 1px rgba(0,0,0,.04),var(--glass-shadow);
+}
+/* стекло на тёмных блоках */
+.glass-dark,.btn.glass-dark,.g-again.glass-dark:hover{
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.05) 60%,rgba(255,255,255,.09));
+  -webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 0 0 1px rgba(255,255,255,.12),inset 0 -1px 0 rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.35);
+  border-color:transparent!important;color:#fff;
+}
+
+/* шапка: при прокрутке — плавающая стеклянная капсула */
+header.top{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+header.top.sh{box-shadow:none}
+header.top .w{border-radius:999px;transition:background .35s,box-shadow .35s,height .35s,margin .35s,padding .35s,width .35s}
+header.top.sh .w{background:var(--glass-sheen),color-mix(in srgb,var(--bg) 76%,transparent);height:58px;margin-top:5px;margin-bottom:5px;padding:0 8px 0 18px;width:min(1224px,100% - 16px)}
+header.top.sh nav.menu a{color:color-mix(in srgb,var(--ink) 72%,transparent)}
+header.top.sh nav.menu a:hover{color:var(--ink)}
+header.top.sh .lang button[aria-pressed="true"]{background:color-mix(in srgb,var(--bg) 70%,transparent);box-shadow:inset 0 1px 0 var(--glass-hi),0 1px 3px rgba(0,0,0,.08)}
+
+/* кнопки: «жидкий» блик сверху и мягкая глубина */
+.btn-gold{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),inset 0 -2px 6px rgba(150,90,0,.18),0 6px 18px rgba(245,184,46,.35)}
+.btn-ink{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.4),0 4px 14px rgba(0,0,0,.12)}
+.btn-soft{box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--glass-edge)}
+
+/* стеклянные переключатели */
+.seg button[aria-selected="true"],.xp-tabs button[aria-selected="true"]{background:var(--glass-sheen),var(--bg);box-shadow:inset 0 1px 0 var(--glass-hi),inset 0 0 0 1px var(--glass-edge),0 2px 10px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06)}
+
+/* глобус: счётчик и кнопка — стекло поверх карты */
+.g-count{padding:10px 18px 12px;border-radius:24px}
+.g-again:hover{filter:brightness(1.2)}
+
+/* финальный блок: тёплое свечение, чтобы стеклу было что преломлять */
+.final{background:radial-gradient(55% 60% at 50% 0%,rgba(245,184,46,.20),transparent 70%),radial-gradient(40% 40% at 85% 100%,rgba(245,184,46,.10),transparent 70%),#0A0A0A}
+.final .btn-soft{color:#fff}
+
+/* всплывающие окна и плашка — матовое стекло */
+.sheet,.dlg,.abar{background:var(--glass-sheen),color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(30px) saturate(1.8);backdrop-filter:blur(30px) saturate(1.8)}
+.sheet.on,.dlg{box-shadow:inset 0 1px 1px var(--glass-hi),inset 0 0 0 1px var(--glass-edge),0 30px 80px rgba(0,0,0,.22)}
+.abar{box-shadow:inset 0 1px 1px var(--glass-hi),inset 0 0 0 1px var(--glass-edge),0 12px 40px rgba(0,0,0,.16)}
+.sh-f{border-top-color:color-mix(in srgb,var(--line) 70%,transparent)}
+.dlg ol li{background:color-mix(in srgb,var(--soft) 70%,transparent)}
+.scrim{-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
 </style>
 </head>
 <body>
@@ -471,10 +533,10 @@ footer a:hover{color:var(--ink)}
   </div>
   <div class="gp" id="gp">
     <canvas id="globe" role="img" data-i18n-aria="g.aria"></canvas>
-    <div class="g-count" aria-live="polite"><b id="gCount">0</b><span data-i18n="g.count"></span></div>
+    <div class="g-count glass-dark" aria-live="polite"><b id="gCount">0</b><span data-i18n="g.count"></span></div>
     <div class="g-say" id="gSay"><span id="gSayT"></span><i class="caret"></i></div>
     <div class="g-hint" data-i18n="g.hint"></div>
-    <button class="g-again" id="gAgain" data-i18n="g.again"></button>
+    <button class="g-again glass-dark" id="gAgain" data-i18n="g.again"></button>
   </div>
   <div class="w nums" data-r>
     <div><b>200</b><span data-i18n="n.1"></span></div>
@@ -585,7 +647,7 @@ footer a:hover{color:var(--ink)}
     <svg class="big" aria-hidden="true"><use href="#arch"/></svg>
     <h2 data-i18n="fin.h"></h2>
     <p data-i18n="fin.p"></p>
-    <div class="row"><a class="btn btn-gold" href="#catalog" data-i18n="fin.b1"></a><a class="btn btn-soft" href="#how" data-i18n="fin.b2"></a></div>
+    <div class="row"><a class="btn btn-gold" href="#catalog" data-i18n="fin.b1"></a><a class="btn btn-soft glass-dark" href="#how" data-i18n="fin.b2"></a></div>
   </div>
 </section>
 </main>
