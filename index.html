@@ -897,6 +897,8 @@ const DIST=new Float32Array(N);for(let i=0;i<N;i++)DIST[i]=Math.acos(Math.max(-1
 let W,H,dpr,cx,cy,R;
 function size(){dpr=Math.min(devicePixelRatio||1,2);W=gp.clientWidth;H=gp.clientHeight;cv.width=W*dpr;cv.height=H*dpr;g.setTransform(dpr,0,0,dpr,0,0);cx=W/2;cy=H*0.5;R=W<600?Math.min(W*0.4,H*0.34):Math.min(W*0.36,H*0.4)}
 size();addEventListener('resize',size);
+/* физика вращения: скорость (рад/мс), направление авто-вращения, «вжатие» под пальцем */
+const IDLE=0.0016/16.7,MAXV=0.024,FRICTION=950;let vy=0,vp=0,autoDir=1,lastNow=null,pressK=0,samples=[];
 let yaw=-rad(74.59),pitch=0.5,drag=null,t0=null,visible=false,arcs=[],nextArc=0,ci=0,running=false,doneFlag=false;
 const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
 const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
@@ -922,12 +924,16 @@ function label(x,y,text,a){g.save();g.globalAlpha=a;g.font=(W<600?'600 11px':'60
   g.fillStyle='#F5B82E';g.beginPath();g.arc(bx+12,by+h/2,3.5,0,6.283);g.fill();g.fillStyle='#0A0A0A';g.fillText(text,bx+21,by+h/2+4.5);g.restore()}
 function frame(now){
   if(!running)return;
-  if(t0===null)t0=now;const t=now-t0;
-  g.clearRect(0,0,W,H);
-  const grow=ease(clamp((t-T.grow)/1300)),scale=0.18+0.82*grow,R0=R;R=R0*scale;
-  if(!drag&&t>T.wave)yaw+=0.0016;
+  if(t0===null)t0=now;const t=now-t0;const dt=lastNow===null?16:Math.min(now-lastNow,48);lastNow=now;
+  if(!drag){const target=t>T.wave?autoDir*IDLE:0;vy=target+(vy-target)*Math.exp(-dt/FRICTION);yaw+=vy*dt;
+    pitch+=vp*dt;vp*=Math.exp(-dt/320);const pc=clamp(pitch,-0.9,1.1);if(pc!==pitch){pitch+=(pc-pitch)*(1-Math.exp(-dt/120));vp*=0.5}}
+  pressK+=((drag?1:0)-pressK)*(1-Math.exp(-dt/(drag?70:260)));
+  // шлейф при быстром вращении: вместо полной очистки — полупрозрачная заливка цветом панели
+  const blur=drag?0:clamp((Math.abs(vy)-0.004)/0.014),fade=1-0.62*blur;
+  if(fade<0.999){g.fillStyle=`rgba(10,10,10,${fade.toFixed(3)})`;g.fillRect(0,0,W,H)}else g.clearRect(0,0,W,H);
+  const grow=ease(clamp((t-T.grow)/1300)),scale=(0.18+0.82*grow)*(1-0.03*pressK+0.012*blur),R0=R;R=R0*scale;
   if(grow>0){
-    g.save();g.globalAlpha=grow;const bg=g.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.1,cx,cy,R);bg.addColorStop(0,'#1d1d20');bg.addColorStop(1,'#0e0e10');
+    g.save();g.globalAlpha=grow*fade;const bg=g.createRadialGradient(cx-R*0.35,cy-R*0.4,R*0.1,cx,cy,R);bg.addColorStop(0,'#1d1d20');bg.addColorStop(1,'#0e0e10');
     g.fillStyle=bg;g.beginPath();g.arc(cx,cy,R,0,6.283);g.fill();g.strokeStyle='rgba(255,255,255,.08)';g.lineWidth=1;g.stroke();g.restore();
     const wv=clamp((t-T.wave)/T.waveDur);
     if(wv>0){g.save();const hg=g.createRadialGradient(cx,cy,R*0.95,cx,cy,R*1.35);hg.addColorStop(0,`rgba(245,184,46,${0.07*wv})`);hg.addColorStop(1,'rgba(245,184,46,0)');g.fillStyle=hg;g.beginPath();g.arc(cx,cy,R*1.35,0,6.283);g.fill();g.restore()}
@@ -959,12 +965,19 @@ function frame(now){
   if(t>T.wave-200)gp.classList.add('on');
   if(visible)requestAnimationFrame(frame);else running=false;
 }
-function start(){gp.classList.remove('on','done');doneFlag=false;arcs=[];ci=0;nextArc=0;t0=null;yaw=-rad(74.59)+0.15;pitch=0.5;cntEl.textContent='0';sayT.textContent='';if(!running){running=true;requestAnimationFrame(frame)}}
+function start(){gp.classList.remove('on','done');doneFlag=false;vy=0;vp=0;autoDir=1;lastNow=null;arcs=[];ci=0;nextArc=0;t0=null;yaw=-rad(74.59)+0.15;pitch=0.5;cntEl.textContent='0';sayT.textContent='';if(!running){running=true;requestAnimationFrame(frame)}}
 function staticFinal(){t0=performance.now()-20000;doneFlag=true;gp.classList.add('on','done');sayT.textContent=L('g.done');cntEl.textContent=NC;running=true;visible=true;frame(performance.now());running=false}
 $('#gAgain').addEventListener('click',e=>{e.stopPropagation();start()});
-gp.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;drag={x:e.clientX,y:e.clientY,yaw,pitch};gp.setPointerCapture(e.pointerId)});
-gp.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*0.006;pitch=clamp(drag.pitch+(e.clientY-drag.y)*0.004,-0.9,1.1);if(reduce)staticFinal()});
-const end=()=>{drag=null};gp.addEventListener('pointerup',end);gp.addEventListener('pointercancel',end);
+// касание «ловит» глобус: вращение останавливается, точка под пальцем едет вместе с ним
+const K=()=>1/Math.max(R*0.95,120);
+gp.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;vy=0;vp=0;drag={x:e.clientX,y:e.clientY,yaw,pitch,k:K()};samples=[{t:e.timeStamp,yaw,pitch}];gp.setPointerCapture(e.pointerId)});
+gp.addEventListener('pointermove',e=>{if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*drag.k;pitch=clamp(drag.pitch+(e.clientY-drag.y)*drag.k*0.7,-0.9,1.1);
+  samples.push({t:e.timeStamp,yaw,pitch});while(samples.length>2&&e.timeStamp-samples[0].t>100)samples.shift();if(reduce)staticFinal()});
+// отпускание: скорость по последним ~100 мс движения; если палец замер — глобус остаётся на месте
+const end=e=>{if(!drag)return;drag=null;const a=samples[0],b=samples[samples.length-1],now=e&&e.timeStamp||performance.now();
+  if(a&&b&&b.t>a.t&&now-b.t<80){vy=clamp((b.yaw-a.yaw)/(b.t-a.t),-MAXV,MAXV);vp=clamp((b.pitch-a.pitch)/(b.t-a.t),-0.006,0.006);if(Math.abs(vy)>IDLE)autoDir=Math.sign(vy)}
+  samples=[]};
+gp.addEventListener('pointerup',end);gp.addEventListener('pointercancel',end);
 let started=false;
 new IntersectionObserver(es=>{visible=es[0].isIntersecting;if(visible){if(reduce){staticFinal();return}if(!started){started=true;start()}else if(!running){running=true;requestAnimationFrame(frame)}}},{threshold:.25}).observe(gp);
 return{relabel(){if(doneFlag)sayT.textContent=L('g.done')}};
